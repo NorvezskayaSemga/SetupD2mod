@@ -1,0 +1,187 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class Main
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.NextButton = New System.Windows.Forms.Button()
+        Me.BackButton = New System.Windows.Forms.Button()
+        Me.CancButton = New System.Windows.Forms.Button()
+        Me.PictureBox = New System.Windows.Forms.PictureBox()
+        Me.SelectTextBox = New System.Windows.Forms.TextBox()
+        Me.SelectButton = New System.Windows.Forms.Button()
+        Me.InfoLabel = New System.Windows.Forms.Label()
+        Me.Panel = New System.Windows.Forms.Panel()
+        Me.LangPanel = New System.Windows.Forms.Panel()
+        Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
+        Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel.SuspendLayout()
+        Me.LangPanel.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'NextButton
+        '
+        Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.NextButton.Location = New System.Drawing.Point(317, 300)
+        Me.NextButton.Name = "NextButton"
+        Me.NextButton.Size = New System.Drawing.Size(66, 24)
+        Me.NextButton.TabIndex = 0
+        Me.NextButton.Text = "Next"
+        Me.NextButton.UseVisualStyleBackColor = True
+        '
+        'BackButton
+        '
+        Me.BackButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BackButton.Enabled = False
+        Me.BackButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.BackButton.Location = New System.Drawing.Point(245, 300)
+        Me.BackButton.Name = "BackButton"
+        Me.BackButton.Size = New System.Drawing.Size(66, 24)
+        Me.BackButton.TabIndex = 1
+        Me.BackButton.Text = "Back"
+        Me.BackButton.UseVisualStyleBackColor = True
+        '
+        'CancButton
+        '
+        Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.CancButton.Location = New System.Drawing.Point(533, 300)
+        Me.CancButton.Name = "CancButton"
+        Me.CancButton.Size = New System.Drawing.Size(66, 24)
+        Me.CancButton.TabIndex = 2
+        Me.CancButton.Text = "Cancel"
+        Me.CancButton.UseVisualStyleBackColor = True
+        '
+        'PictureBox
+        '
+        Me.PictureBox.BackgroundImage = Global.SetupD2.My.Resources.Resources.logo
+        Me.PictureBox.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox.Name = "PictureBox"
+        Me.PictureBox.Size = New System.Drawing.Size(236, 336)
+        Me.PictureBox.TabIndex = 3
+        Me.PictureBox.TabStop = False
+        '
+        'SelectTextBox
+        '
+        Me.SelectTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.SelectTextBox.Location = New System.Drawing.Point(117, 255)
+        Me.SelectTextBox.Name = "SelectTextBox"
+        Me.SelectTextBox.Size = New System.Drawing.Size(237, 22)
+        Me.SelectTextBox.TabIndex = 0
+        '
+        'SelectButton
+        '
+        Me.SelectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.SelectButton.Location = New System.Drawing.Point(3, 252)
+        Me.SelectButton.Name = "SelectButton"
+        Me.SelectButton.Size = New System.Drawing.Size(109, 29)
+        Me.SelectButton.TabIndex = 1
+        Me.SelectButton.Text = "SelectFolder"
+        Me.SelectButton.UseVisualStyleBackColor = True
+        '
+        'InfoLabel
+        '
+        Me.InfoLabel.AutoSize = True
+        Me.InfoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.InfoLabel.Location = New System.Drawing.Point(6, 11)
+        Me.InfoLabel.Name = "InfoLabel"
+        Me.InfoLabel.Size = New System.Drawing.Size(63, 16)
+        Me.InfoLabel.TabIndex = 2
+        Me.InfoLabel.Text = "InfoLabel"
+        '
+        'Panel
+        '
+        Me.Panel.Controls.Add(Me.LangPanel)
+        Me.Panel.Controls.Add(Me.InfoLabel)
+        Me.Panel.Controls.Add(Me.SelectButton)
+        Me.Panel.Controls.Add(Me.SelectTextBox)
+        Me.Panel.Location = New System.Drawing.Point(242, 12)
+        Me.Panel.Name = "Panel"
+        Me.Panel.Size = New System.Drawing.Size(357, 284)
+        Me.Panel.TabIndex = 4
+        '
+        'LangPanel
+        '
+        Me.LangPanel.Controls.Add(Me.LangEnRadioButton)
+        Me.LangPanel.Controls.Add(Me.LangRuRadioButton)
+        Me.LangPanel.Location = New System.Drawing.Point(302, 0)
+        Me.LangPanel.Name = "LangPanel"
+        Me.LangPanel.Size = New System.Drawing.Size(55, 45)
+        Me.LangPanel.TabIndex = 3
+        '
+        'LangEnRadioButton
+        '
+        Me.LangEnRadioButton.AutoSize = True
+        Me.LangEnRadioButton.Location = New System.Drawing.Point(9, 22)
+        Me.LangEnRadioButton.Name = "LangEnRadioButton"
+        Me.LangEnRadioButton.Size = New System.Drawing.Size(44, 17)
+        Me.LangEnRadioButton.TabIndex = 1
+        Me.LangEnRadioButton.TabStop = True
+        Me.LangEnRadioButton.Text = "Eng"
+        Me.LangEnRadioButton.UseVisualStyleBackColor = True
+        '
+        'LangRuRadioButton
+        '
+        Me.LangRuRadioButton.AutoSize = True
+        Me.LangRuRadioButton.Location = New System.Drawing.Point(9, 3)
+        Me.LangRuRadioButton.Name = "LangRuRadioButton"
+        Me.LangRuRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangRuRadioButton.TabIndex = 0
+        Me.LangRuRadioButton.TabStop = True
+        Me.LangRuRadioButton.Text = "Рус"
+        Me.LangRuRadioButton.UseVisualStyleBackColor = True
+        '
+        'Main
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(611, 336)
+        Me.Controls.Add(Me.Panel)
+        Me.Controls.Add(Me.PictureBox)
+        Me.Controls.Add(Me.NextButton)
+        Me.Controls.Add(Me.CancButton)
+        Me.Controls.Add(Me.BackButton)
+        Me.Name = "Main"
+        Me.Text = "Form1"
+        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel.ResumeLayout(False)
+        Me.Panel.PerformLayout()
+        Me.LangPanel.ResumeLayout(False)
+        Me.LangPanel.PerformLayout()
+        Me.ResumeLayout(False)
+
+    End Sub
+    Friend WithEvents NextButton As System.Windows.Forms.Button
+    Friend WithEvents BackButton As System.Windows.Forms.Button
+    Friend WithEvents CancButton As System.Windows.Forms.Button
+    Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
+    Friend WithEvents SelectTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents SelectButton As System.Windows.Forms.Button
+    Friend WithEvents InfoLabel As System.Windows.Forms.Label
+    Friend WithEvents Panel As System.Windows.Forms.Panel
+    Friend WithEvents LangPanel As System.Windows.Forms.Panel
+    Friend WithEvents LangEnRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
+
+End Class

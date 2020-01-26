@@ -1,0 +1,12 @@
+##cancmsg#
+Abort installation?
+#InstallModeLabel
+Choose installation mode
+#TextLangLabel
+Select interface text language
+#SoundLangLabel
+Select the language for unit voice on the global map
+#InstallRadioButton
+Install full and patched game
+#PatchRadioButton
+Patch my game (GOG, Russobit-M or Akella)
