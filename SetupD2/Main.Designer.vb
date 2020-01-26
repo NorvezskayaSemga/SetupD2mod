@@ -41,6 +41,7 @@ Partial Class Main
         'NextButton
         '
         Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NextButton.Enabled = False
         Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.NextButton.Location = New System.Drawing.Point(317, 300)
         Me.NextButton.Name = "NextButton"
@@ -57,7 +58,7 @@ Partial Class Main
         Me.BackButton.Location = New System.Drawing.Point(245, 300)
         Me.BackButton.Name = "BackButton"
         Me.BackButton.Size = New System.Drawing.Size(66, 24)
-        Me.BackButton.TabIndex = 1
+        Me.BackButton.TabIndex = 11
         Me.BackButton.Text = "Back"
         Me.BackButton.UseVisualStyleBackColor = True
         '
@@ -88,15 +89,15 @@ Partial Class Main
         Me.SelectTextBox.Location = New System.Drawing.Point(117, 255)
         Me.SelectTextBox.Name = "SelectTextBox"
         Me.SelectTextBox.Size = New System.Drawing.Size(237, 22)
-        Me.SelectTextBox.TabIndex = 0
+        Me.SelectTextBox.TabIndex = 3
         '
         'SelectButton
         '
-        Me.SelectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.SelectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.SelectButton.Location = New System.Drawing.Point(3, 252)
         Me.SelectButton.Name = "SelectButton"
         Me.SelectButton.Size = New System.Drawing.Size(109, 29)
-        Me.SelectButton.TabIndex = 1
+        Me.SelectButton.TabIndex = 2
         Me.SelectButton.Text = "SelectFolder"
         Me.SelectButton.UseVisualStyleBackColor = True
         '
@@ -104,7 +105,8 @@ Partial Class Main
         '
         Me.InfoLabel.AutoSize = True
         Me.InfoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.InfoLabel.Location = New System.Drawing.Point(6, 11)
+        Me.InfoLabel.Location = New System.Drawing.Point(7, 63)
+        Me.InfoLabel.MaximumSize = New System.Drawing.Size(300, 0)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(63, 16)
         Me.InfoLabel.TabIndex = 2
@@ -128,7 +130,7 @@ Partial Class Main
         Me.LangPanel.Location = New System.Drawing.Point(302, 0)
         Me.LangPanel.Name = "LangPanel"
         Me.LangPanel.Size = New System.Drawing.Size(55, 45)
-        Me.LangPanel.TabIndex = 3
+        Me.LangPanel.TabIndex = 10
         '
         'LangEnRadioButton
         '

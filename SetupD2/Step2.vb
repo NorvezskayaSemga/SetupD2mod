@@ -13,12 +13,19 @@
 
     Private Sub meload() Handles Me.Load
         Call comm.actOnLoad(Me, prevForm)
+        RuRadioButton1.Checked = LangRuRadioButton.Checked
+        RuRadioButton2.Checked = LangRuRadioButton.Checked
+        EnRadioButton1.Checked = LangEnRadioButton.Checked
+        EnRadioButton2.Checked = LangEnRadioButton.Checked
     End Sub
     Private Sub goNext() Handles NextButton.Click
-        Call comm.goNext(New Step3)
+        Call comm.goNext(New Step3(Me, comm))
     End Sub
     Private Sub goBack() Handles BackButton.Click
         Call comm.goBack(Me, prevForm)
+    End Sub
+    Private Sub cancel() Handles CancButton.Click
+        Call comm.Cancel()
     End Sub
     Private Sub meclose() Handles Me.FormClosing
         Call comm.closeEventSub()
@@ -30,4 +37,5 @@
             comm.SetLang(Me)
         End If
     End Sub
+
 End Class

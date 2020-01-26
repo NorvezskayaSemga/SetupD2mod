@@ -12,6 +12,7 @@
         Else
             LangEnRadioButton.Checked = True
         End If
+        SelectTextBox.Text = "C:\"
     End Sub
 
     Private Sub meload() Handles Me.Load
@@ -32,5 +33,15 @@
         End If
     End Sub
 
+    Private Sub FolderSelection() Handles SelectButton.Click
+        Dim fbd As New FolderBrowserDialog
+        Dim result As DialogResult = fbd.ShowDialog
+        If result = Windows.Forms.DialogResult.OK And Not String.IsNullOrWhiteSpace(fbd.SelectedPath) Then
+            SelectTextBox.Text = fbd.SelectedPath
+        End If
+    End Sub
+    Private Sub SelectedFolder() Handles SelectTextBox.TextChanged
+        NextButton.Enabled = IO.Directory.Exists(SelectTextBox.Text)
+    End Sub
 
 End Class

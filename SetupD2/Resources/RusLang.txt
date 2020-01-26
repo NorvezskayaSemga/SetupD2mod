@@ -1,7 +1,7 @@
 ##cancmsg#
 Прекратить установку?
 #InstallModeLabel
-Выберете режим установки
+Выберите режим установки
 #TextLangLabel
 Выберете язык интерфейса в игре
 #SoundLangLabel
@@ -10,3 +10,52 @@
 Установить полную и пропатченную версию игры
 #PatchRadioButton
 Пропатчить мою игру (GOG, Руссобит-М или Акелла)
+#LangRuRadioButton
+Рус
+#LangEnRadioButton
+Eng
+#NextButton
+Далее
+#BackButton
+Назад
+#CancButton
+Отмена
+#SelectButton
+Выберите папку
+#InfoLabel
+Выберите папку для установки уже пропатченной игры
+или
+папку с Disciples 2 Восстание эльфов 3.01 от GOG, Руссобит-М или Акеллы.
+После чего нажмите "Далее"
+#RuRadioButton1
+Русский
+#EnRadioButton1
+English
+#RuRadioButton2
+Русский
+#EnRadioButton2
+English
+#GLWrapperCheckBox
+Попытаться скачать и установить GL Wrapper от Verok
+#ToolsCheckBox
+Скопировать полезные скрипты и ридми в папку с игрой
+#HintLabel11
+Если игра не запускается,
+#HintLabel12
+нужно посмотреть этот
+#GuideLabel
+гайд
+#HintLabel2
+Если возникают проблемы с запуском 
+какой-нибудь карты или миссии саги,
+нужно воспользоваться конвертером,
+лежащим в папке Tools (ChangeMaxLevel)
+#HintLabel31
+Если есть вопросы, предложения
+или просто хочется сказать спасибо,
+#HintLabel32
+то заходите на
+#SiteLinkLabel
+сайт мода
+#FinishButton
+Выход

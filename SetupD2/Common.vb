@@ -16,23 +16,23 @@
     End Sub
     Private Sub SetCommonControlsSize(ByRef current As Control, ByRef previous As Control)
         For Each item As Control In previous.Controls
-            If current.Controls.ContainsKey(item.Name) OrElse _
-               (current.Controls.ContainsKey("FinishButton") AndAlso item.Name = "NextButton") Then
-                current.Controls.Item(item.Name).Size = New Size(item.Size.Width, item.Size.Height)
-                current.Controls.Item(item.Name).Location = New Point(item.Location.X, item.Location.Y)
-                current.Controls.Item(item.Name).Dock = item.Dock
-                current.Controls.Item(item.Name).Anchor = item.Anchor
+            Dim destControlName As String
+            If current.Controls.ContainsKey("FinishButton") AndAlso item.Name = "NextButton" Then
+                destControlName = "FinishButton"
+            Else
+                destControlName = item.Name
+            End If
+            If current.Controls.ContainsKey(destControlName) Then
+                current.Controls.Item(destControlName).Size = New Size(item.Size.Width, item.Size.Height)
+                current.Controls.Item(destControlName).Location = New Point(item.Location.X, item.Location.Y)
+                current.Controls.Item(destControlName).Dock = item.Dock
+                current.Controls.Item(destControlName).Anchor = item.Anchor
                 If item.GetType = (New Panel).GetType Then
-                    Call SetCommonControlsSize(current.Controls.Item(item.Name), item)
-                ElseIf item.GetType = (New Button).GetType _
-                OrElse item.GetType = (New RadioButton).GetType _
-                OrElse item.GetType = (New Label).GetType Then
-                
-                    If item.GetType = (New RadioButton).GetType Then
-                        CType(current.Controls.Item(item.Name), RadioButton).Checked = CType(item, RadioButton).Checked
-                    End If
+                    Call SetCommonControlsSize(current.Controls.Item(destControlName), item)
+                ElseIf item.GetType = (New RadioButton).GetType Then
+                    CType(current.Controls.Item(destControlName), RadioButton).Checked = CType(item, RadioButton).Checked
                 ElseIf item.GetType = (New PictureBox).GetType Then
-                    current.Controls.Item(item.Name).BackgroundImage = item.BackgroundImage
+                    current.Controls.Item(destControlName).BackgroundImage = item.BackgroundImage
                 End If
             End If
         Next item
@@ -91,9 +91,13 @@
                 Call SetLang(item)
             ElseIf item.GetType = (New Button).GetType _
             OrElse item.GetType = (New RadioButton).GetType _
-            OrElse item.GetType = (New Label).GetType Then
+            OrElse item.GetType = (New Label).GetType _
+            OrElse item.GetType = (New LinkLabel).GetType _
+            OrElse item.GetType = (New CheckBox).GetType Then
                 If lang.ContainsKey(item.Name) Then
                     item.Text = lang.Item(item.Name)
+                Else
+                    Throw New Exception("В словаре нехватает записи для " & item.Name)
                 End If
             End If
         Next item
