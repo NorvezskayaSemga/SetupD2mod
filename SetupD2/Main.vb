@@ -12,7 +12,6 @@
         Else
             LangEnRadioButton.Checked = True
         End If
-        SelectTextBox.Text = "C:\"
     End Sub
 
     Private Sub meload() Handles Me.Load
@@ -23,14 +22,11 @@
         Call comm.goNext(New Step2(Me, comm))
     End Sub
     Private Sub cancel() Handles CancButton.Click
-        Call comm.Cancel()
+        Call comm.Cancel(Me)
     End Sub
 
-    Private Sub ChangeLang(sender As RadioButton, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
-        If sender.Checked Then
-            comm.ReadLangFile(sender.Name)
-            comm.SetLang(Me)
-        End If
+    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
+        Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
 
     Private Sub FolderSelection() Handles SelectButton.Click

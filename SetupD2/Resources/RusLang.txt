@@ -1,5 +1,9 @@
 ##cancmsg#
 Прекратить установку?
+##yes#
+Да
+##no#
+Нет
 #InstallModeLabel
 Выберите режим установки
 #TextLangLabel
@@ -27,24 +31,24 @@ Eng
 или
 папку с Disciples 2 Восстание эльфов 3.01 от GOG, Руссобит-М или Акеллы.
 После чего нажмите "Далее"
-#RuRadioButton1
+#RuTextRadioButton
 Русский
-#EnRadioButton1
+#EnTextRadioButton
 English
-#RuRadioButton2
+#RuSoundRadioButton
 Русский
-#EnRadioButton2
+#EnSoundRadioButton
 English
 #GLWrapperCheckBox
 Попытаться скачать и установить GL Wrapper от Verok
 #ToolsCheckBox
 Скопировать полезные скрипты и ридми в папку с игрой
 #HintLabel11
-Если игра не запускается,
+Если игра не запускается, нужно
 #HintLabel12
-нужно посмотреть этот
+посмотреть этот
 #GuideLabel
-гайд
+гайд от Тимура Findme
 #HintLabel2
 Если возникают проблемы с запуском 
 какой-нибудь карты или миссии саги,

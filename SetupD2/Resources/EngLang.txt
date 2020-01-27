@@ -1,5 +1,9 @@
 ##cancmsg#
 Abort installation?
+##yes#
+Yes
+##no#
+No
 #InstallModeLabel
 Choose installation mode
 #TextLangLabel
@@ -27,24 +31,24 @@ Select a folder to install an already patched game
 or
 folder with Disciples 2 Rise of the Elves 3.01 from GOG, Russobit-M or Akella.
 Then click "Next"
-#RuRadioButton1
+#RuTextRadioButton
 Русский
-#EnRadioButton1
+#EnTextRadioButton
 English
-#RuRadioButton2
+#RuSoundRadioButton
 Русский
-#EnRadioButton2
+#EnSoundRadioButton
 English
 #GLWrapperCheckBox
 Try to download and install Verok's GL Wrapper
 #ToolsCheckBox
 Copy usful scripts and readme to the game folder
 #HintLabel11
-If the game does not start,
+If the game does not start, you need
 #HintLabel12
-you need to see this
+to see this
 #GuideLabel
-guide
+guide by Timur Findme
 #HintLabel2
 If you have problems launching 
 a map or a saga mission,

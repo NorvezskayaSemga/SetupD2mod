@@ -70,8 +70,30 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #no#.
+        '''</summary>
+        Friend ReadOnly Property CancelMsgKeywordNo() As String
+            Get
+                Return ResourceManager.GetString("CancelMsgKeywordNo", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #yes#.
+        '''</summary>
+        Friend ReadOnly Property CancelMsgKeywordYes() As String
+            Get
+                Return ResourceManager.GetString("CancelMsgKeywordYes", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to ##cancmsg#
         '''Abort installation?
+        '''##yes#
+        '''Yes
+        '''##no#
+        '''No
         '''#InstallModeLabel
         '''Choose installation mode
         '''#TextLangLabel
@@ -82,7 +104,21 @@ Namespace My.Resources
         '''Install full and patched game
         '''#PatchRadioButton
         '''Patch my game (GOG, Russobit-M or Akella)
-        '''.
+        '''#LangRuRadioButton
+        '''Рус
+        '''#LangEnRadioButton
+        '''Eng
+        '''#NextButton
+        '''Next
+        '''#BackButton
+        '''Back
+        '''#CancButton
+        '''Cancel
+        '''#SelectButton
+        '''Select a folder
+        '''#InfoLabel
+        '''Select a folder to install an already patched game
+        '''or [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -101,10 +137,32 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to https://norvezskayasemga.wixsite.com/d2bfwmod.
+        '''</summary>
+        Friend ReadOnly Property modSiteLink() As String
+            Get
+                Return ResourceManager.GetString("modSiteLink", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Software\norvezskayasemgaD2mod.
+        '''</summary>
+        Friend ReadOnly Property regKey() As String
+            Get
+                Return ResourceManager.GetString("regKey", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to ##cancmsg#
         '''Прекратить установку?
+        '''##yes#
+        '''Да
+        '''##no#
+        '''Нет
         '''#InstallModeLabel
-        '''Выберете режим установки
+        '''Выберите режим установки
         '''#TextLangLabel
         '''Выберете язык интерфейса в игре
         '''#SoundLangLabel
@@ -113,11 +171,33 @@ Namespace My.Resources
         '''Установить полную и пропатченную версию игры
         '''#PatchRadioButton
         '''Пропатчить мою игру (GOG, Руссобит-М или Акелла)
-        '''.
+        '''#LangRuRadioButton
+        '''Рус
+        '''#LangEnRadioButton
+        '''Eng
+        '''#NextButton
+        '''Далее
+        '''#BackButton
+        '''Назад
+        '''#CancButton
+        '''Отмена
+        '''#SelectButton
+        '''Выберите папку
+        '''#InfoLabel
+        '''Выберите папку для установки уж [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property RusLang() As String
             Get
                 Return ResourceManager.GetString("RusLang", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://www.youtube.com/watch?v=XEFrECQ8yH4.
+        '''</summary>
+        Friend ReadOnly Property startGuideLink() As String
+            Get
+                Return ResourceManager.GetString("startGuideLink", resourceCulture)
             End Get
         End Property
     End Module

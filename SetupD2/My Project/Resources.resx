@@ -130,4 +130,19 @@
   <data name="EngLang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\englang.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="modSiteLink" xml:space="preserve">
+    <value>https://norvezskayasemga.wixsite.com/d2bfwmod</value>
+  </data>
+  <data name="regKey" xml:space="preserve">
+    <value>Software\norvezskayasemgaD2mod</value>
+  </data>
+  <data name="startGuideLink" xml:space="preserve">
+    <value>https://www.youtube.com/watch?v=XEFrECQ8yH4</value>
+  </data>
+  <data name="CancelMsgKeywordNo" xml:space="preserve">
+    <value>#no#</value>
+  </data>
+  <data name="CancelMsgKeywordYes" xml:space="preserve">
+    <value>#yes#</value>
+  </data>
 </root>

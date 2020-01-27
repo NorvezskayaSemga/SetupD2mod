@@ -31,12 +31,12 @@ Partial Class Step2
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.SoundLangLabel = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.EnRadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RuRadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.EnSoundRadioButton = New System.Windows.Forms.RadioButton()
+        Me.RuSoundRadioButton = New System.Windows.Forms.RadioButton()
         Me.TextLangLabel = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.EnRadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RuRadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.EnTextRadioButton = New System.Windows.Forms.RadioButton()
+        Me.RuTextRadioButton = New System.Windows.Forms.RadioButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.ToolsCheckBox = New System.Windows.Forms.CheckBox()
         Me.GLWrapperCheckBox = New System.Windows.Forms.CheckBox()
@@ -143,34 +143,34 @@ Partial Class Step2
         '
         'Panel5
         '
-        Me.Panel5.Controls.Add(Me.EnRadioButton2)
-        Me.Panel5.Controls.Add(Me.RuRadioButton2)
+        Me.Panel5.Controls.Add(Me.EnSoundRadioButton)
+        Me.Panel5.Controls.Add(Me.RuSoundRadioButton)
         Me.Panel5.Location = New System.Drawing.Point(4, 174)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(306, 51)
         Me.Panel5.TabIndex = 5
         '
-        'EnRadioButton2
+        'EnSoundRadioButton
         '
-        Me.EnRadioButton2.AutoSize = True
-        Me.EnRadioButton2.Location = New System.Drawing.Point(3, 26)
-        Me.EnRadioButton2.Name = "EnRadioButton2"
-        Me.EnRadioButton2.Size = New System.Drawing.Size(59, 17)
-        Me.EnRadioButton2.TabIndex = 1
-        Me.EnRadioButton2.Text = "English"
-        Me.EnRadioButton2.UseVisualStyleBackColor = True
+        Me.EnSoundRadioButton.AutoSize = True
+        Me.EnSoundRadioButton.Location = New System.Drawing.Point(3, 26)
+        Me.EnSoundRadioButton.Name = "EnSoundRadioButton"
+        Me.EnSoundRadioButton.Size = New System.Drawing.Size(59, 17)
+        Me.EnSoundRadioButton.TabIndex = 1
+        Me.EnSoundRadioButton.Text = "English"
+        Me.EnSoundRadioButton.UseVisualStyleBackColor = True
         '
-        'RuRadioButton2
+        'RuSoundRadioButton
         '
-        Me.RuRadioButton2.AutoSize = True
-        Me.RuRadioButton2.Checked = True
-        Me.RuRadioButton2.Location = New System.Drawing.Point(3, 3)
-        Me.RuRadioButton2.Name = "RuRadioButton2"
-        Me.RuRadioButton2.Size = New System.Drawing.Size(67, 17)
-        Me.RuRadioButton2.TabIndex = 0
-        Me.RuRadioButton2.TabStop = True
-        Me.RuRadioButton2.Text = "Русский"
-        Me.RuRadioButton2.UseVisualStyleBackColor = True
+        Me.RuSoundRadioButton.AutoSize = True
+        Me.RuSoundRadioButton.Checked = True
+        Me.RuSoundRadioButton.Location = New System.Drawing.Point(3, 3)
+        Me.RuSoundRadioButton.Name = "RuSoundRadioButton"
+        Me.RuSoundRadioButton.Size = New System.Drawing.Size(67, 17)
+        Me.RuSoundRadioButton.TabIndex = 0
+        Me.RuSoundRadioButton.TabStop = True
+        Me.RuSoundRadioButton.Text = "Русский"
+        Me.RuSoundRadioButton.UseVisualStyleBackColor = True
         '
         'TextLangLabel
         '
@@ -184,34 +184,34 @@ Partial Class Step2
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.EnRadioButton1)
-        Me.Panel2.Controls.Add(Me.RuRadioButton1)
+        Me.Panel2.Controls.Add(Me.EnTextRadioButton)
+        Me.Panel2.Controls.Add(Me.RuTextRadioButton)
         Me.Panel2.Location = New System.Drawing.Point(4, 101)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(306, 51)
         Me.Panel2.TabIndex = 4
         '
-        'EnRadioButton1
+        'EnTextRadioButton
         '
-        Me.EnRadioButton1.AutoSize = True
-        Me.EnRadioButton1.Location = New System.Drawing.Point(3, 26)
-        Me.EnRadioButton1.Name = "EnRadioButton1"
-        Me.EnRadioButton1.Size = New System.Drawing.Size(59, 17)
-        Me.EnRadioButton1.TabIndex = 1
-        Me.EnRadioButton1.Text = "English"
-        Me.EnRadioButton1.UseVisualStyleBackColor = True
+        Me.EnTextRadioButton.AutoSize = True
+        Me.EnTextRadioButton.Location = New System.Drawing.Point(3, 26)
+        Me.EnTextRadioButton.Name = "EnTextRadioButton"
+        Me.EnTextRadioButton.Size = New System.Drawing.Size(59, 17)
+        Me.EnTextRadioButton.TabIndex = 1
+        Me.EnTextRadioButton.Text = "English"
+        Me.EnTextRadioButton.UseVisualStyleBackColor = True
         '
-        'RuRadioButton1
+        'RuTextRadioButton
         '
-        Me.RuRadioButton1.AutoSize = True
-        Me.RuRadioButton1.Checked = True
-        Me.RuRadioButton1.Location = New System.Drawing.Point(3, 3)
-        Me.RuRadioButton1.Name = "RuRadioButton1"
-        Me.RuRadioButton1.Size = New System.Drawing.Size(67, 17)
-        Me.RuRadioButton1.TabIndex = 0
-        Me.RuRadioButton1.TabStop = True
-        Me.RuRadioButton1.Text = "Русский"
-        Me.RuRadioButton1.UseVisualStyleBackColor = True
+        Me.RuTextRadioButton.AutoSize = True
+        Me.RuTextRadioButton.Checked = True
+        Me.RuTextRadioButton.Location = New System.Drawing.Point(3, 3)
+        Me.RuTextRadioButton.Name = "RuTextRadioButton"
+        Me.RuTextRadioButton.Size = New System.Drawing.Size(67, 17)
+        Me.RuTextRadioButton.TabIndex = 0
+        Me.RuTextRadioButton.TabStop = True
+        Me.RuTextRadioButton.Text = "Русский"
+        Me.RuTextRadioButton.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -337,12 +337,12 @@ Partial Class Step2
     Friend WithEvents InstallModeLabel As System.Windows.Forms.Label
     Friend WithEvents SoundLangLabel As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
-    Friend WithEvents EnRadioButton2 As System.Windows.Forms.RadioButton
-    Friend WithEvents RuRadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents EnSoundRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents RuSoundRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents TextLangLabel As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents EnRadioButton1 As System.Windows.Forms.RadioButton
-    Friend WithEvents RuRadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents EnTextRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents RuTextRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents ToolsCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents GLWrapperCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents NextButton As System.Windows.Forms.Button
