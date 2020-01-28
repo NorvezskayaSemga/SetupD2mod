@@ -43,9 +43,9 @@ Partial Class Main
         Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NextButton.Enabled = False
         Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.NextButton.Location = New System.Drawing.Point(317, 300)
+        Me.NextButton.Location = New System.Drawing.Point(351, 300)
         Me.NextButton.Name = "NextButton"
-        Me.NextButton.Size = New System.Drawing.Size(66, 24)
+        Me.NextButton.Size = New System.Drawing.Size(100, 28)
         Me.NextButton.TabIndex = 0
         Me.NextButton.Text = "Next"
         Me.NextButton.UseVisualStyleBackColor = True
@@ -57,7 +57,7 @@ Partial Class Main
         Me.BackButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.BackButton.Location = New System.Drawing.Point(245, 300)
         Me.BackButton.Name = "BackButton"
-        Me.BackButton.Size = New System.Drawing.Size(66, 24)
+        Me.BackButton.Size = New System.Drawing.Size(100, 28)
         Me.BackButton.TabIndex = 11
         Me.BackButton.Text = "Back"
         Me.BackButton.UseVisualStyleBackColor = True
@@ -66,9 +66,9 @@ Partial Class Main
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.CancButton.Location = New System.Drawing.Point(533, 300)
+        Me.CancButton.Location = New System.Drawing.Point(517, 300)
         Me.CancButton.Name = "CancButton"
-        Me.CancButton.Size = New System.Drawing.Size(66, 24)
+        Me.CancButton.Size = New System.Drawing.Size(82, 28)
         Me.CancButton.TabIndex = 2
         Me.CancButton.Text = "Cancel"
         Me.CancButton.UseVisualStyleBackColor = True

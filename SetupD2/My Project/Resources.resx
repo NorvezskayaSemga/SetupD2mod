@@ -145,4 +145,91 @@
   <data name="CancelMsgKeywordYes" xml:space="preserve">
     <value>#yes#</value>
   </data>
+  <data name="copyFiles" xml:space="preserve">
+    <value>#copyfiles#</value>
+  </data>
+  <data name="copyGLWrapper" xml:space="preserve">
+    <value>#copyglwrapper#</value>
+  </data>
+  <data name="copyTools" xml:space="preserve">
+    <value>#copytools#</value>
+  </data>
+  <data name="engFilesDir" xml:space="preserve">
+    <value>.\Eng</value>
+  </data>
+  <data name="gameDir" xml:space="preserve">
+    <value>.\Game</value>
+  </data>
+  <data name="IgnoreIOItem" xml:space="preserve">
+    <value>Links#SaveGame#ScreenShots#Discipl2.exe.crash.txt</value>
+  </data>
+  <data name="noFilesFound" xml:space="preserve">
+    <value>#nofileserror#</value>
+  </data>
+  <data name="readmeDir" xml:space="preserve">
+    <value>.\Readme</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Mod by Norvezskaya Semga v. </value>
+  </data>
+  <data name="toolsDir" xml:space="preserve">
+    <value>.\Tools</value>
+  </data>
+  <data name="versionPath1" xml:space="preserve">
+    <value>.\Readme\Rus\patchlog</value>
+  </data>
+  <data name="versionPath2" xml:space="preserve">
+    <value>.\Readme\Eng\patchlog</value>
+  </data>
+  <data name="VerokBlog" xml:space="preserve">
+    <value>https://verokster.blogspot.com/2019/03/disciples-i-ii-gl-wrapper-patch.html</value>
+  </data>
+  <data name="copyFilesErr" xml:space="preserve">
+    <value>#copyfileserr#</value>
+  </data>
+  <data name="copyFilesOk" xml:space="preserve">
+    <value>#copyfilesok#</value>
+  </data>
+  <data name="copyGLWrapperErr" xml:space="preserve">
+    <value>#copyglwrappererr#</value>
+  </data>
+  <data name="copyGLWrapperOk" xml:space="preserve">
+    <value>#copyglwrapperok#</value>
+  </data>
+  <data name="copySoundLang" xml:space="preserve">
+    <value>#copyslang#</value>
+  </data>
+  <data name="copySoundLangErr" xml:space="preserve">
+    <value>#copyslangerr#</value>
+  </data>
+  <data name="copySoundLangOk" xml:space="preserve">
+    <value>#copyslangok#</value>
+  </data>
+  <data name="copyTextLang" xml:space="preserve">
+    <value>#copytlang#</value>
+  </data>
+  <data name="copyTextLangErr" xml:space="preserve">
+    <value>#copytlangerr#</value>
+  </data>
+  <data name="copyTextLangOk" xml:space="preserve">
+    <value>#copytlangok#</value>
+  </data>
+  <data name="copyToolsErr" xml:space="preserve">
+    <value>#copytoolserr#</value>
+  </data>
+  <data name="copyToolsOk" xml:space="preserve">
+    <value>#copytoolsok#</value>
+  </data>
+  <data name="noSoundLangFound" xml:space="preserve">
+    <value>#noslangerror#</value>
+  </data>
+  <data name="noTextLangFound" xml:space="preserve">
+    <value>#notlangerror#</value>
+  </data>
+  <data name="noToolsFound" xml:space="preserve">
+    <value>#notoolserror#</value>
+  </data>
+  <data name="noWrapperFound" xml:space="preserve">
+    <value>#nowrappererror#</value>
+  </data>
 </root>

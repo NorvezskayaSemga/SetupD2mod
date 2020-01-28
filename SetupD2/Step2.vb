@@ -1,4 +1,4 @@
-﻿Public Class Step2
+﻿Public Class SettingsForm
 
     Private comm As Common
     Public prevForm As Main
@@ -13,13 +13,9 @@
 
     Private Sub meload() Handles Me.Load
         Call comm.actOnLoad(Me, CType(prevForm, Form))
-        RuTextRadioButton.Checked = LangRuRadioButton.Checked
-        RuSoundRadioButton.Checked = LangRuRadioButton.Checked
-        EnTextRadioButton.Checked = LangEnRadioButton.Checked
-        EnSoundRadioButton.Checked = LangEnRadioButton.Checked
     End Sub
-    Private Sub goNext() Handles NextButton.Click
-        Call comm.goNext(New Step3(Me, comm))
+    Private Sub goNext() Handles InstallButton.Click
+        Call comm.goNext(New InstallForm(Me, comm))
     End Sub
     Private Sub goBack() Handles BackButton.Click
         Call comm.goBack(Me, CType(prevForm, Form))

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Step2
+Partial Class SettingsForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -44,7 +44,7 @@ Partial Class Step2
         Me.PatchRadioButton = New System.Windows.Forms.RadioButton()
         Me.InstallRadioButton = New System.Windows.Forms.RadioButton()
         Me.InstallModeLabel = New System.Windows.Forms.Label()
-        Me.NextButton = New System.Windows.Forms.Button()
+        Me.InstallButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
@@ -287,23 +287,23 @@ Partial Class Step2
         Me.InstallModeLabel.TabIndex = 2
         Me.InstallModeLabel.Text = "InfoLabel"
         '
-        'NextButton
+        'InstallButton
         '
-        Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.NextButton.Location = New System.Drawing.Point(348, 300)
-        Me.NextButton.Name = "NextButton"
-        Me.NextButton.Size = New System.Drawing.Size(66, 24)
-        Me.NextButton.TabIndex = 10
-        Me.NextButton.Text = "Next"
-        Me.NextButton.UseVisualStyleBackColor = True
+        Me.InstallButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InstallButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.InstallButton.Location = New System.Drawing.Point(348, 300)
+        Me.InstallButton.Name = "InstallButton"
+        Me.InstallButton.Size = New System.Drawing.Size(66, 24)
+        Me.InstallButton.TabIndex = 10
+        Me.InstallButton.Text = "Next"
+        Me.InstallButton.UseVisualStyleBackColor = True
         '
         'Step2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 336)
-        Me.Controls.Add(Me.NextButton)
+        Me.Controls.Add(Me.InstallButton)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.CancButton)
@@ -345,7 +345,7 @@ Partial Class Step2
     Friend WithEvents RuTextRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents ToolsCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents GLWrapperCheckBox As System.Windows.Forms.CheckBox
-    Friend WithEvents NextButton As System.Windows.Forms.Button
+    Friend WithEvents InstallButton As System.Windows.Forms.Button
     Friend WithEvents LangPanel As System.Windows.Forms.Panel
     Friend WithEvents LangEnRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton

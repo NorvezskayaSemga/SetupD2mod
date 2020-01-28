@@ -11,8 +11,7 @@
         current.MaximizeBox = False
         Call LoadRegistryControlSettings(CType(current, Control))
         If Not IsNothing(previous) Then
-            current.Location = New Point(previous.Location.X, previous.Location.Y)
-            current.Size = New Size(previous.Size.Width, previous.Size.Height)
+            current.Text = previous.Text
             Call InheritControlsSettings(CType(current, Control), CType(previous, Control))
             previous.Visible = False
         Else
@@ -21,25 +20,51 @@
         End If
         current.MinimumSize = New Size(current.Size.Width, current.Size.Height)
         current.MaximumSize = New Size(current.Size.Width, current.Size.Height)
+
+        If TypeOf current Is Main Then
+            CType(current, Main).Text = My.Resources.title & DistributiveHandler.GetVersion()
+        ElseIf TypeOf current Is SettingsForm Then
+            'CType(current, Step2).RuTextRadioButton.Checked = CType(current, Step2).LangRuRadioButton.Checked
+            'CType(current, Step2).RuSoundRadioButton.Checked = CType(current, Step2).LangRuRadioButton.Checked
+            'CType(current, Step2).EnTextRadioButton.Checked = CType(current, Step2).LangEnRadioButton.Checked
+            'CType(current, Step2).EnSoundRadioButton.Checked = CType(current, Step2).LangEnRadioButton.Checked
+        ElseIf TypeOf current Is InstallForm Then
+            CType(current, InstallForm).GuideLabel.Links.Clear()
+            CType(current, InstallForm).GuideLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.startGuideLink})
+            CType(current, InstallForm).SiteLinkLabel.Links.Clear()
+            CType(current, InstallForm).SiteLinkLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.modSiteLink})
+            CType(current, InstallForm).WrapperLinkLabel.Links.Clear()
+            CType(current, InstallForm).WrapperLinkLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.VerokBlog})
+        End If
     End Sub
     Private Sub InheritControlsSettings(ByRef current As Control, ByRef previous As Control)
+        current.Size = New Size(previous.Size.Width, previous.Size.Height)
+        current.Location = New Point(previous.Location.X, previous.Location.Y)
+        current.Dock = previous.Dock
+        current.Anchor = previous.Anchor
+
         For Each item As Control In previous.Controls
-            Dim destControlName As String
-            If current.Controls.ContainsKey("FinishButton") AndAlso item.Name = "NextButton" Then
-                destControlName = "FinishButton"
+            Dim destControlName As String = ""
+            If (current.Controls.ContainsKey("InstallButton") OrElse current.Controls.ContainsKey("FinishButton")) _
+             AndAlso (item.Name = "NextButton" OrElse item.Name = "InstallButton") Then
+                If current.Controls.ContainsKey("InstallButton") Then
+                    destControlName = "InstallButton"
+                ElseIf current.Controls.ContainsKey("FinishButton") Then
+                    destControlName = "FinishButton"
+                End If
             Else
                 destControlName = item.Name
             End If
             If current.Controls.ContainsKey(destControlName) Then
-                current.Controls.Item(destControlName).Size = New Size(item.Size.Width, item.Size.Height)
-                current.Controls.Item(destControlName).Location = New Point(item.Location.X, item.Location.Y)
-                current.Controls.Item(destControlName).Dock = item.Dock
-                current.Controls.Item(destControlName).Anchor = item.Anchor
-                If item.GetType = (New Panel).GetType Then
-                    Call InheritControlsSettings(current.Controls.Item(destControlName), item)
-                ElseIf item.GetType = (New RadioButton).GetType Then
+                Call InheritControlsSettings(current.Controls.Item(destControlName), item)
+                If TypeOf item Is Panel Then
+                    For Each c As Control In item.Controls
+                        item.Size = New Size(Math.Max(item.Size.Width, c.Location.X + c.Size.Width + 2), _
+                                             Math.Max(item.Size.Height, c.Location.Y + c.Size.Height + 2))
+                    Next c
+                ElseIf TypeOf item Is RadioButton Then
                     CType(current.Controls.Item(destControlName), RadioButton).Checked = CType(item, RadioButton).Checked
-                ElseIf item.GetType = (New PictureBox).GetType Then
+                ElseIf TypeOf item Is PictureBox Then
                     current.Controls.Item(destControlName).BackgroundImage = item.BackgroundImage
                 End If
             End If
@@ -47,7 +72,7 @@
     End Sub
     Private Sub LoadRegistryControlSettings(ByRef current As Control)
         For Each item As Control In current.Controls
-            If item.GetType = (New Panel).GetType Then
+            If TypeOf item Is Panel Then
                 Call LoadRegistryControlSettings(item)
             Else
                 Call settings.ReadSetting(item)
@@ -56,7 +81,7 @@
     End Sub
     Public Sub SaveRegistryControlSettings(ByRef current As Control)
         For Each item As Control In current.Controls
-            If item.GetType = (New Panel).GetType Then
+            If TypeOf item Is Panel Then
                 Call SaveRegistryControlSettings(item)
             Else
                 Call settings.WriteSettings(item)
@@ -87,20 +112,40 @@
         If Not LangRButton.Checked Then Exit Sub
         Call ReadLangFile(LangRButton)
         For Each item As Control In c.Controls
-            If item.GetType = (New Panel).GetType Then
+            If TypeOf item Is Panel Then
                 Call SetLang(item, LangRButton)
-            ElseIf item.GetType = (New Button).GetType _
-            OrElse item.GetType = (New RadioButton).GetType _
-            OrElse item.GetType = (New Label).GetType _
-            OrElse item.GetType = (New LinkLabel).GetType _
-            OrElse item.GetType = (New CheckBox).GetType Then
-                If lang.ContainsKey(item.Name) Then
-                    item.Text = lang.Item(item.Name)
-                Else
-                    Throw New Exception("В словаре нехватает записи для " & item.Name)
-                End If
+            ElseIf TypeOf item Is Button _
+            OrElse TypeOf item Is RadioButton _
+            OrElse TypeOf item Is Label _
+            OrElse TypeOf item Is LinkLabel _
+            OrElse TypeOf item Is CheckBox Then
+                item.Text = MultiStringConversion(item.Name)
+            ElseIf TypeOf item Is TextBox And TypeOf item.Parent.Parent Is InstallForm And item.Name = "ActionLabel" Then
+                Dim msg As String = CType(item.Parent.Parent, InstallForm).progressList
+                If msg = "" Then msg = item.Name
+                item.Text = MultiStringConversion(msg)
             End If
         Next item
+        If TypeOf c Is InstallForm Then
+            If LangRButton.Checked Then
+                Call PlaceLabel(CType(c, InstallForm).HintLabel12, CType(c, InstallForm).HintLabel11, False)
+                Call PlaceLinkLabel(CType(c, InstallForm).GuideLabel, CType(c, InstallForm).HintLabel12)
+
+                Call PlaceLabel(CType(c, InstallForm).HintLabel2, CType(c, InstallForm).HintLabel12, True)
+
+                Call PlaceLabel(CType(c, InstallForm).HintLabel31, CType(c, InstallForm).HintLabel2, True)
+                Call PlaceLabel(CType(c, InstallForm).HintLabel32, CType(c, InstallForm).HintLabel31, False)
+                Call PlaceLinkLabel(CType(c, InstallForm).SiteLinkLabel, CType(c, InstallForm).HintLabel32)
+
+                Call PlaceLabel(CType(c, InstallForm).HintLabel4, CType(c, InstallForm).HintLabel32, True)
+                Call PlaceLinkLabel(CType(c, InstallForm).WrapperLinkLabel, CType(c, InstallForm).HintLabel4)
+
+                For Each item As Control In CType(c, InstallForm).HintPanel.Controls
+                    CType(c, InstallForm).HintPanel.Size = New Size(Math.Max(CType(c, InstallForm).HintPanel.Size.Width, item.Location.X + item.Size.Width + 2), _
+                                                              Math.Max(CType(c, InstallForm).HintPanel.Size.Height, item.Location.Y + item.Size.Height + 2))
+                Next item
+            End If
+        End If
     End Sub
     Private Sub ReadLangFile(ByRef LangRButton As RadioButton)
         If LangRButton.Name = currentLang Then Exit Sub
@@ -135,6 +180,33 @@
         If Not content = "" Then lang.Add(name, content)
     End Sub
 
+    Public Function MultiStringConversion(ByRef str As String, Optional ByRef riseExceptionOnError As Boolean = True) As String
+        Dim s() As String = str.Split(CChar(vbNewLine))
+        Dim res As String = ""
+        For i As Integer = 0 To UBound(s) Step 1
+            s(i) = s(i).Replace(Chr(10), "")
+            If lang.ContainsKey(s(i)) Then
+                res &= lang.Item(s(i)) & vbNewLine
+            Else
+                Dim errTxt As String = "В словаре не хватает записи для " & s(i)
+                If riseExceptionOnError Then
+                    Throw New Exception(errTxt)
+                Else
+                    res &= errTxt & vbNewLine
+                End If
+            End If
+        Next i
+        Return res.Remove(res.Length - 1)
+    End Function
+
+    Private Sub PlaceLabel(ByRef current As Label, ByRef prev As Label, ByRef addSpacing As Boolean)
+        Dim blocksSpacing As Integer
+        If addSpacing Then blocksSpacing = 8
+        current.Location = New Point(prev.Location.X, prev.Location.Y + prev.Size.Height + blocksSpacing)
+    End Sub
+    Private Sub PlaceLinkLabel(ByRef current As LinkLabel, ByRef prev As Label)
+        current.Location = New Point(prev.Location.X + prev.Size.Width, prev.Location.Y)
+    End Sub
 End Class
 
 Public Class RegSettings
@@ -162,11 +234,11 @@ Public Class RegSettings
             Dim value As Object = key.GetValue(c.Name, Nothing)
             If IsNothing(value) Then Exit Try
 
-            If c.GetType = (New TextBox).GetType Then
+            If TypeOf c Is TextBox Then
                 CType(c, TextBox).Text = value.ToString
-            ElseIf c.GetType = (New CheckBox).GetType Then
+            ElseIf TypeOf c Is CheckBox Then
                 CType(c, CheckBox).Checked = CBool(value)
-            ElseIf c.GetType = (New RadioButton).GetType Then
+            ElseIf TypeOf c Is RadioButton Then
                 CType(c, RadioButton).Checked = CBool(value)
             End If
         Catch ex As Exception
@@ -183,11 +255,11 @@ Public Class RegSettings
             key = My.Computer.Registry.CurrentUser.OpenSubKey(My.Resources.regKey, True)
             If IsNothing(key) Then Exit Sub
 
-            If c.GetType = (New TextBox).GetType Then
+            If TypeOf c Is TextBox Then
                 key.SetValue(c.Name, CType(c, TextBox).Text)
-            ElseIf c.GetType = (New CheckBox).GetType Then
+            ElseIf TypeOf c Is CheckBox Then
                 key.SetValue(c.Name, CType(c, CheckBox).Checked)
-            ElseIf c.GetType = (New RadioButton).GetType Then
+            ElseIf TypeOf c Is RadioButton Then
                 key.SetValue(c.Name, CType(c, RadioButton).Checked)
             End If
         Catch ex As Exception
@@ -197,12 +269,154 @@ Public Class RegSettings
     End Sub
     Private Function IsRightControl(ByRef c As Control) As Boolean
         If IsNothing(c) Then Return False
-        If Not c.GetType = (New TextBox).GetType _
-        And Not c.GetType = (New CheckBox).GetType _
-        And Not c.GetType = (New RadioButton).GetType Then Return False
+        If Not TypeOf c Is TextBox _
+        And Not TypeOf c Is CheckBox _
+        And Not TypeOf c Is RadioButton Then Return False
         Return True
     End Function
 
 End Class
 
+Public Class DistributiveHandler
 
+    Public Shared Function GetVersion() As String
+        Dim p As String
+        Dim v As String = "unknown"
+        If IO.Directory.Exists(My.Resources.versionPath1) Then
+            p = My.Resources.versionPath1
+        ElseIf IO.Directory.Exists(My.Resources.versionPath2) Then
+            p = My.Resources.versionPath2
+        Else
+            Return v
+        End If
+
+        Dim list() As String = IO.Directory.GetFiles(p)
+        If IsNothing(list) Then Return v
+        Array.Sort(list)
+        v = list(UBound(list))
+        v = v.Substring(v.LastIndexOf("\") + 1)
+        v = v.Remove(v.LastIndexOf("."))
+        Return v
+    End Function
+
+    Public Shared Function GetModFiles() As List(Of String)
+        Dim f, m As New List(Of String)
+        Dim ig As List(Of String) = IgnoreList()
+        Call GetFolderFiles(f, ig, True, My.Resources.gameDir)
+        For Each p As String In f
+            If IO.File.GetLastWriteTime(p).Year > 2010 Then m.Add(p)
+        Next p
+        Return m
+    End Function
+    Public Shared Function GetFullVersionFiles() As List(Of String)
+        Dim f As New List(Of String)
+        Dim ig As List(Of String) = IgnoreList()
+        Call GetFolderFiles(f, ig, False, My.Resources.gameDir)
+        Return f
+    End Function
+    Public Shared Function GetEngFiles(ByRef text As Boolean) As List(Of String)
+        Dim f, r As New List(Of String)
+        Call GetFolderFiles(f, New List(Of String), False, My.Resources.engFilesDir)
+        For Each item As String In f
+            Dim s As String = item.Substring(item.LastIndexOf(".")).ToLower
+            If text = CBool(Not s = ".wdb") Then r.Add(item)
+        Next item
+        Return r
+    End Function
+    Public Shared Function GetToolsAndReadmeFiles() As List(Of String)
+        Dim t1 As List(Of String) = GetToolsFiles()
+        Dim t2 As List(Of String) = GetReadmeFiles()
+        For Each s As String In t2
+            t1.Add(s)
+        Next s
+        Return t1
+    End Function
+    Private Shared Function GetToolsFiles() As List(Of String)
+        Dim f As New List(Of String)
+        Call GetFolderFiles(f, New List(Of String), False, My.Resources.toolsDir)
+        Return f
+    End Function
+    Private Shared Function GetReadmeFiles() As List(Of String)
+        Dim f As New List(Of String)
+        Call GetFolderFiles(f, New List(Of String), False, My.Resources.readmeDir)
+        Return f
+    End Function
+    Public Shared Function GetWrapperFiles(ByRef path As String) As List(Of String)
+        Dim f As New List(Of String)
+        Call GetFolderFiles(f, New List(Of String), False, path)
+        Return f
+    End Function
+
+    Private Shared Sub GetFolderFiles(ByRef result As List(Of String), ByRef ig As List(Of String), _
+                                      ByRef ignoreThisLevel As Boolean, ByRef folder As String)
+        If Not IO.Directory.Exists(folder) Then Exit Sub
+        If Not ignoreThisLevel Then
+            For Each p As String In IO.Directory.GetFiles(folder)
+                If Not IgnoreItem(p, ig) Then result.Add(p)
+            Next p
+        End If
+        For Each p As String In IO.Directory.GetDirectories(folder)
+            If Not IgnoreItem(p, ig) Then Call GetFolderFiles(result, ig, False, p)
+        Next p
+    End Sub
+
+    Private Shared Function IgnoreList() As List(Of String)
+        Dim res As New List(Of String)
+        res.AddRange(My.Resources.IgnoreIOItem.ToUpper.Split(CChar("#")))
+        Return res
+    End Function
+    Private Shared Function IgnoreItem(ByRef path As String, ByRef ig As List(Of String)) As Boolean
+        Dim p As String = path.Substring(path.LastIndexOf("\") + 1)
+        If ig.Contains(p.ToUpper) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+End Class
+
+Public Class DownloadGLWrapper
+
+    Public Shared Function Download() As String()
+        'давать ссылку на верка, на случай, если не получится скачать
+        Dim w As New System.Net.WebClient
+        Dim link() As String = GetLink(w)
+        If IsNothing(link) Then Throw New Exception("Не получилось найти ссылку")
+        Dim p As String = IO.Path.GetTempPath & link(1)
+        w.DownloadFile(link(0), p)
+        Dim res As String = Extract(p)
+        w.Dispose()
+        Return New String() {p, res}
+    End Function
+
+    Private Shared Function GetLink(ByRef w As System.Net.WebClient) As String()
+        Dim blogLink As String = My.Resources.VerokBlog
+        Dim page As String = w.DownloadString(blogLink)
+        Dim splited() As String = page.Split(CChar("<"))
+        Dim link() As String = Nothing
+        Dim p, f As String
+        For i As Integer = 0 To UBound(splited) Step 1
+            If splited(i).Contains("Download") Then
+                Dim j As Integer = i + 4
+                If j <= UBound(splited) AndAlso splited(j).Contains("a href=") Then
+                    p = splited(j).Substring(splited(j).IndexOf("=") + 1)
+                    f = p.Substring(p.IndexOf(">") + 1)
+                    p = p.Remove(p.IndexOf(">")).Replace("""", "")
+                    link = New String() {p, f}
+                    Exit For
+                End If
+            End If
+        Next i
+        Return link
+    End Function
+    Private Shared Function Extract(ByRef path As String) As String
+        Dim destination As String = path & ".extracted"
+        If IO.Directory.Exists(destination) Then IO.Directory.Delete(destination, True)
+        IO.Directory.CreateDirectory(destination)
+        Call Decompressor.Extract(path, destination)
+        Return destination
+    End Function
+
+
+End Class

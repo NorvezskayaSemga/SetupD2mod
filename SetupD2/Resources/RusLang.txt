@@ -34,11 +34,11 @@ Eng
 #RuTextRadioButton
 Русский
 #EnTextRadioButton
-English
+Английский
 #RuSoundRadioButton
 Русский
 #EnSoundRadioButton
-English
+Английский
 #GLWrapperCheckBox
 Попытаться скачать и установить GL Wrapper от Verok
 #ToolsCheckBox
@@ -61,5 +61,59 @@ English
 то заходите на
 #SiteLinkLabel
 сайт мода
+#HintLabel4
+Если не получилось скачать GL Wrapper:
+#WrapperLinkLabel
+ссылка
 #FinishButton
 Выход
+#ProgressLabel
+Прогресс
+#ActionLabel
+Текущая задача
+#InstallButton
+Установить
+
+##nofileserror#
+Не могу найти файлы мода
+##notlangerror#
+Не могу найти файлы англоязычного интерфейса
+##noslangerror#
+Не могу найти файлы англоязычной озвучки
+##notoolserror#
+Не могу найти скрипты
+##nowrappererror#
+Не могу найти файлы GL Wrapper
+
+##copyfiles#
+Копирую файлы мода
+##copytlang#
+Копирую файлы англоязычного интерфейса
+##copyslang#
+Копирую файлы англоязычной озвучки
+##copytools#
+Копирую скрипты
+##copyglwrapper#
+Пытаюсь скачать GL Wrapper
+
+##copyfilesok#
+Файлы мода успешно скопированы
+##copytlangok#
+Файлы англоязычного интерфейса успешно скопированы
+##copyslangok#
+Файлы англоязычной озвучки успешно скопированы
+##copytoolsok#
+Скрипты успешно скопированы
+##copyglwrapperok#
+GL Wrapper успешно скачан и установлен
+
+##copyfileserr#
+Не получилось скопировать файлы мода: 
+##copytlangerr#
+Не получилось скопировать файлы англоязычного интерфейса: 
+##copyslangerr#
+Не получилось скопировать файлы англоязычной озвучки: 
+##copytoolserr#
+Не получилось скопировать скрипты: 
+##copyglwrappererr#
+Не получилось скачать или установить GL Wrapper: 

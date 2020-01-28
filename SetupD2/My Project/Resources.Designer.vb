@@ -88,6 +88,150 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #copyfiles#.
+        '''</summary>
+        Friend ReadOnly Property copyFiles() As String
+            Get
+                Return ResourceManager.GetString("copyFiles", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyfileserr#.
+        '''</summary>
+        Friend ReadOnly Property copyFilesErr() As String
+            Get
+                Return ResourceManager.GetString("copyFilesErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyfilesok#.
+        '''</summary>
+        Friend ReadOnly Property copyFilesOk() As String
+            Get
+                Return ResourceManager.GetString("copyFilesOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyglwrapper#.
+        '''</summary>
+        Friend ReadOnly Property copyGLWrapper() As String
+            Get
+                Return ResourceManager.GetString("copyGLWrapper", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyglwrappererr#.
+        '''</summary>
+        Friend ReadOnly Property copyGLWrapperErr() As String
+            Get
+                Return ResourceManager.GetString("copyGLWrapperErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyglwrapperok#.
+        '''</summary>
+        Friend ReadOnly Property copyGLWrapperOk() As String
+            Get
+                Return ResourceManager.GetString("copyGLWrapperOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyslang#.
+        '''</summary>
+        Friend ReadOnly Property copySoundLang() As String
+            Get
+                Return ResourceManager.GetString("copySoundLang", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyslangerr#.
+        '''</summary>
+        Friend ReadOnly Property copySoundLangErr() As String
+            Get
+                Return ResourceManager.GetString("copySoundLangErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copyslangok#.
+        '''</summary>
+        Friend ReadOnly Property copySoundLangOk() As String
+            Get
+                Return ResourceManager.GetString("copySoundLangOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlang#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLang() As String
+            Get
+                Return ResourceManager.GetString("copyTextLang", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangerr#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangErr() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangok#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangOk() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytools#.
+        '''</summary>
+        Friend ReadOnly Property copyTools() As String
+            Get
+                Return ResourceManager.GetString("copyTools", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytoolserr#.
+        '''</summary>
+        Friend ReadOnly Property copyToolsErr() As String
+            Get
+                Return ResourceManager.GetString("copyToolsErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytoolsok#.
+        '''</summary>
+        Friend ReadOnly Property copyToolsOk() As String
+            Get
+                Return ResourceManager.GetString("copyToolsOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Eng.
+        '''</summary>
+        Friend ReadOnly Property engFilesDir() As String
+            Get
+                Return ResourceManager.GetString("engFilesDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to ##cancmsg#
         '''Abort installation?
         '''##yes#
@@ -127,6 +271,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to .\Game.
+        '''</summary>
+        Friend ReadOnly Property gameDir() As String
+            Get
+                Return ResourceManager.GetString("gameDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Links#SaveGame#ScreenShots#Discipl2.exe.crash.txt.
+        '''</summary>
+        Friend ReadOnly Property IgnoreIOItem() As String
+            Get
+                Return ResourceManager.GetString("IgnoreIOItem", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property logo() As System.Drawing.Bitmap
@@ -142,6 +304,60 @@ Namespace My.Resources
         Friend ReadOnly Property modSiteLink() As String
             Get
                 Return ResourceManager.GetString("modSiteLink", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #nofileserror#.
+        '''</summary>
+        Friend ReadOnly Property noFilesFound() As String
+            Get
+                Return ResourceManager.GetString("noFilesFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #noslangerror#.
+        '''</summary>
+        Friend ReadOnly Property noSoundLangFound() As String
+            Get
+                Return ResourceManager.GetString("noSoundLangFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #notlangerror#.
+        '''</summary>
+        Friend ReadOnly Property noTextLangFound() As String
+            Get
+                Return ResourceManager.GetString("noTextLangFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #notoolserror#.
+        '''</summary>
+        Friend ReadOnly Property noToolsFound() As String
+            Get
+                Return ResourceManager.GetString("noToolsFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #nowrappererror#.
+        '''</summary>
+        Friend ReadOnly Property noWrapperFound() As String
+            Get
+                Return ResourceManager.GetString("noWrapperFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Readme.
+        '''</summary>
+        Friend ReadOnly Property readmeDir() As String
+            Get
+                Return ResourceManager.GetString("readmeDir", resourceCulture)
             End Get
         End Property
         
@@ -198,6 +414,51 @@ Namespace My.Resources
         Friend ReadOnly Property startGuideLink() As String
             Get
                 Return ResourceManager.GetString("startGuideLink", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Mod by Norvezskaya Semga v. .
+        '''</summary>
+        Friend ReadOnly Property title() As String
+            Get
+                Return ResourceManager.GetString("title", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Tools.
+        '''</summary>
+        Friend ReadOnly Property toolsDir() As String
+            Get
+                Return ResourceManager.GetString("toolsDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://verokster.blogspot.com/2019/03/disciples-i-ii-gl-wrapper-patch.html.
+        '''</summary>
+        Friend ReadOnly Property VerokBlog() As String
+            Get
+                Return ResourceManager.GetString("VerokBlog", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Readme\Rus\patchlog.
+        '''</summary>
+        Friend ReadOnly Property versionPath1() As String
+            Get
+                Return ResourceManager.GetString("versionPath1", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Readme\Eng\patchlog.
+        '''</summary>
+        Friend ReadOnly Property versionPath2() As String
+            Get
+                Return ResourceManager.GetString("versionPath2", resourceCulture)
             End Get
         End Property
     End Module

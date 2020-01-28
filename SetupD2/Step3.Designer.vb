@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Step3
+Partial Class InstallForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,10 +23,14 @@ Partial Class Step3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.ActionLabel = New System.Windows.Forms.TextBox()
+        Me.ProgressLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
+        Me.WrapperLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.HintLabel4 = New System.Windows.Forms.Label()
         Me.HintLabel32 = New System.Windows.Forms.Label()
         Me.HintLabel12 = New System.Windows.Forms.Label()
         Me.SiteLinkLabel = New System.Windows.Forms.LinkLabel()
@@ -46,6 +50,8 @@ Partial Class Step3
         '
         'Panel
         '
+        Me.Panel.Controls.Add(Me.ActionLabel)
+        Me.Panel.Controls.Add(Me.ProgressLabel)
         Me.Panel.Controls.Add(Me.LangPanel)
         Me.Panel.Controls.Add(Me.HintPanel)
         Me.Panel.Controls.Add(Me.ProgressBar)
@@ -53,6 +59,26 @@ Partial Class Step3
         Me.Panel.Name = "Panel"
         Me.Panel.Size = New System.Drawing.Size(360, 284)
         Me.Panel.TabIndex = 14
+        '
+        'ActionLabel
+        '
+        Me.ActionLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ActionLabel.Location = New System.Drawing.Point(97, 201)
+        Me.ActionLabel.Multiline = True
+        Me.ActionLabel.Name = "ActionLabel"
+        Me.ActionLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.ActionLabel.Size = New System.Drawing.Size(260, 61)
+        Me.ActionLabel.TabIndex = 9
+        '
+        'ProgressLabel
+        '
+        Me.ProgressLabel.AutoSize = True
+        Me.ProgressLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.ProgressLabel.Location = New System.Drawing.Point(6, 249)
+        Me.ProgressLabel.Name = "ProgressLabel"
+        Me.ProgressLabel.Size = New System.Drawing.Size(49, 16)
+        Me.ProgressLabel.TabIndex = 7
+        Me.ProgressLabel.Text = "Label1"
         '
         'LangPanel
         '
@@ -87,6 +113,8 @@ Partial Class Step3
         '
         'HintPanel
         '
+        Me.HintPanel.Controls.Add(Me.WrapperLinkLabel)
+        Me.HintPanel.Controls.Add(Me.HintLabel4)
         Me.HintPanel.Controls.Add(Me.HintLabel32)
         Me.HintPanel.Controls.Add(Me.HintLabel12)
         Me.HintPanel.Controls.Add(Me.SiteLinkLabel)
@@ -96,8 +124,29 @@ Partial Class Step3
         Me.HintPanel.Controls.Add(Me.HintLabel11)
         Me.HintPanel.Location = New System.Drawing.Point(3, 3)
         Me.HintPanel.Name = "HintPanel"
-        Me.HintPanel.Size = New System.Drawing.Size(293, 212)
+        Me.HintPanel.Size = New System.Drawing.Size(293, 100)
         Me.HintPanel.TabIndex = 6
+        '
+        'WrapperLinkLabel
+        '
+        Me.WrapperLinkLabel.AutoSize = True
+        Me.WrapperLinkLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.WrapperLinkLabel.Location = New System.Drawing.Point(73, 84)
+        Me.WrapperLinkLabel.Name = "WrapperLinkLabel"
+        Me.WrapperLinkLabel.Size = New System.Drawing.Size(73, 16)
+        Me.WrapperLinkLabel.TabIndex = 11
+        Me.WrapperLinkLabel.TabStop = True
+        Me.WrapperLinkLabel.Text = "LinkLabel3"
+        '
+        'HintLabel4
+        '
+        Me.HintLabel4.AutoSize = True
+        Me.HintLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel4.Location = New System.Drawing.Point(3, 84)
+        Me.HintLabel4.Name = "HintLabel4"
+        Me.HintLabel4.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel4.TabIndex = 10
+        Me.HintLabel4.Text = "InfoLabel"
         '
         'HintLabel32
         '
@@ -173,15 +222,14 @@ Partial Class Step3
         '
         'ProgressBar
         '
-        Me.ProgressBar.Location = New System.Drawing.Point(3, 255)
+        Me.ProgressBar.Location = New System.Drawing.Point(3, 268)
         Me.ProgressBar.Maximum = 1000
         Me.ProgressBar.Name = "ProgressBar"
-        Me.ProgressBar.Size = New System.Drawing.Size(354, 25)
+        Me.ProgressBar.Size = New System.Drawing.Size(354, 12)
         Me.ProgressBar.TabIndex = 3
         '
         'PictureBox
         '
-        Me.PictureBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox.Name = "PictureBox"
         Me.PictureBox.Size = New System.Drawing.Size(236, 336)
@@ -191,6 +239,7 @@ Partial Class Step3
         'FinishButton
         '
         Me.FinishButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FinishButton.Enabled = False
         Me.FinishButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.FinishButton.Location = New System.Drawing.Point(323, 300)
         Me.FinishButton.Name = "FinishButton"
@@ -202,6 +251,7 @@ Partial Class Step3
         'CancButton
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CancButton.Enabled = False
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.CancButton.Location = New System.Drawing.Point(542, 300)
         Me.CancButton.Name = "CancButton"
@@ -222,6 +272,7 @@ Partial Class Step3
         Me.Name = "Step3"
         Me.Text = "Step3"
         Me.Panel.ResumeLayout(False)
+        Me.Panel.PerformLayout()
         Me.LangPanel.ResumeLayout(False)
         Me.LangPanel.PerformLayout()
         Me.HintPanel.ResumeLayout(False)
@@ -246,4 +297,8 @@ Partial Class Step3
     Friend WithEvents HintLabel31 As System.Windows.Forms.Label
     Friend WithEvents HintLabel12 As System.Windows.Forms.Label
     Friend WithEvents HintLabel32 As System.Windows.Forms.Label
+    Friend WithEvents ProgressLabel As System.Windows.Forms.Label
+    Friend WithEvents ActionLabel As System.Windows.Forms.TextBox
+    Friend WithEvents WrapperLinkLabel As System.Windows.Forms.LinkLabel
+    Friend WithEvents HintLabel4 As System.Windows.Forms.Label
 End Class

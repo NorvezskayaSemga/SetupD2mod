@@ -32,11 +32,11 @@ or
 folder with Disciples 2 Rise of the Elves 3.01 from GOG, Russobit-M or Akella.
 Then click "Next"
 #RuTextRadioButton
-Русский
+Russian
 #EnTextRadioButton
 English
 #RuSoundRadioButton
-Русский
+Russian
 #EnSoundRadioButton
 English
 #GLWrapperCheckBox
@@ -61,5 +61,59 @@ or just want to say thank you,
 go to the
 #SiteLinkLabel
 mod website
+#HintLabel4
+If an error occurred while downloading GL Wrapper:
+#WrapperLinkLabel
+link
 #FinishButton
 Exit
+#ProgressLabel
+Progress
+#ActionLabel
+Current job
+#InstallButton
+Install
+
+##nofileserror#
+Can not find mod files
+##notlangerror#
+Can not find english interface files
+##noslangerror#
+Can not find english sound files
+##notoolserror#
+Can not find scripts
+##nowrappererror#
+Can not find GL Wrapper files
+
+##copyfiles#
+Copying mod files
+##copytlang#
+Copying english interface files
+##copyslang#
+Copying english sound files
+##copytools#
+Copying scripts
+##copyglwrapper#
+Trying to download GL Wrapper
+
+##copyfilesok#
+Mod files have been copied successfully
+##copytlangok#
+English interface files have been copied successfully
+##copyslangok#
+English sound files have been copied successfully
+##copytoolsok#
+Scripts have been copied successfully
+##copyglwrapperok#
+GL Wrapper has been downloaded and installed successfully
+
+##copyfileserr#
+Failed to copy mod files: 
+##copytlangerr#
+Failed to copy english interface files: 
+##copyslangerr#
+Failed to copy english sound files: 
+##copytoolserr#
+Failed to copy scripts: 
+##copyglwrappererr#
+Failed to download or install GL Wrapper: 

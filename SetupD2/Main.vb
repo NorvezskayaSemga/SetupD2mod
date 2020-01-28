@@ -19,7 +19,7 @@
     End Sub
 
     Private Sub goNext() Handles NextButton.Click
-        Call comm.goNext(New Step2(Me, comm))
+        Call comm.goNext(New SettingsForm(Me, comm))
     End Sub
     Private Sub cancel() Handles CancButton.Click
         Call comm.Cancel(Me)
