@@ -3,7 +3,7 @@
     Private comm As Common
     Public prevForm As SettingsForm
     Public progressList, mapsList As String
-    Private inst As AsynhInstall
+    Friend inst As AsynhInstall
 
     Public Sub New(ByRef previous As SettingsForm, ByRef c As Common)
         ' This call is required by the designer.

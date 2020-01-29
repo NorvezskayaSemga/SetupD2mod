@@ -103,9 +103,11 @@
         backButtonPressed = False
     End Sub
     Public Sub Cancel(ByRef current As Form)
+        If TypeOf current Is InstallForm Then Call CType(current, InstallForm).inst.PauseInstallationWork()
         Dim canc As New CustomDialog(lang, current)
         Dim response As DialogResult = canc.ShowDialog(current)
         If response = DialogResult.Yes Then End
+        If TypeOf current Is InstallForm Then Call CType(current, InstallForm).inst.ResumeInstallationWork()
         'response = MsgBox(lang.Item(My.Resources.CancelMsgKeyword), MsgBoxStyle.YesNo)
     End Sub
 

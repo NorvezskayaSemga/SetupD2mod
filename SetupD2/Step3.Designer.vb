@@ -29,6 +29,7 @@ Partial Class InstallForm
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
+        Me.HintLabel42 = New System.Windows.Forms.Label()
         Me.WrapperLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.HintLabel41 = New System.Windows.Forms.Label()
         Me.HintLabel32 = New System.Windows.Forms.Label()
@@ -44,7 +45,6 @@ Partial Class InstallForm
         Me.MapsLabel = New System.Windows.Forms.Label()
         Me.LogLabel = New System.Windows.Forms.Label()
         Me.ModMapsLabel = New System.Windows.Forms.TextBox()
-        Me.HintLabel42 = New System.Windows.Forms.Label()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
         Me.HintPanel.SuspendLayout()
@@ -128,6 +128,16 @@ Partial Class InstallForm
         Me.HintPanel.Name = "HintPanel"
         Me.HintPanel.Size = New System.Drawing.Size(293, 100)
         Me.HintPanel.TabIndex = 6
+        '
+        'HintLabel42
+        '
+        Me.HintLabel42.AutoSize = True
+        Me.HintLabel42.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel42.Location = New System.Drawing.Point(152, 84)
+        Me.HintLabel42.Name = "HintLabel42"
+        Me.HintLabel42.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel42.TabIndex = 12
+        Me.HintLabel42.Text = "InfoLabel"
         '
         'WrapperLinkLabel
         '
@@ -237,7 +247,6 @@ Partial Class InstallForm
         'CancButton
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CancButton.Enabled = False
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.CancButton.Location = New System.Drawing.Point(542, 300)
         Me.CancButton.Name = "CancButton"
@@ -285,16 +294,6 @@ Partial Class InstallForm
         Me.ModMapsLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.ModMapsLabel.Size = New System.Drawing.Size(232, 116)
         Me.ModMapsLabel.TabIndex = 16
-        '
-        'HintLabel42
-        '
-        Me.HintLabel42.AutoSize = True
-        Me.HintLabel42.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.HintLabel42.Location = New System.Drawing.Point(152, 84)
-        Me.HintLabel42.Name = "HintLabel42"
-        Me.HintLabel42.Size = New System.Drawing.Size(63, 16)
-        Me.HintLabel42.TabIndex = 12
-        Me.HintLabel42.Text = "InfoLabel"
         '
         'InstallForm
         '

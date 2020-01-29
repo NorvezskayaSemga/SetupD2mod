@@ -76,7 +76,7 @@ Partial Class Main
         '
         'PictureBox
         '
-        Me.PictureBox.BackgroundImage = Global.SetupD2.My.Resources.Resources.logo
+        Me.PictureBox.BackgroundImage = Global.SetupD2mod.My.Resources.Resources.logo
         Me.PictureBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox.Name = "PictureBox"

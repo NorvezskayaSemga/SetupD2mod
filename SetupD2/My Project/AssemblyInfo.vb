@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SetupD2")> 
+<Assembly: AssemblyTitle("SetupD2mod")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Microsoft")> 
-<Assembly: AssemblyProduct("SetupD2")> 
+<Assembly: AssemblyCompany("Norvezskaya Semga")> 
+<Assembly: AssemblyProduct("SetupD2mod")> 
 <Assembly: AssemblyCopyright("Copyright © Microsoft 2020")> 
 <Assembly: AssemblyTrademark("")> 
 
