@@ -334,7 +334,7 @@ Public Class DistributiveHandler
         Call GetFolderFiles(f, New List(Of String), False, My.Resources.engFilesDir)
         For Each item As String In f
             Dim s As String = item.Substring(item.LastIndexOf(".")).ToLower
-            If text = CBool(Not s = ".wdb") Then r.Add(item)
+            If text = CBool(Not s = ".wdb" And Not s = ".wdt") Then r.Add(item)
         Next item
         Return r
     End Function
