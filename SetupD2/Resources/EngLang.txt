@@ -61,18 +61,26 @@ or just want to say thank you,
 go to the
 #SiteLinkLabel
 mod website
-#HintLabel4
-If an error occurred while downloading GL Wrapper:
+#HintLabel41
+If an error occurred while downloading GL Wrapper,
+#HintLabel42
+download it from
 #WrapperLinkLabel
-link
+Verok's blog page
 #FinishButton
 Exit
 #ProgressLabel
 Progress
 #ActionLabel
 Current job
+#ModMapsLabel
+Mod maps
 #InstallButton
 Install
+#LogLabel
+Installation progress
+#MapsLabel
+Mod maps
 
 ##nofileserror#
 Can not find mod files

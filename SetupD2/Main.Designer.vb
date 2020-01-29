@@ -22,6 +22,7 @@ Partial Class Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.NextButton = New System.Windows.Forms.Button()
         Me.BackButton = New System.Windows.Forms.Button()
         Me.CancButton = New System.Windows.Forms.Button()
@@ -164,6 +165,7 @@ Partial Class Main
         Me.Controls.Add(Me.NextButton)
         Me.Controls.Add(Me.CancButton)
         Me.Controls.Add(Me.BackButton)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Main"
         Me.Text = "Form1"
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()

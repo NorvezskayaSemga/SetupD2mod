@@ -61,18 +61,26 @@ Eng
 то заходите на
 #SiteLinkLabel
 сайт мода
-#HintLabel4
-Если не получилось скачать GL Wrapper:
+#HintLabel41
+Если не получилось скачать GL Wrapper,
+#HintLabel42
+скачайте его со
 #WrapperLinkLabel
-ссылка
+страницы блога Верока
 #FinishButton
 Выход
 #ProgressLabel
 Прогресс
 #ActionLabel
 Текущая задача
+#ModMapsLabel
+Карты мода
 #InstallButton
 Установить
+#LogLabel
+Ход установки
+#MapsLabel
+Карты мода
 
 ##nofileserror#
 Не могу найти файлы мода

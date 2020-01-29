@@ -23,14 +23,14 @@ Partial Class InstallForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel = New System.Windows.Forms.Panel()
-        Me.ActionLabel = New System.Windows.Forms.TextBox()
+        Me.InstallationProgressBar = New System.Windows.Forms.ProgressBar()
         Me.ProgressLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
         Me.WrapperLinkLabel = New System.Windows.Forms.LinkLabel()
-        Me.HintLabel4 = New System.Windows.Forms.Label()
+        Me.HintLabel41 = New System.Windows.Forms.Label()
         Me.HintLabel32 = New System.Windows.Forms.Label()
         Me.HintLabel12 = New System.Windows.Forms.Label()
         Me.SiteLinkLabel = New System.Windows.Forms.LinkLabel()
@@ -38,43 +38,44 @@ Partial Class InstallForm
         Me.HintLabel2 = New System.Windows.Forms.Label()
         Me.GuideLabel = New System.Windows.Forms.LinkLabel()
         Me.HintLabel11 = New System.Windows.Forms.Label()
-        Me.ProgressBar = New System.Windows.Forms.ProgressBar()
-        Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.FinishButton = New System.Windows.Forms.Button()
         Me.CancButton = New System.Windows.Forms.Button()
+        Me.ActionLabel = New System.Windows.Forms.TextBox()
+        Me.MapsLabel = New System.Windows.Forms.Label()
+        Me.LogLabel = New System.Windows.Forms.Label()
+        Me.ModMapsLabel = New System.Windows.Forms.TextBox()
+        Me.HintLabel42 = New System.Windows.Forms.Label()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
         Me.HintPanel.SuspendLayout()
-        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel
         '
-        Me.Panel.Controls.Add(Me.ActionLabel)
+        Me.Panel.Controls.Add(Me.InstallationProgressBar)
         Me.Panel.Controls.Add(Me.ProgressLabel)
         Me.Panel.Controls.Add(Me.LangPanel)
         Me.Panel.Controls.Add(Me.HintPanel)
-        Me.Panel.Controls.Add(Me.ProgressBar)
         Me.Panel.Location = New System.Drawing.Point(244, 0)
         Me.Panel.Name = "Panel"
         Me.Panel.Size = New System.Drawing.Size(360, 284)
         Me.Panel.TabIndex = 14
         '
-        'ActionLabel
+        'InstallationProgressBar
         '
-        Me.ActionLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ActionLabel.Location = New System.Drawing.Point(97, 201)
-        Me.ActionLabel.Multiline = True
-        Me.ActionLabel.Name = "ActionLabel"
-        Me.ActionLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.ActionLabel.Size = New System.Drawing.Size(260, 61)
-        Me.ActionLabel.TabIndex = 9
+        Me.InstallationProgressBar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InstallationProgressBar.Location = New System.Drawing.Point(9, 256)
+        Me.InstallationProgressBar.Name = "InstallationProgressBar"
+        Me.InstallationProgressBar.Size = New System.Drawing.Size(348, 18)
+        Me.InstallationProgressBar.TabIndex = 8
         '
         'ProgressLabel
         '
+        Me.ProgressLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ProgressLabel.AutoSize = True
         Me.ProgressLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.ProgressLabel.Location = New System.Drawing.Point(6, 249)
+        Me.ProgressLabel.Location = New System.Drawing.Point(6, 237)
         Me.ProgressLabel.Name = "ProgressLabel"
         Me.ProgressLabel.Size = New System.Drawing.Size(49, 16)
         Me.ProgressLabel.TabIndex = 7
@@ -113,8 +114,9 @@ Partial Class InstallForm
         '
         'HintPanel
         '
+        Me.HintPanel.Controls.Add(Me.HintLabel42)
         Me.HintPanel.Controls.Add(Me.WrapperLinkLabel)
-        Me.HintPanel.Controls.Add(Me.HintLabel4)
+        Me.HintPanel.Controls.Add(Me.HintLabel41)
         Me.HintPanel.Controls.Add(Me.HintLabel32)
         Me.HintPanel.Controls.Add(Me.HintLabel12)
         Me.HintPanel.Controls.Add(Me.SiteLinkLabel)
@@ -138,15 +140,15 @@ Partial Class InstallForm
         Me.WrapperLinkLabel.TabStop = True
         Me.WrapperLinkLabel.Text = "LinkLabel3"
         '
-        'HintLabel4
+        'HintLabel41
         '
-        Me.HintLabel4.AutoSize = True
-        Me.HintLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.HintLabel4.Location = New System.Drawing.Point(3, 84)
-        Me.HintLabel4.Name = "HintLabel4"
-        Me.HintLabel4.Size = New System.Drawing.Size(63, 16)
-        Me.HintLabel4.TabIndex = 10
-        Me.HintLabel4.Text = "InfoLabel"
+        Me.HintLabel41.AutoSize = True
+        Me.HintLabel41.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel41.Location = New System.Drawing.Point(3, 84)
+        Me.HintLabel41.Name = "HintLabel41"
+        Me.HintLabel41.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel41.TabIndex = 10
+        Me.HintLabel41.Text = "InfoLabel"
         '
         'HintLabel32
         '
@@ -220,22 +222,6 @@ Partial Class InstallForm
         Me.HintLabel11.TabIndex = 2
         Me.HintLabel11.Text = "InfoLabel"
         '
-        'ProgressBar
-        '
-        Me.ProgressBar.Location = New System.Drawing.Point(3, 268)
-        Me.ProgressBar.Maximum = 1000
-        Me.ProgressBar.Name = "ProgressBar"
-        Me.ProgressBar.Size = New System.Drawing.Size(354, 12)
-        Me.ProgressBar.TabIndex = 3
-        '
-        'PictureBox
-        '
-        Me.PictureBox.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox.Name = "PictureBox"
-        Me.PictureBox.Size = New System.Drawing.Size(236, 336)
-        Me.PictureBox.TabIndex = 13
-        Me.PictureBox.TabStop = False
-        '
         'FinishButton
         '
         Me.FinishButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -260,16 +246,69 @@ Partial Class InstallForm
         Me.CancButton.Text = "Cancel"
         Me.CancButton.UseVisualStyleBackColor = True
         '
-        'Step3
+        'ActionLabel
+        '
+        Me.ActionLabel.Location = New System.Drawing.Point(6, 22)
+        Me.ActionLabel.Multiline = True
+        Me.ActionLabel.Name = "ActionLabel"
+        Me.ActionLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.ActionLabel.Size = New System.Drawing.Size(232, 154)
+        Me.ActionLabel.TabIndex = 15
+        '
+        'MapsLabel
+        '
+        Me.MapsLabel.AutoSize = True
+        Me.MapsLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.MapsLabel.Location = New System.Drawing.Point(3, 189)
+        Me.MapsLabel.Name = "MapsLabel"
+        Me.MapsLabel.Size = New System.Drawing.Size(49, 16)
+        Me.MapsLabel.TabIndex = 17
+        Me.MapsLabel.Text = "Label1"
+        '
+        'LogLabel
+        '
+        Me.LogLabel.AutoSize = True
+        Me.LogLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.LogLabel.Location = New System.Drawing.Point(3, 3)
+        Me.LogLabel.Name = "LogLabel"
+        Me.LogLabel.Size = New System.Drawing.Size(49, 16)
+        Me.LogLabel.TabIndex = 18
+        Me.LogLabel.Text = "Label2"
+        '
+        'ModMapsLabel
+        '
+        Me.ModMapsLabel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ModMapsLabel.Location = New System.Drawing.Point(6, 208)
+        Me.ModMapsLabel.Multiline = True
+        Me.ModMapsLabel.Name = "ModMapsLabel"
+        Me.ModMapsLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.ModMapsLabel.Size = New System.Drawing.Size(232, 116)
+        Me.ModMapsLabel.TabIndex = 16
+        '
+        'HintLabel42
+        '
+        Me.HintLabel42.AutoSize = True
+        Me.HintLabel42.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel42.Location = New System.Drawing.Point(152, 84)
+        Me.HintLabel42.Name = "HintLabel42"
+        Me.HintLabel42.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel42.TabIndex = 12
+        Me.HintLabel42.Text = "InfoLabel"
+        '
+        'InstallForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 336)
+        Me.Controls.Add(Me.LogLabel)
+        Me.Controls.Add(Me.MapsLabel)
+        Me.Controls.Add(Me.ModMapsLabel)
+        Me.Controls.Add(Me.ActionLabel)
         Me.Controls.Add(Me.Panel)
-        Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.FinishButton)
         Me.Controls.Add(Me.CancButton)
-        Me.Name = "Step3"
+        Me.Name = "InstallForm"
         Me.Text = "Step3"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
@@ -277,14 +316,12 @@ Partial Class InstallForm
         Me.LangPanel.PerformLayout()
         Me.HintPanel.ResumeLayout(False)
         Me.HintPanel.PerformLayout()
-        CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel As System.Windows.Forms.Panel
-    Friend WithEvents ProgressBar As System.Windows.Forms.ProgressBar
     Friend WithEvents HintLabel11 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
     Friend WithEvents FinishButton As System.Windows.Forms.Button
     Friend WithEvents CancButton As System.Windows.Forms.Button
     Friend WithEvents GuideLabel As System.Windows.Forms.LinkLabel
@@ -298,7 +335,12 @@ Partial Class InstallForm
     Friend WithEvents HintLabel12 As System.Windows.Forms.Label
     Friend WithEvents HintLabel32 As System.Windows.Forms.Label
     Friend WithEvents ProgressLabel As System.Windows.Forms.Label
-    Friend WithEvents ActionLabel As System.Windows.Forms.TextBox
     Friend WithEvents WrapperLinkLabel As System.Windows.Forms.LinkLabel
-    Friend WithEvents HintLabel4 As System.Windows.Forms.Label
+    Friend WithEvents HintLabel41 As System.Windows.Forms.Label
+    Friend WithEvents ActionLabel As System.Windows.Forms.TextBox
+    Friend WithEvents MapsLabel As System.Windows.Forms.Label
+    Friend WithEvents LogLabel As System.Windows.Forms.Label
+    Friend WithEvents InstallationProgressBar As System.Windows.Forms.ProgressBar
+    Friend WithEvents ModMapsLabel As System.Windows.Forms.TextBox
+    Friend WithEvents HintLabel42 As System.Windows.Forms.Label
 End Class

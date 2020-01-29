@@ -2,8 +2,8 @@
 
     Private comm As Common
     Public prevForm As SettingsForm
-    Public progressList As String
-    Private inst As Installer
+    Public progressList, mapsList As String
+    Private inst As AsynhInstall
 
     Public Sub New(ByRef previous As SettingsForm, ByRef c As Common)
         ' This call is required by the designer.
@@ -11,15 +11,12 @@
         ' Add any initialization after the InitializeComponent() call.
         comm = c
         prevForm = previous
-        inst = New Installer(Me, comm)
+        inst = New AsynhInstall(Me, comm)
     End Sub
 
     Private Sub meload() Handles Me.Load
         Call comm.actOnLoad(Me, CType(prevForm, Form))
-        Call inst.RunInstall()
-        Call SaveSettings()
-        FinishButton.Enabled = True
-        CancButton.Enabled = False
+        inst.InstallationWorker.RunWorkerAsync()
     End Sub
     Private Sub finishInstall() Handles FinishButton.Click
         End
@@ -39,13 +36,18 @@
         System.Diagnostics.Process.Start(L.LinkData.ToString)
     End Sub
 
-    Private Sub SaveSettings()
+    Protected Friend Sub SaveSettings()
+        Dim IgnoreNames As New List(Of String)
+        For Each c As Control In Me.Controls
+            If TypeOf c Is TextBox Then
+                IgnoreNames.Add(c.Name)
+            End If
+        Next c
         Call comm.settings.CreateKey()
-        Call comm.SaveRegistryControlSettings(CType(Me, Control))
-        Call comm.SaveRegistryControlSettings(CType(Me.prevForm, Control))
-        Call comm.SaveRegistryControlSettings(CType(Me.prevForm.prevForm, Control))
+        Call comm.SaveRegistryControlSettings(CType(Me, Control), IgnoreNames)
+        Call comm.SaveRegistryControlSettings(CType(Me.prevForm, Control), IgnoreNames)
+        Call comm.SaveRegistryControlSettings(CType(Me.prevForm.prevForm, Control), IgnoreNames)
     End Sub
-
 
 End Class
 
@@ -60,27 +62,42 @@ Class Installer
         comm = c
     End Sub
 
-    Public Sub RunInstall()
+    Friend Sub InstallTask(ByRef InstallWorker As AsynhInstall)
         Dim IsError As Boolean = False
         Dim skipCopy As Boolean
         For id As Integer = 1 To 5 Step 1
-            Call CopyFolder(IsError, skipCopy, id)
+            Call CopyFolder(IsError, skipCopy, id, InstallWorker)
         Next id
         Call RewriteD2Config()
     End Sub
-    Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer)
-        Dim f As List(Of String) = GetFilesList(id)
-        Call TestFilesList(f, IsError, skipCopy, id)
-        Call CopyFiles(f, IsError, skipCopy, id)
+    Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
+                           ByRef InstallWorker As AsynhInstall)
+        Dim f As List(Of String) = GetFilesList(id, InstallWorker)
+        Call TestFilesList(f, IsError, skipCopy, id, InstallWorker)
+        Call copyFiles(f, IsError, skipCopy, id, InstallWorker)
         If IO.Directory.Exists(tmpDir) Then IO.Directory.Delete(tmpDir, True)
     End Sub
-    Private Function GetFilesList(ByRef id As Integer) As List(Of String)
+    Private Function GetFilesList(ByRef id As Integer, ByRef InstallWorker As AsynhInstall) As List(Of String)
         If id = 1 Then
+            Dim L As List(Of String)
+            Dim s As String
             If myowner.prevForm.InstallRadioButton.Checked Then
-                Return DistributiveHandler.GetFullVersionFiles()
+                L = DistributiveHandler.GetFullVersionFiles()
             Else
-                Return DistributiveHandler.GetModFiles()
+                L = DistributiveHandler.GetModFiles()
             End If
+            myowner.mapsList = ""
+            For Each p As String In L
+                If IO.File.GetLastWriteTime(p).Year > 2010 Then
+                    s = MapNameRead.Read(p)
+                    If Not s = "" Then
+                        If Not myowner.mapsList = "" Then myowner.mapsList &= vbNewLine
+                        myowner.mapsList &= s
+                    End If
+                End If
+            Next p
+            Call SetProgressLabel(True, InstallWorker, 2)
+            Return L
         ElseIf id = 2 Then
             If myowner.prevForm.EnTextRadioButton.Checked Then
                 Return DistributiveHandler.GetEngFiles(True)
@@ -101,7 +118,9 @@ Class Installer
             End If
         ElseIf id = 5 Then
             Call AddMsg(My.Resources.copyGLWrapper)
-            Dim p() As String = DownloadGLWrapper.Download()
+            Call SetProgressLabel(True, InstallWorker, 1)
+            Dim dw As New DownloadGLWrapper(InstallWorker.InstallationWorker, myowner.InstallationProgressBar)
+            Dim p() As String = dw.Download
             If IO.File.Exists(p(0)) Then IO.File.Delete(p(0))
             tmpDir = p(1)
             Return DistributiveHandler.GetWrapperFiles(p(1))
@@ -110,7 +129,8 @@ Class Installer
             End
         End If
     End Function
-    Private Sub TestFilesList(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer)
+    Private Sub TestFilesList(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
+                              ByRef InstallWorker As AsynhInstall)
         If IsError Then Exit Sub
         skipCopy = False
         If Not IsNothing(f) AndAlso f.Count = 0 Then
@@ -130,7 +150,7 @@ Class Installer
                 MsgBox("Invalid id " & id)
                 End
             End If
-            Call SetProgressLabel(True)
+            Call SetProgressLabel(True, InstallWorker, 1)
         ElseIf IsNothing(f) Then
             skipCopy = True
         End If
@@ -148,16 +168,17 @@ Class Installer
             MsgBox("Invalid id " & id)
             End
         End If
-        Call SetProgressLabel(False)
+        Call SetProgressLabel(False, InstallWorker, 1)
     End Sub
-    Private Sub copyFiles(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer)
+    Private Sub copyFiles(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
+                          ByRef InstallWorker As AsynhInstall)
         If IsError Or skipCopy Then Exit Sub
         Dim errorRised As Boolean
         Try
             Dim d As String = GetDestinationDirectory()
             Dim dest As String
             Dim totalSize, complitedSize As Long
-            myowner.ProgressBar.Value = 0
+            InstallWorker.InstallationWorker.ReportProgress(0, New AsynhInstall.ProgressText With {.destination = -1})
             For Each item As String In f
                 totalSize += New System.IO.FileInfo(item).Length
             Next item
@@ -177,8 +198,18 @@ Class Installer
                 dest = d & dest
                 Call CopyFile(item, dest)
                 complitedSize += New System.IO.FileInfo(item).Length
-                myowner.ProgressBar.Value = CInt(myowner.ProgressBar.Maximum * Math.Min(complitedSize / totalSize, 1))
+
+                If Math.Abs(CLng(Environment.TickCount) - CLng(InstallWorker.LastReportTime)) > 200 Then
+                    InstallWorker.LastReportTime = Environment.TickCount
+                    Call SendProgreeBarValue(complitedSize, totalSize, InstallWorker)
+                End If
+                If InstallWorker.InstallationWorker.CancellationPending Then End
+                Do While InstallWorker.PauseInstallationWorker
+                    Threading.Thread.Sleep(100)
+                    If InstallWorker.InstallationWorker.CancellationPending Then End
+                Loop
             Next item
+            Call SendProgreeBarValue(complitedSize, totalSize, InstallWorker)
         Catch ex As Exception
             errorRised = True
             If id = 1 Then
@@ -196,7 +227,7 @@ Class Installer
                 MsgBox("Invalid id " & id)
                 End
             End If
-            Call SetProgressLabel(False)
+            Call SetProgressLabel(False, InstallWorker, 1)
         End Try
         If Not errorRised Then
             If id = 1 Then
@@ -213,7 +244,7 @@ Class Installer
                 MsgBox("Invalid id " & id)
                 End
             End If
-            Call SetProgressLabel(False)
+            Call SetProgressLabel(False, InstallWorker, 1)
         End If
     End Sub
     Private Function GetDestinationDirectory() As String
@@ -235,8 +266,22 @@ Class Installer
         Next i
         IO.File.Copy(source, destination, True)
     End Sub
-    Private Sub SetProgressLabel(ByRef riseExceptionOnError As Boolean)
-        myowner.ActionLabel.Text = comm.MultiStringConversion(myowner.progressList, riseExceptionOnError)
+    Private Sub SetProgressLabel(ByRef riseExceptionOnError As Boolean, ByRef InstallWorker As AsynhInstall, ByRef dest As Integer)
+        Dim v As Integer = Common.ProgressPersantage(myowner.InstallationProgressBar.Value, myowner.InstallationProgressBar.Maximum)
+        Dim msg As New AsynhInstall.ProgressText
+        msg.destination = dest
+        If msg.destination = 1 Then
+            msg.txt = comm.MultiStringConversion(myowner.progressList, riseExceptionOnError)
+        ElseIf msg.destination = 2 Then
+            msg.txt = myowner.mapsList
+        Else
+            msg.txt = ""
+        End If
+        InstallWorker.InstallationWorker.ReportProgress(v, msg)
+    End Sub
+    Private Sub SendProgreeBarValue(ByRef currentVal As Long, ByRef maxVal As Long, ByRef InstallWorker As AsynhInstall)
+        Dim v As Integer = Common.ProgressPersantage(currentVal, maxVal)
+        InstallWorker.InstallationWorker.ReportProgress(v, New AsynhInstall.ProgressText With {.destination = -1})
     End Sub
 
     Private Sub RewriteD2Config()
@@ -252,7 +297,7 @@ Class Installer
             Dim delimiter As String = "="
             For i As Integer = 0 To UBound(s) Step 1
                 If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
-                    Dim splited() As String = s(i).Replace(" ", "").Split(delimiter)
+                    Dim splited() As String = s(i).Replace(" ", "").Split(CChar(delimiter))
                     If overwrite.ContainsKey(splited(0).ToUpper) Then
                         s(i) = splited(0) & delimiter & overwrite.Item(splited(0).ToUpper)
                     End If
@@ -262,5 +307,120 @@ Class Installer
         Catch
         End Try
     End Sub
+
+End Class
+
+Class AsynhInstall
+
+    Private myowner As InstallForm
+    Private comm As Common
+    Private inst As Installer
+
+    Public WithEvents InstallationWorker As New System.ComponentModel.BackgroundWorker With {.WorkerReportsProgress = True, .WorkerSupportsCancellation = True}
+    Public PauseInstallationWorker As Boolean
+
+    Public LastReportTime As Long
+
+    Public Structure ProgressText
+        Dim txt As String
+        ''' <summary>
+        ''' -1 - никуда
+        '''  1 - ActionLabel
+        '''  2 - ModMapsLabet
+        ''' </summary>
+        Dim destination As Integer
+    End Structure
+
+    Public Sub New(ByRef s As InstallForm, ByRef c As Common)
+        myowner = s
+        comm = c
+        inst = New Installer(myowner, comm)
+    End Sub
+
+    Sub meaninglessjob() Handles InstallationWorker.DoWork
+        PauseInstallationWorker = False
+        Try
+            inst.InstallTask(Me)
+        Catch ex As Exception
+            Console.WriteLine("Ошибка при работе установщика: " & ex.Message)
+        End Try
+        PauseInstallationWorker = False
+    End Sub
+
+    Private Sub ReportProgressEventHandler(s As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles InstallationWorker.ProgressChanged
+        Try
+            Call Common.SetPercentage(e.ProgressPercentage, myowner.InstallationProgressBar)
+            If TypeOf e.UserState Is ProgressText Then
+                Dim p As ProgressText = CType(e.UserState, ProgressText)
+                If Not p.destination = -1 Then
+                    If p.destination = 1 Then
+                        myowner.ActionLabel.Text = p.txt
+                        myowner.ActionLabel.SelectionStart = myowner.ActionLabel.Text.Length
+                        myowner.ActionLabel.ScrollToCaret()
+                        myowner.ActionLabel.Refresh()
+                    ElseIf p.destination = 2 Then
+                        If Not myowner.ModMapsLabel.Text = "" Then myowner.ModMapsLabel.Text &= vbNewLine
+                        myowner.ModMapsLabel.Text = p.txt
+                        myowner.ModMapsLabel.Refresh()
+                    Else
+                        Throw New Exception("Неожиданный id бокса")
+                    End If
+                End If
+            Else
+                Throw New Exception("Неожиданный тип данных")
+            End If
+        Catch ex As Exception
+            Console.WriteLine("Ошибка при отображении прогресса: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub WorkComplitedEventHandler() Handles InstallationWorker.RunWorkerCompleted
+        Call myowner.SaveSettings()
+        myowner.InstallationProgressBar.Visible = False
+        myowner.ProgressLabel.Visible = False
+        myowner.FinishButton.Enabled = True
+        myowner.CancButton.Enabled = False
+    End Sub
+
+    Public Sub CancelInstallationWork()
+        InstallationWorker.CancelAsync()
+    End Sub
+
+    Public Sub PauseInstallationWork()
+        PauseInstallationWorker = True
+    End Sub
+    Public Sub ResumeInstallationWork()
+        PauseInstallationWorker = False
+    End Sub
+
+End Class
+
+Class MapNameRead
+
+    Public Shared Function Read(ByRef path As String) As String
+        Try
+            Dim f As String = path.Substring(path.LastIndexOf("\") + 1)
+            Dim iPos As Integer = f.LastIndexOf(".")
+            If iPos = -1 Then Return ""
+            If Not f.Substring(iPos).ToUpper = ".SG" Then Return ""
+            If Not IO.File.Exists(path) Then Return ""
+            Dim content() As Byte = IO.File.ReadAllBytes(path)
+            Dim name(255) As Byte
+            Dim startByte As Integer = 321
+            For i As Integer = startByte To Math.Min(UBound(content), startByte + UBound(name)) Step 1
+                name(i - startByte) = content(i)
+            Next i
+            For i As Integer = UBound(name) To 0 Step -1
+                If name(i) > 0 Or i = 0 Then
+                    ReDim Preserve name(i)
+                    Exit For
+                End If
+            Next i
+            Dim txt As String = System.Text.Encoding.GetEncoding(1251).GetString(name)
+            Return txt
+        Catch ex As Exception
+            Return ex.Message
+        End Try
+    End Function
 
 End Class

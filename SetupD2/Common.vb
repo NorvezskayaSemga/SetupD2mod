@@ -12,6 +12,7 @@
         Call LoadRegistryControlSettings(CType(current, Control))
         If Not IsNothing(previous) Then
             current.Text = previous.Text
+            current.Icon = previous.Icon
             Call InheritControlsSettings(CType(current, Control), CType(previous, Control))
             previous.Visible = False
         Else
@@ -79,12 +80,12 @@
             End If
         Next item
     End Sub
-    Public Sub SaveRegistryControlSettings(ByRef current As Control)
+    Public Sub SaveRegistryControlSettings(ByRef current As Control, ByRef IgnoreNames As List(Of String))
         For Each item As Control In current.Controls
             If TypeOf item Is Panel Then
-                Call SaveRegistryControlSettings(item)
+                Call SaveRegistryControlSettings(item, IgnoreNames)
             Else
-                Call settings.WriteSettings(item)
+                Call settings.WriteSettings(item, IgnoreNames)
             End If
         Next item
     End Sub
@@ -136,9 +137,10 @@
                 Call PlaceLabel(CType(c, InstallForm).HintLabel31, CType(c, InstallForm).HintLabel2, True)
                 Call PlaceLabel(CType(c, InstallForm).HintLabel32, CType(c, InstallForm).HintLabel31, False)
                 Call PlaceLinkLabel(CType(c, InstallForm).SiteLinkLabel, CType(c, InstallForm).HintLabel32)
-
-                Call PlaceLabel(CType(c, InstallForm).HintLabel4, CType(c, InstallForm).HintLabel32, True)
-                Call PlaceLinkLabel(CType(c, InstallForm).WrapperLinkLabel, CType(c, InstallForm).HintLabel4)
+                
+                Call PlaceLabel(CType(c, InstallForm).HintLabel41, CType(c, InstallForm).HintLabel32, True)
+                Call PlaceLabel(CType(c, InstallForm).HintLabel42, CType(c, InstallForm).HintLabel41, False)
+                Call PlaceLinkLabel(CType(c, InstallForm).WrapperLinkLabel, CType(c, InstallForm).HintLabel42)
 
                 For Each item As Control In CType(c, InstallForm).HintPanel.Controls
                     CType(c, InstallForm).HintPanel.Size = New Size(Math.Max(CType(c, InstallForm).HintPanel.Size.Width, item.Location.X + item.Size.Width + 2), _
@@ -165,7 +167,7 @@
         name = ""
         content = ""
         For i As Integer = 0 To UBound(splited) Step 1
-            If splited(i).Length > 1 Then
+            If splited(i).Length > 0 Then
                 Dim s As String = splited(i).Substring(0, 1)
                 If s = "#" Then
                     If Not content = "" Then lang.Add(name, content)
@@ -207,6 +209,16 @@
     Private Sub PlaceLinkLabel(ByRef current As LinkLabel, ByRef prev As Label)
         current.Location = New Point(prev.Location.X + prev.Size.Width, prev.Location.Y)
     End Sub
+
+    Public Shared Function ProgressPersantage(ByRef currentVal As Long, ByRef maxVal As Long) As Integer
+        Return Math.Max(0, Math.Min(100, CInt(100 * currentVal / maxVal)))
+    End Function
+    Public Shared Function ProgressPersantage(ByRef currentVal As Integer, ByRef maxVal As Integer) As Integer
+        Return ProgressPersantage(CLng(currentVal), CLng(maxVal))
+    End Function
+    Public Shared Sub SetPercentage(ByRef value As Integer, ByRef pb As ProgressBar)
+        pb.Value = CInt(pb.Maximum * Math.Min(0.01 * value, 1))
+    End Sub
 End Class
 
 Public Class RegSettings
@@ -247,8 +259,9 @@ Public Class RegSettings
         If Not IsNothing(key) Then key.Close()
     End Sub
 
-    Public Sub WriteSettings(ByRef c As Control)
+    Public Sub WriteSettings(ByRef c As Control, ByRef IgnoreNames As List(Of String))
         If Not errorText = "" Then Exit Sub
+        If Not IsNothing(IgnoreNames) AndAlso IgnoreNames.Contains(c.Name) Then Exit Sub
         If Not IsRightControl(c) Then Exit Sub
         Dim key As Microsoft.Win32.RegistryKey = Nothing
         Try
@@ -378,23 +391,45 @@ End Class
 
 Public Class DownloadGLWrapper
 
-    Public Shared Function Download() As String()
+    Private WithEvents downloader As New System.Net.WebClient
+    Private WithEvents InstallationWorker As System.ComponentModel.BackgroundWorker
+    Private myProgressBar As ProgressBar
+    Private downloadStep As Integer
+    Private resumeWork As Boolean
+    Private page As String
+
+    Public Sub New(ByRef inst As System.ComponentModel.BackgroundWorker, Optional ByRef myPB As ProgressBar = Nothing)
+        InstallationWorker = inst
+        myProgressBar = myPB
+    End Sub
+
+    Private Structure ParseResult
+        Dim fileName As String
+        Dim link As System.Uri
+    End Structure
+
+    Public Function Download() As String()
         'давать ссылку на верка, на случай, если не получится скачать
-        Dim w As New System.Net.WebClient
-        Dim link() As String = GetLink(w)
+        downloadStep = 1
+        Dim link As ParseResult = GetLink()
         If IsNothing(link) Then Throw New Exception("Не получилось найти ссылку")
-        Dim p As String = IO.Path.GetTempPath & link(1)
-        w.DownloadFile(link(0), p)
+        Dim p As String = IO.Path.GetTempPath & link.fileName
+        downloadStep = 2
+        resumeWork = False
+        downloader.DownloadFileAsync(link.link, p)
+        Call WaitDownload()
         Dim res As String = Extract(p)
-        w.Dispose()
         Return New String() {p, res}
     End Function
 
-    Private Shared Function GetLink(ByRef w As System.Net.WebClient) As String()
+    Private Function GetLink() As ParseResult
         Dim blogLink As String = My.Resources.VerokBlog
-        Dim page As String = w.DownloadString(blogLink)
+        page = ""
+        resumeWork = False
+        downloader.DownloadStringAsync(New System.Uri(blogLink))
+        Call WaitDownload()
         Dim splited() As String = page.Split(CChar("<"))
-        Dim link() As String = Nothing
+        Dim link As New ParseResult With {.fileName = "", .link = Nothing}
         Dim p, f As String
         For i As Integer = 0 To UBound(splited) Step 1
             If splited(i).Contains("Download") Then
@@ -403,20 +438,48 @@ Public Class DownloadGLWrapper
                     p = splited(j).Substring(splited(j).IndexOf("=") + 1)
                     f = p.Substring(p.IndexOf(">") + 1)
                     p = p.Remove(p.IndexOf(">")).Replace("""", "")
-                    link = New String() {p, f}
+                    link.fileName = f
+                    link.link = New System.Uri(p)
                     Exit For
                 End If
             End If
         Next i
         Return link
     End Function
-    Private Shared Function Extract(ByRef path As String) As String
+    Private Function Extract(ByRef path As String) As String
         Dim destination As String = path & ".extracted"
         If IO.Directory.Exists(destination) Then IO.Directory.Delete(destination, True)
         IO.Directory.CreateDirectory(destination)
         Call Decompressor.Extract(path, destination)
         Return destination
     End Function
+    Private Sub WaitDownload()
+        Do While Not resumeWork
+            Threading.Thread.Sleep(100)
+        Loop
+    End Sub
 
+    Private Sub ReportDownloadProgress(s As Object, e As System.Net.DownloadProgressChangedEventArgs) Handles downloader.DownloadProgressChanged
+        If Not IsNothing(myProgressBar) Then
+            Dim v As Integer = Common.ProgressPersantage(e.BytesReceived, e.TotalBytesToReceive)
+            If downloadStep = 1 Then
+                v = CInt(0.5 * v)
+            Else
+                v = 50 + CInt(0.5 * v)
+            End If
+            InstallationWorker.ReportProgress(v, New AsynhInstall.ProgressText With {.destination = -1})
+        End If
+    End Sub
+
+    Private Sub ReportDownloadFileComplited(s As Object, e As System.ComponentModel.AsyncCompletedEventArgs) Handles downloader.DownloadFileCompleted
+        resumeWork = True
+    End Sub
+    Private Sub ReportDownloadStrigComplited(s As Object, e As System.Net.DownloadStringCompletedEventArgs) Handles downloader.DownloadStringCompleted
+        page = e.Result
+        resumeWork = True
+    End Sub
+    Private Sub ReportDownloadDataComplited(s As Object, e As System.Net.DownloadDataCompletedEventArgs) Handles downloader.DownloadDataCompleted
+        resumeWork = True
+    End Sub
 
 End Class
