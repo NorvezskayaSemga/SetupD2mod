@@ -72,14 +72,24 @@ Class Installer
     End Sub
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
                            ByRef InstallWorker As AsynhInstall)
-        Dim f As List(Of String) = GetFilesList(id, InstallWorker)
-        Call TestFilesList(f, IsError, skipCopy, id, InstallWorker)
-        Call copyFiles(f, IsError, skipCopy, id, InstallWorker)
+        Dim f() As List(Of String) = GetFilesList(id, InstallWorker)
+        Call TestFilesList(f(0), IsError, skipCopy, id, InstallWorker)
+        Call copyFiles(f(0), IsError, skipCopy, f(1), id, InstallWorker)
         If IO.Directory.Exists(tmpDir) Then IO.Directory.Delete(tmpDir, True)
     End Sub
-    Private Function GetFilesList(ByRef id As Integer, ByRef InstallWorker As AsynhInstall) As List(Of String)
+    Private Function GetFilesList(ByRef id As Integer, ByRef InstallWorker As AsynhInstall) As List(Of String)()
+        Dim IgnorFiles As New List(Of String)
         If id = 1 Then
-            Dim L As List(Of String)
+            Dim L, t() As List(Of String)
+            For i As Integer = 2 To 3 Step 1
+                t = GetFilesList(i, InstallWorker)
+                If Not IsNothing(t) AndAlso Not IsNothing(t(0)) Then
+                    For Each item As String In t(0)
+                        IgnorFiles.Add(item)
+                    Next item
+                End If
+            Next i
+
             Dim s As String
             If myowner.prevForm.InstallRadioButton.Checked Then
                 L = DistributiveHandler.GetFullVersionFiles()
@@ -97,22 +107,22 @@ Class Installer
                 End If
             Next p
             Call SetProgressLabel(True, InstallWorker, 2)
-            Return L
+            Return New List(Of String)() {L, IgnorFiles}
         ElseIf id = 2 Then
             If myowner.prevForm.EnTextRadioButton.Checked Then
-                Return DistributiveHandler.GetEngFiles(True)
+                Return New List(Of String)() {DistributiveHandler.GetEngFiles(True), IgnorFiles}
             Else
                 Return Nothing
             End If
         ElseIf id = 3 Then
             If myowner.prevForm.EnSoundRadioButton.Checked Then
-                Return DistributiveHandler.GetEngFiles(False)
+                Return New List(Of String)() {DistributiveHandler.GetEngFiles(False), IgnorFiles}
             Else
                 Return Nothing
             End If
         ElseIf id = 4 Then
             If myowner.prevForm.ToolsCheckBox.Checked Then
-                Return DistributiveHandler.GetToolsAndReadmeFiles()
+                Return New List(Of String)() {DistributiveHandler.GetToolsAndReadmeFiles(), IgnorFiles}
             Else
                 Return Nothing
             End If
@@ -123,7 +133,7 @@ Class Installer
             Dim p() As String = dw.Download
             If IO.File.Exists(p(0)) Then IO.File.Delete(p(0))
             tmpDir = p(1)
-            Return DistributiveHandler.GetWrapperFiles(p(1))
+            Return New List(Of String)() {DistributiveHandler.GetWrapperFiles(p(1)), IgnorFiles}
         Else
             MsgBox("Invalid id " & id)
             End
@@ -170,34 +180,35 @@ Class Installer
         End If
         Call SetProgressLabel(False, InstallWorker, 1)
     End Sub
-    Private Sub copyFiles(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
-                          ByRef InstallWorker As AsynhInstall)
+    Private Sub copyFiles(ByRef f As List(Of String), ByRef IsError As Boolean, ByRef skipCopy As Boolean, _
+                          ByRef ignore As List(Of String), ByRef id As Integer, ByRef InstallWorker As AsynhInstall)
         If IsError Or skipCopy Then Exit Sub
         Dim errorRised As Boolean
         Try
-            Dim d As String = GetDestinationDirectory()
+            Dim rootfolder As String = GetDestinationDirectory()
             Dim dest As String
             Dim totalSize, complitedSize As Long
             InstallWorker.InstallationWorker.ReportProgress(0, New AsynhInstall.ProgressText With {.destination = -1})
-            For Each item As String In f
+
+            Dim destIgnore, destList As New List(Of String)
+            If Not IsNothing(ignore) Then
+                For Each item As String In ignore
+                    destIgnore.Add(MakeDestinationPath(id, rootfolder, item).ToLower)
+                Next item
+                For Each item As String In f
+                    dest = MakeDestinationPath(id, rootfolder, item)
+                    If Not destIgnore.Contains(dest.ToLower) Then destList.Add(item)
+                Next item
+            End If
+
+            For Each item As String In destList
                 totalSize += New System.IO.FileInfo(item).Length
             Next item
 
-            Dim maxI As Integer = 1
-            If id = 4 Then maxI = 0
-
-            For Each item As String In f
-                If Not id = 5 Then
-                    dest = item
-                    For i As Integer = 0 To maxI Step 1
-                        dest = dest.Substring(dest.IndexOf("\") + 1)
-                    Next i
-                Else
-                    dest = item.Substring(item.LastIndexOf("\") + 1)
-                End If
-                dest = d & dest
-                Call CopyFile(item, dest)
-                complitedSize += New System.IO.FileInfo(item).Length
+            For Each source As String In destList
+                dest = MakeDestinationPath(id, rootfolder, source)
+                Call CopyFile(source, dest)
+                complitedSize += New System.IO.FileInfo(source).Length
 
                 If Math.Abs(CLng(Environment.TickCount) - CLng(InstallWorker.LastReportTime)) > 200 Then
                     InstallWorker.LastReportTime = Environment.TickCount
@@ -208,7 +219,7 @@ Class Installer
                     Threading.Thread.Sleep(100)
                     If InstallWorker.InstallationWorker.CancellationPending Then End
                 Loop
-            Next item
+            Next source
             Call SendProgreeBarValue(complitedSize, totalSize, InstallWorker)
         Catch ex As Exception
             errorRised = True
@@ -256,6 +267,25 @@ Class Installer
         If Not myowner.progressList = "" Then myowner.progressList &= vbNewLine
         myowner.progressList &= msg
     End Sub
+    Private Function MakeDestinationPath(ByRef id As Integer, ByRef rootfolder As String, _
+                                         ByRef source As String) As String
+        Dim dest As String
+        Dim maxI As Integer
+        If id = 4 Then
+            maxI = 0
+        Else
+            maxI = 1
+        End If
+        If Not id = 5 Then
+            dest = source
+            For i As Integer = 0 To maxI Step 1
+                dest = dest.Substring(dest.IndexOf("\") + 1)
+            Next i
+        Else
+            dest = source.Substring(source.LastIndexOf("\") + 1)
+        End If
+        Return rootfolder & dest
+    End Function
 
     Private Sub CopyFile(ByRef source As String, ByRef destination As String)
         Dim s() As String = destination.Split(CChar("\"))
