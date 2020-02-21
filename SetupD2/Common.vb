@@ -399,6 +399,7 @@ Public Class DownloadGLWrapper
     Private downloadStep As Integer
     Private resumeWork As Boolean
     Private page As String
+    Private downloadStepWeight() As Integer = New Integer() {45, 35, 20} 'sum=100
 
     Public Sub New(ByRef inst As System.ComponentModel.BackgroundWorker, Optional ByRef myPB As ProgressBar = Nothing)
         InstallationWorker = inst
@@ -410,46 +411,54 @@ Public Class DownloadGLWrapper
         Dim link As System.Uri
     End Structure
 
-    Public Function Download() As String()
+    Public Function Download() As String()()
         'давать ссылку на верка, на случай, если не получится скачать
         downloadStep = 1
-        Dim link As ParseResult = GetLink()
-        If IsNothing(link) Then Throw New Exception("Не получилось найти ссылку")
-        Dim p As String = IO.Path.GetTempPath & link.fileName
-        downloadStep = 2
-        resumeWork = False
-        downloader.DownloadFileAsync(link.link, p)
-        Call WaitDownload()
-        Dim res As String = Extract(p)
-        Return New String() {p, res}
+        Dim link() As ParseResult = GetLink()
+        If IsNothing(link(0)) Or IsNothing(link(1)) Then Throw New Exception("Не получилось найти ссылки")
+        Dim r(1)() As String
+        For k As Integer = 0 To 1 Step 1
+            Dim p As String = IO.Path.GetTempPath & link(k).fileName
+            downloadStep = 2 + k
+            resumeWork = False
+            downloader.DownloadFileAsync(link(k).link, p)
+            Call WaitDownload()
+            Dim res As String = Extract(p)
+            r(k) = {p, res}
+        Next k
+        Return r
     End Function
 
-    Private Function GetLink() As ParseResult
+    Private Function GetLink() As ParseResult()
         Dim blogLink As String = My.Resources.VerokBlog
         page = ""
         resumeWork = False
         downloader.DownloadStringAsync(New System.Uri(blogLink))
         Call WaitDownload()
         Dim splited() As String = page.Split(CChar("<"))
-        Dim link As New ParseResult With {.fileName = "", .link = Nothing}
+        Dim link() As ParseResult = New ParseResult() {New ParseResult With {.fileName = "", .link = Nothing}, _
+                                                       New ParseResult With {.fileName = "", .link = Nothing}}
         Dim p, f As String
         For i As Integer = 0 To UBound(splited) Step 1
             If splited(i).Contains("Download") Then
-                Dim j As Integer = i + 4
-                If j <= UBound(splited) AndAlso splited(j).Contains("a href=") Then
-                    p = splited(j).Substring(splited(j).IndexOf("=") + 1)
-                    f = p.Substring(p.IndexOf(">") + 1)
-                    p = p.Remove(p.IndexOf(">")).Replace("""", "")
-                    link.fileName = f
-                    link.link = New System.Uri(p)
-                    Exit For
-                End If
+                For k As Integer = 0 To 1 Step 1
+                    Dim j As Integer = i + 4 * (k + 1)
+                    If j <= UBound(splited) AndAlso splited(j).Contains("a href=") Then
+                        p = splited(j).Substring(splited(j).IndexOf("=") + 1)
+                        p = p.Replace("/open?id=", "/uc?id=")
+                        f = p.Substring(p.IndexOf(">") + 1)
+                        p = p.Remove(p.IndexOf(">")).Replace("""", "")
+                        link(k).fileName = f
+                        link(k).link = New System.Uri(p)
+                        If k = 1 Then i = splited.Length
+                    End If
+                Next k
             End If
         Next i
         Return link
     End Function
     Private Function Extract(ByRef path As String) As String
-        Dim destination As String = path & ".extracted"
+        Dim destination As String = path & My.Resources.extractedTmpFolder
         If IO.Directory.Exists(destination) Then IO.Directory.Delete(destination, True)
         IO.Directory.CreateDirectory(destination)
         Call Decompressor.Extract(path, destination)
@@ -464,12 +473,12 @@ Public Class DownloadGLWrapper
     Private Sub ReportDownloadProgress(s As Object, e As System.Net.DownloadProgressChangedEventArgs) Handles downloader.DownloadProgressChanged
         If Not IsNothing(myProgressBar) Then
             Dim v As Integer = Common.ProgressPersantage(e.BytesReceived, e.TotalBytesToReceive)
-            If downloadStep = 1 Then
-                v = CInt(0.5 * v)
-            Else
-                v = 50 + CInt(0.5 * v)
-            End If
-            InstallationWorker.ReportProgress(v, New AsynhInstall.ProgressText With {.destination = -1})
+            Dim p As Integer = 0
+            For i As Integer = 0 To downloadStep - 2 Step 1
+                p += downloadStepWeight(i)
+            Next i
+            p += CInt(0.01 * v * downloadStepWeight(downloadStep - 1))
+            InstallationWorker.ReportProgress(Math.Min(p, 100), New AsynhInstall.ProgressText With {.destination = -1})
         End If
     End Sub
 

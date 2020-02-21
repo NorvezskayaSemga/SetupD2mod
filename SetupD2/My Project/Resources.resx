@@ -232,4 +232,7 @@
   <data name="noWrapperFound" xml:space="preserve">
     <value>#nowrappererror#</value>
   </data>
+  <data name="extractedTmpFolder" xml:space="preserve">
+    <value>.extracted</value>
+  </data>
 </root>

@@ -55,7 +55,7 @@ Class Installer
 
     Private myowner As InstallForm
     Private comm As Common
-    Private tmpDir As String
+    Private tmpDirs() As String
 
     Public Sub New(ByRef s As InstallForm, ByRef c As Common)
         myowner = s
@@ -73,9 +73,15 @@ Class Installer
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
                            ByRef InstallWorker As AsynhInstall)
         Dim f() As List(Of String) = GetFilesList(id, InstallWorker)
-        Call TestFilesList(f(0), IsError, skipCopy, id, InstallWorker)
-        Call copyFiles(f(0), IsError, skipCopy, f(1), id, InstallWorker)
-        If IO.Directory.Exists(tmpDir) Then IO.Directory.Delete(tmpDir, True)
+        If Not IsNothing(f) Then
+            Call TestFilesList(f(0), IsError, skipCopy, id, InstallWorker)
+            Call copyFiles(f(0), IsError, skipCopy, f(1), id, InstallWorker)
+            If Not IsNothing(tmpDirs) Then
+                For Each p As String In tmpDirs
+                    If IO.Directory.Exists(p) Then IO.Directory.Delete(p, True)
+                Next p
+            End If
+        End If
     End Sub
     Private Function GetFilesList(ByRef id As Integer, ByRef InstallWorker As AsynhInstall) As List(Of String)()
         Dim IgnorFiles As New List(Of String)
@@ -130,10 +136,19 @@ Class Installer
             Call AddMsg(My.Resources.copyGLWrapper)
             Call SetProgressLabel(True, InstallWorker, 1)
             Dim dw As New DownloadGLWrapper(InstallWorker.InstallationWorker, myowner.InstallationProgressBar)
-            Dim p() As String = dw.Download
-            If IO.File.Exists(p(0)) Then IO.File.Delete(p(0))
-            tmpDir = p(1)
-            Return New List(Of String)() {DistributiveHandler.GetWrapperFiles(p(1)), IgnorFiles}
+            Dim p()() As String = dw.Download
+            Dim L(UBound(p)), res As List(Of String)
+            res = New List(Of String)
+            ReDim tmpDirs(UBound(p))
+            For k As Integer = 0 To UBound(p) Step 1
+                If IO.File.Exists(p(k)(0)) Then IO.File.Delete(p(k)(0))
+                tmpDirs(k) = p(k)(1)
+                L(k) = DistributiveHandler.GetWrapperFiles(p(k)(1))
+                For Each s As String In L(k)
+                    res.Add(s)
+                Next s
+            Next k
+            Return New List(Of String)() {res, IgnorFiles}
         Else
             MsgBox("Invalid id " & id)
             End
@@ -282,7 +297,7 @@ Class Installer
                 dest = dest.Substring(dest.IndexOf("\") + 1)
             Next i
         Else
-            dest = source.Substring(source.LastIndexOf("\") + 1)
+            dest = source.Substring(source.LastIndexOf(My.Resources.extractedTmpFolder & "\") + My.Resources.extractedTmpFolder.Length + 1)
         End If
         Return rootfolder & dest
     End Function
@@ -370,7 +385,7 @@ Class AsynhInstall
     Sub meaninglessjob() Handles InstallationWorker.DoWork
         PauseInstallationWorker = False
         Try
-            inst.InstallTask(Me)
+            Call inst.InstallTask(Me)
         Catch ex As Exception
             Console.WriteLine("Ошибка при работе установщика: " & ex.Message)
         End Try
