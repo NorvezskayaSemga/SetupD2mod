@@ -393,7 +393,7 @@ End Class
 
 Public Class DownloadGLWrapper
 
-    Private WithEvents downloader As New System.Net.WebClient
+    Private WithEvents downloader As New System.Net.WebClient With {.Proxy = Nothing}
     Private WithEvents InstallationWorker As System.ComponentModel.BackgroundWorker
     Private myProgressBar As ProgressBar
     Private downloadStep As Integer
@@ -486,7 +486,11 @@ Public Class DownloadGLWrapper
         resumeWork = True
     End Sub
     Private Sub ReportDownloadStrigComplited(s As Object, e As System.Net.DownloadStringCompletedEventArgs) Handles downloader.DownloadStringCompleted
-        'page = e.Result
+        Try
+            page = e.Result
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
         resumeWork = True
     End Sub
     Private Sub ReportDownloadDataComplited(s As Object, e As System.Net.DownloadDataCompletedEventArgs) Handles downloader.DownloadDataCompleted
