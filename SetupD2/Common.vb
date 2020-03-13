@@ -486,7 +486,7 @@ Public Class DownloadGLWrapper
         resumeWork = True
     End Sub
     Private Sub ReportDownloadStrigComplited(s As Object, e As System.Net.DownloadStringCompletedEventArgs) Handles downloader.DownloadStringCompleted
-        page = e.Result
+        'page = e.Result
         resumeWork = True
     End Sub
     Private Sub ReportDownloadDataComplited(s As Object, e As System.Net.DownloadDataCompletedEventArgs) Handles downloader.DownloadDataCompleted
