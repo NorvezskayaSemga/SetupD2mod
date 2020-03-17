@@ -103,6 +103,8 @@ Eng
 Копирую скрипты
 ##copyglwrapper#
 Пытаюсь скачать GL Wrapper
+##completed#
+Установка завершена
 
 ##copyfilesok#
 Файлы мода успешно скопированы

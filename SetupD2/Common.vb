@@ -123,8 +123,8 @@
             OrElse TypeOf item Is LinkLabel _
             OrElse TypeOf item Is CheckBox Then
                 item.Text = MultiStringConversion(item.Name)
-            ElseIf TypeOf item Is TextBox And TypeOf item.Parent.Parent Is InstallForm And item.Name = "ActionLabel" Then
-                Dim msg As String = CType(item.Parent.Parent, InstallForm).progressList
+            ElseIf TypeOf item Is TextBox And TypeOf item.Parent Is InstallForm And item.Name = "ActionLabel" Then
+                Dim msg As String = CType(item.Parent, InstallForm).progressList
                 If msg = "" Then msg = item.Name
                 item.Text = MultiStringConversion(msg)
             End If

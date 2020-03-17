@@ -235,4 +235,10 @@
   <data name="extractedTmpFolder" xml:space="preserve">
     <value>.extracted</value>
   </data>
+  <data name="foldersList" xml:space="preserve">
+    <value>Briefing:Campaign:Exports:Globals:ImgData:Imgs:Interf:Links:manual:Music:MusicP:SaveGame:ScenData:Scens:Sounds:SoundsP:Video</value>
+  </data>
+  <data name="completed" xml:space="preserve">
+    <value>#completed#</value>
+  </data>
 </root>

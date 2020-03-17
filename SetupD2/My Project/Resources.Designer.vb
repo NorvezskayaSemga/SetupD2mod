@@ -88,6 +88,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #completed#.
+        '''</summary>
+        Friend ReadOnly Property completed() As String
+            Get
+                Return ResourceManager.GetString("completed", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to #copyfiles#.
         '''</summary>
         Friend ReadOnly Property copyFiles() As String
@@ -261,7 +270,8 @@ Namespace My.Resources
         '''#SelectButton
         '''Select a folder
         '''#InfoLabel
-        '''Select a folder to insta [rest of string was truncated]&quot;;.
+        '''Select a folder to install an already patched game
+        '''or [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -275,6 +285,15 @@ Namespace My.Resources
         Friend ReadOnly Property extractedTmpFolder() As String
             Get
                 Return ResourceManager.GetString("extractedTmpFolder", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Briefing:Campaign:Exports:Globals:ImgData:Imgs:Interf:Links:manual:Music:MusicP:SaveGame:ScenData:Scens:Sounds:SoundsP:Video.
+        '''</summary>
+        Friend ReadOnly Property foldersList() As String
+            Get
+                Return ResourceManager.GetString("foldersList", resourceCulture)
             End Get
         End Property
         
@@ -408,7 +427,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Выберите папку
         '''#InfoLabel
-        '''Вы [rest of string was truncated]&quot;;.
+        '''Выберите папку для установки уж [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property RusLang() As String
             Get

@@ -68,6 +68,9 @@ Class Installer
         For id As Integer = 1 To 5 Step 1
             Call CopyFolder(IsError, skipCopy, id, InstallWorker)
         Next id
+        Call MakeAbsentFolders()
+        Call AddMsg(My.Resources.completed)
+        Call SetProgressLabel(True, InstallWorker, 1)
         Call RewriteD2Config()
     End Sub
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
@@ -327,6 +330,12 @@ Class Installer
     Private Sub SendProgreeBarValue(ByRef currentVal As Long, ByRef maxVal As Long, ByRef InstallWorker As AsynhInstall)
         Dim v As Integer = Common.ProgressPersantage(currentVal, maxVal)
         InstallWorker.InstallationWorker.ReportProgress(v, New AsynhInstall.ProgressText With {.destination = -1})
+    End Sub
+    Private Sub MakeAbsentFolders()
+        Dim rootfolder As String = GetDestinationDirectory()
+        For Each folder As String In My.Resources.foldersList.Split(CChar(":"))
+            If Not IO.Directory.Exists(rootfolder & folder) Then IO.Directory.CreateDirectory(rootfolder & folder)
+        Next folder
     End Sub
 
     Private Sub RewriteD2Config()

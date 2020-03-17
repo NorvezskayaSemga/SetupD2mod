@@ -103,6 +103,8 @@ Copying english sound files
 Copying scripts
 ##copyglwrapper#
 Trying to download GL Wrapper
+##completed#
+Installation completed
 
 ##copyfilesok#
 Mod files have been copied successfully
