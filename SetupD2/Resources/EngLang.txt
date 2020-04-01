@@ -127,3 +127,10 @@ Failed to copy english sound files:
 Failed to copy scripts: 
 ##copyglwrappererr#
 Failed to download or install GL Wrapper: 
+
+#DmgLimitCheckBox
+Remove units damage limit
+##limitremoveok#
+Units damage limit removed successfully
+##limitremoveerror#
+Failed to remove the damage limit: probably you have a version from Steam or fine Discipl2.exe does not exist

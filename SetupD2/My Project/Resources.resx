@@ -241,4 +241,10 @@
   <data name="completed" xml:space="preserve">
     <value>#completed#</value>
   </data>
+  <data name="limitRemoveErr" xml:space="preserve">
+    <value>#limitremoveerror#</value>
+  </data>
+  <data name="limitRemoveOk" xml:space="preserve">
+    <value>#limitremoveok#</value>
+  </data>
 </root>

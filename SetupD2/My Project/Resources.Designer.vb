@@ -270,8 +270,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Select a folder
         '''#InfoLabel
-        '''Select a folder to install an already patched game
-        '''or [rest of string was truncated]&quot;;.
+        '''Select a folder to insta [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -312,6 +311,24 @@ Namespace My.Resources
         Friend ReadOnly Property IgnoreIOItem() As String
             Get
                 Return ResourceManager.GetString("IgnoreIOItem", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #limitremoveerror#.
+        '''</summary>
+        Friend ReadOnly Property limitRemoveErr() As String
+            Get
+                Return ResourceManager.GetString("limitRemoveErr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #limitremoveok#.
+        '''</summary>
+        Friend ReadOnly Property limitRemoveOk() As String
+            Get
+                Return ResourceManager.GetString("limitRemoveOk", resourceCulture)
             End Get
         End Property
         
@@ -427,7 +444,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Выберите папку
         '''#InfoLabel
-        '''Выберите папку для установки уж [rest of string was truncated]&quot;;.
+        '''Вы [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property RusLang() As String
             Get

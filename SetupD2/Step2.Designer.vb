@@ -38,6 +38,7 @@ Partial Class SettingsForm
         Me.EnTextRadioButton = New System.Windows.Forms.RadioButton()
         Me.RuTextRadioButton = New System.Windows.Forms.RadioButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.DmgLimitCheckBox = New System.Windows.Forms.CheckBox()
         Me.ToolsCheckBox = New System.Windows.Forms.CheckBox()
         Me.GLWrapperCheckBox = New System.Windows.Forms.CheckBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -97,7 +98,7 @@ Partial Class SettingsForm
         Me.Panel.Controls.Add(Me.InstallModeLabel)
         Me.Panel.Location = New System.Drawing.Point(242, 0)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(360, 284)
+        Me.Panel.Size = New System.Drawing.Size(360, 301)
         Me.Panel.TabIndex = 9
         '
         'LangPanel
@@ -135,7 +136,7 @@ Partial Class SettingsForm
         '
         Me.SoundLangLabel.AutoSize = True
         Me.SoundLangLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.SoundLangLabel.Location = New System.Drawing.Point(4, 155)
+        Me.SoundLangLabel.Location = New System.Drawing.Point(4, 149)
         Me.SoundLangLabel.Name = "SoundLangLabel"
         Me.SoundLangLabel.Size = New System.Drawing.Size(63, 16)
         Me.SoundLangLabel.TabIndex = 7
@@ -145,7 +146,7 @@ Partial Class SettingsForm
         '
         Me.Panel5.Controls.Add(Me.EnSoundRadioButton)
         Me.Panel5.Controls.Add(Me.RuSoundRadioButton)
-        Me.Panel5.Location = New System.Drawing.Point(4, 174)
+        Me.Panel5.Location = New System.Drawing.Point(4, 168)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(306, 51)
         Me.Panel5.TabIndex = 5
@@ -176,7 +177,7 @@ Partial Class SettingsForm
         '
         Me.TextLangLabel.AutoSize = True
         Me.TextLangLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.TextLangLabel.Location = New System.Drawing.Point(4, 82)
+        Me.TextLangLabel.Location = New System.Drawing.Point(4, 76)
         Me.TextLangLabel.Name = "TextLangLabel"
         Me.TextLangLabel.Size = New System.Drawing.Size(63, 16)
         Me.TextLangLabel.TabIndex = 5
@@ -186,7 +187,7 @@ Partial Class SettingsForm
         '
         Me.Panel2.Controls.Add(Me.EnTextRadioButton)
         Me.Panel2.Controls.Add(Me.RuTextRadioButton)
-        Me.Panel2.Location = New System.Drawing.Point(4, 101)
+        Me.Panel2.Location = New System.Drawing.Point(4, 95)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(306, 51)
         Me.Panel2.TabIndex = 4
@@ -215,12 +216,25 @@ Partial Class SettingsForm
         '
         'Panel4
         '
+        Me.Panel4.Controls.Add(Me.DmgLimitCheckBox)
         Me.Panel4.Controls.Add(Me.ToolsCheckBox)
         Me.Panel4.Controls.Add(Me.GLWrapperCheckBox)
-        Me.Panel4.Location = New System.Drawing.Point(4, 231)
+        Me.Panel4.Location = New System.Drawing.Point(4, 225)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(306, 51)
+        Me.Panel4.Size = New System.Drawing.Size(306, 70)
         Me.Panel4.TabIndex = 6
+        '
+        'DmgLimitCheckBox
+        '
+        Me.DmgLimitCheckBox.AutoSize = True
+        Me.DmgLimitCheckBox.Checked = True
+        Me.DmgLimitCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DmgLimitCheckBox.Location = New System.Drawing.Point(3, 50)
+        Me.DmgLimitCheckBox.Name = "DmgLimitCheckBox"
+        Me.DmgLimitCheckBox.Size = New System.Drawing.Size(149, 17)
+        Me.DmgLimitCheckBox.TabIndex = 4
+        Me.DmgLimitCheckBox.Text = "Remove max damage limit"
+        Me.DmgLimitCheckBox.UseVisualStyleBackColor = True
         '
         'ToolsCheckBox
         '
@@ -250,7 +264,7 @@ Partial Class SettingsForm
         '
         Me.Panel3.Controls.Add(Me.PatchRadioButton)
         Me.Panel3.Controls.Add(Me.InstallRadioButton)
-        Me.Panel3.Location = New System.Drawing.Point(4, 28)
+        Me.Panel3.Location = New System.Drawing.Point(4, 22)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(306, 51)
         Me.Panel3.TabIndex = 3
@@ -281,7 +295,7 @@ Partial Class SettingsForm
         '
         Me.InstallModeLabel.AutoSize = True
         Me.InstallModeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.InstallModeLabel.Location = New System.Drawing.Point(4, 9)
+        Me.InstallModeLabel.Location = New System.Drawing.Point(4, 3)
         Me.InstallModeLabel.Name = "InstallModeLabel"
         Me.InstallModeLabel.Size = New System.Drawing.Size(63, 16)
         Me.InstallModeLabel.TabIndex = 2
@@ -294,11 +308,11 @@ Partial Class SettingsForm
         Me.InstallButton.Location = New System.Drawing.Point(348, 300)
         Me.InstallButton.Name = "InstallButton"
         Me.InstallButton.Size = New System.Drawing.Size(66, 24)
-        Me.InstallButton.TabIndex = 10
+        Me.InstallButton.TabIndex = 0
         Me.InstallButton.Text = "Next"
         Me.InstallButton.UseVisualStyleBackColor = True
         '
-        'Step2
+        'SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -308,7 +322,7 @@ Partial Class SettingsForm
         Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.CancButton)
         Me.Controls.Add(Me.BackButton)
-        Me.Name = "Step2"
+        Me.Name = "SettingsForm"
         Me.Text = "Step2"
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel.ResumeLayout(False)
@@ -334,7 +348,6 @@ Partial Class SettingsForm
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents PatchRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents InstallRadioButton As System.Windows.Forms.RadioButton
-    Friend WithEvents InstallModeLabel As System.Windows.Forms.Label
     Friend WithEvents SoundLangLabel As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents EnSoundRadioButton As System.Windows.Forms.RadioButton
@@ -349,4 +362,6 @@ Partial Class SettingsForm
     Friend WithEvents LangPanel As System.Windows.Forms.Panel
     Friend WithEvents LangEnRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents DmgLimitCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents InstallModeLabel As System.Windows.Forms.Label
 End Class

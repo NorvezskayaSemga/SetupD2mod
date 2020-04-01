@@ -221,6 +221,40 @@
     Public Shared Sub SetPercentage(ByRef value As Integer, ByRef pb As ProgressBar)
         pb.Value = CInt(pb.Maximum * Math.Min(0.01 * value, 1))
     End Sub
+
+    Public Sub ReplaceCode(ByRef f As InstallForm)
+        If Not f.prevForm.DmgLimitCheckBox.Checked Then Exit Sub
+        Dim path As String = Installer.GetDestinationDirectory(f) & "Discipl2.exe"
+        Dim tpath As String = Installer.GetDestinationDirectory(f) & "Discipl2.t.exe"
+        Dim msg As String = ""
+        If Not IO.File.Exists(path) Then msg = My.Resources.limitRemoveErr
+        If msg = "" Then
+            Dim bias() As Integer = New Integer() {3058044, 3049244, 3055484}
+            Dim len() As Integer = New Integer() {3907200, 4474880, 4187648}
+            Dim bytes() As Byte = IO.File.ReadAllBytes(path)
+            For i As Integer = 0 To UBound(len) Step 1
+                If bytes.Length = len(i) Then
+                    Dim byteform() As Byte = BitConverter.GetBytes(CInt(10000))
+                    For j As Integer = 0 To UBound(byteform) Step 1
+                        bytes(bias(i) + j) = byteform(j)
+                    Next j
+                    Try
+                        IO.File.WriteAllBytes(tpath, bytes)
+                        IO.File.Delete(path)
+                        IO.File.Move(tpath, path)
+                        msg = My.Resources.limitRemoveOk
+                    Catch ex As Exception
+                        msg = ex.Message
+                    End Try
+                    Exit For
+                End If
+            Next i
+        End If
+        If msg = "" Then msg = My.Resources.limitRemoveErr
+        Call Installer.AddMsg(msg, f)
+        msg = MultiStringConversion(f.progressList, False)
+        f.ActionLabel.Text = msg
+    End Sub
 End Class
 
 Public Class RegSettings

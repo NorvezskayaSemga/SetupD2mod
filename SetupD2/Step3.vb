@@ -276,14 +276,20 @@ Class Installer
             Call SetProgressLabel(False, InstallWorker, 1)
         End If
     End Sub
-    Private Function GetDestinationDirectory() As String
-        Dim d As String = myowner.prevForm.prevForm.SelectTextBox.Text
+    Friend Shared Function GetDestinationDirectory(ByRef f As InstallForm) As String
+        Dim d As String = f.prevForm.prevForm.SelectTextBox.Text
         If Not d.Substring(d.Length - 1) = "\" Then d &= "\"
         Return d
     End Function
-    Private Sub AddMsg(ByRef msg As String)
-        If Not myowner.progressList = "" Then myowner.progressList &= vbNewLine
-        myowner.progressList &= msg
+    Friend Function GetDestinationDirectory() As String
+        Return Installer.GetDestinationDirectory(myowner)
+    End Function
+    Friend Shared Sub AddMsg(ByRef msg As String, ByRef f As InstallForm)
+        If Not f.progressList = "" Then f.progressList &= vbNewLine
+        f.progressList &= msg
+    End Sub
+    Friend Sub AddMsg(ByRef msg As String)
+        Call Installer.AddMsg(msg, myowner)
     End Sub
     Private Function MakeDestinationPath(ByRef id As Integer, ByRef rootfolder As String, _
                                          ByRef source As String) As String
@@ -429,6 +435,7 @@ Class AsynhInstall
     End Sub
 
     Private Sub WorkComplitedEventHandler() Handles InstallationWorker.RunWorkerCompleted
+        Call comm.ReplaceCode(myowner)
         Call myowner.SaveSettings()
         myowner.InstallationProgressBar.Visible = False
         myowner.ProgressLabel.Visible = False
