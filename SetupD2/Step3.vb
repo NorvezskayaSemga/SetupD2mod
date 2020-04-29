@@ -136,6 +136,7 @@ Class Installer
                 Return Nothing
             End If
         ElseIf id = 5 Then
+            If Not myowner.prevForm.GLWrapperCheckBox.Checked Then Return Nothing
             Call AddMsg(My.Resources.copyGLWrapper)
             Call SetProgressLabel(True, InstallWorker, 1)
             Dim dw As New DownloadGLWrapper(InstallWorker.InstallationWorker, myowner.InstallationProgressBar)
