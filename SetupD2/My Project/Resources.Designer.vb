@@ -279,6 +279,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to *** .
+        '''</summary>
+        Friend ReadOnly Property errorMsgTag() As String
+            Get
+                Return ResourceManager.GetString("errorMsgTag", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to .extracted.
         '''</summary>
         Friend ReadOnly Property extractedTmpFolder() As String

@@ -244,19 +244,20 @@ Class Installer
             errorRised = True
             If id = 1 Then
                 IsError = True
-                Call AddMsg(My.Resources.copyFilesErr & ex.Message)
+                Call AddMsg(My.Resources.copyFilesErr)
             ElseIf id = 2 Then
-                Call AddMsg(My.Resources.copyTextLangErr & ex.Message)
+                Call AddMsg(My.Resources.copyTextLangErr)
             ElseIf id = 3 Then
-                Call AddMsg(My.Resources.copySoundLangErr & ex.Message)
+                Call AddMsg(My.Resources.copySoundLangErr)
             ElseIf id = 4 Then
-                Call AddMsg(My.Resources.copyToolsErr & ex.Message)
+                Call AddMsg(My.Resources.copyToolsErr)
             ElseIf id = 5 Then
-                Call AddMsg(My.Resources.copyGLWrapperErr & ex.Message)
+                Call AddMsg(My.Resources.copyGLWrapperErr)
             Else
                 MsgBox("Invalid id " & id)
                 End
             End If
+            Call AddMsg(My.Resources.errorMsgTag & ex.Message)
             Call SetProgressLabel(False, InstallWorker, 1)
         End Try
         If Not errorRised Then

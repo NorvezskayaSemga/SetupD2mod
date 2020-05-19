@@ -192,11 +192,15 @@
             If lang.ContainsKey(s(i)) Then
                 res &= lang.Item(s(i)) & vbNewLine
             Else
-                Dim errTxt As String = "В словаре не хватает записи для " & s(i)
-                If riseExceptionOnError Then
-                    Throw New Exception(errTxt)
+                If s(i).Length >= My.Resources.errorMsgTag.Length AndAlso s(i).Substring(0, My.Resources.errorMsgTag.Length) = My.Resources.errorMsgTag Then
+                    res &= s(i) & vbNewLine
                 Else
-                    res &= errTxt & vbNewLine
+                    Dim errTxt As String = "В словаре не хватает записи для " & s(i)
+                    If riseExceptionOnError Then
+                        Throw New Exception(errTxt)
+                    Else
+                        res &= errTxt & vbNewLine
+                    End If
                 End If
             End If
         Next i

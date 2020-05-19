@@ -247,4 +247,7 @@
   <data name="limitRemoveOk" xml:space="preserve">
     <value>#limitremoveok#</value>
   </data>
+  <data name="errorMsgTag" xml:space="preserve">
+    <value>*** </value>
+  </data>
 </root>
