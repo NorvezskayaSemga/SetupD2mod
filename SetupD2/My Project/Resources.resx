@@ -250,4 +250,7 @@
   <data name="errorMsgTag" xml:space="preserve">
     <value>*** </value>
   </data>
+  <data name="noGLWrapperLinks" xml:space="preserve">
+    <value>#noglwrapperlinks#</value>
+  </data>
 </root>

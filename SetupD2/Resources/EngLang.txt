@@ -126,7 +126,9 @@ Failed to copy english sound files:
 ##copytoolserr#
 Failed to copy scripts: 
 ##copyglwrappererr#
-Failed to download or install GL Wrapper: 
+Failed to download or install GL Wrapper:
+##noglwrapperlinks#
+Can't find download links for GL Wrapper
 
 #DmgLimitCheckBox
 Remove units damage limit

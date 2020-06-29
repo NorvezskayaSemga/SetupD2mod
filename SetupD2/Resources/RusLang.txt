@@ -126,7 +126,9 @@ GL Wrapper успешно скачан и установлен
 ##copytoolserr#
 Не получилось скопировать скрипты: 
 ##copyglwrappererr#
-Не получилось скачать или установить GL Wrapper: 
+Не получилось скачать или установить GL Wrapper:
+##noglwrapperlinks#
+Не могу найти ссылки на скачивание GL Wrapper
 
 #DmgLimitCheckBox
 Убрать ограничение урона юнитов

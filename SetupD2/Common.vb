@@ -453,15 +453,30 @@ Public Class DownloadGLWrapper
         'давать ссылку на верка, на случай, если не получится скачать
         downloadStep = 1
         Dim link() As ParseResult = GetLink()
-        If IsNothing(link(0)) Or IsNothing(link(1)) Then Throw New Exception("Не получилось найти ссылки")
+        If IsNothing(link(0)) Or IsNothing(link(1)) Then Throw New Exception(My.Resources.noGLWrapperLinks)
         Dim r(1)() As String
         For k As Integer = 0 To 1 Step 1
             Dim p As String = IO.Path.GetTempPath & link(k).fileName
             downloadStep = 2 + k
             resumeWork = False
             downloader.DownloadFileAsync(link(k).link, p)
+            Dim res As String
             Call WaitDownload()
-            Dim res As String = Extract(p)
+            Dim destination As String = createDestinationFolder(p)
+            If (New IO.FileInfo(p)).Extension.ToLower = ".exe" Then
+                Dim sfx As New ProcessStartInfo
+                sfx.FileName = p
+                sfx.Arguments = "-o""" & destination & """ -y"
+                Dim proc As Process = Process.Start(sfx)
+                proc.WaitForExit()
+                res = destination
+            Else
+                res = Extract(p, destination)
+            End If
+            If res = "" Then
+                r = Nothing
+                Exit For
+            End If
             r(k) = {p, res}
         Next k
         Return r
@@ -495,12 +510,19 @@ Public Class DownloadGLWrapper
         Next i
         Return link
     End Function
-    Private Function Extract(ByRef path As String) As String
+    Private Function createDestinationFolder(ByRef path As String) As String
         Dim destination As String = path & My.Resources.extractedTmpFolder
         If IO.Directory.Exists(destination) Then IO.Directory.Delete(destination, True)
         IO.Directory.CreateDirectory(destination)
-        Call Decompressor.Extract(path, destination)
         Return destination
+    End Function
+    Private Function Extract(ByRef archivePath As String, ByRef destination As String) As String
+        Dim successful As Boolean = Decompressor.Extract(archivePath, destination)
+        If successful Then
+            Return destination
+        Else
+            Return ""
+        End If
     End Function
     Private Sub WaitDownload()
         Do While Not resumeWork

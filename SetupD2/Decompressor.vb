@@ -2,7 +2,7 @@
 
 Public Class Decompressor
 
-    Public Shared Sub Extract(ByRef source As String, ByRef destination As String)
+    Public Shared Function Extract(ByRef source As String, ByRef destination As String) As Boolean
         Dim eo As New SharpCompress.Common.ExtractionOptions With {.ExtractFullPath = True, .Overwrite = True}
         If SharpCompress.Archives.SevenZip.SevenZipArchive.IsSevenZipFile(source) Then
             Using archive As SharpCompress.Archives.SevenZip.SevenZipArchive = SharpCompress.Archives.SevenZip.SevenZipArchive.Open(source)
@@ -28,7 +28,10 @@ Public Class Decompressor
                     If Not entry.IsDirectory Then entry.WriteToDirectory(destination, eo)
                 Next entry
             End Using
+        Else
+            Return False
         End If
-    End Sub
+        Return True
+    End Function
 
 End Class

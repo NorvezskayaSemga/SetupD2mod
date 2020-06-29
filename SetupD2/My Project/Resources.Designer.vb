@@ -370,6 +370,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #noglwrapperlinks#.
+        '''</summary>
+        Friend ReadOnly Property noGLWrapperLinks() As String
+            Get
+                Return ResourceManager.GetString("noGLWrapperLinks", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to #noslangerror#.
         '''</summary>
         Friend ReadOnly Property noSoundLangFound() As String

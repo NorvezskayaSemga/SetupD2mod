@@ -4,6 +4,7 @@
     Public prevForm As SettingsForm
     Public progressList, mapsList As String
     Friend inst As AsynhInstall
+    Friend GLWrapperInstalled As Boolean
 
     Public Sub New(ByRef previous As SettingsForm, ByRef c As Common)
         ' This call is required by the designer.
@@ -84,6 +85,7 @@ Class Installer
                     If IO.Directory.Exists(p) Then IO.Directory.Delete(p, True)
                 Next p
             End If
+            If id = 5 Then myowner.GLWrapperInstalled = True
         End If
     End Sub
     Private Function GetFilesList(ByRef id As Integer, ByRef InstallWorker As AsynhInstall) As List(Of String)()
@@ -140,19 +142,30 @@ Class Installer
             Call AddMsg(My.Resources.copyGLWrapper)
             Call SetProgressLabel(True, InstallWorker, 1)
             Dim dw As New DownloadGLWrapper(InstallWorker.InstallationWorker, myowner.InstallationProgressBar)
-            Dim p()() As String = dw.Download
-            Dim L(UBound(p)), res As List(Of String)
-            res = New List(Of String)
-            ReDim tmpDirs(UBound(p))
-            For k As Integer = 0 To UBound(p) Step 1
-                If IO.File.Exists(p(k)(0)) Then IO.File.Delete(p(k)(0))
-                tmpDirs(k) = p(k)(1)
-                L(k) = DistributiveHandler.GetWrapperFiles(p(k)(1))
-                For Each s As String In L(k)
-                    res.Add(s)
-                Next s
-            Next k
-            Return New List(Of String)() {res, IgnorFiles}
+            Dim p()() As String = Nothing
+            Try
+                p = dw.Download
+            Catch ex As Exception
+                Call AddMsg(My.Resources.copyGLWrapperErr)
+                Call AddMsg(My.Resources.errorMsgTag & ex.Message)
+            End Try
+
+            If Not IsNothing(p) Then
+                Dim L(UBound(p)), res As List(Of String)
+                res = New List(Of String)
+                ReDim tmpDirs(UBound(p))
+                For k As Integer = 0 To UBound(p) Step 1
+                    If IO.File.Exists(p(k)(0)) Then IO.File.Delete(p(k)(0))
+                    tmpDirs(k) = p(k)(1)
+                    L(k) = DistributiveHandler.GetWrapperFiles(p(k)(1))
+                    For Each s As String In L(k)
+                        res.Add(s)
+                    Next s
+                Next k
+                Return New List(Of String)() {res, IgnorFiles}
+            Else
+                Return Nothing
+            End If
         Else
             MsgBox("Invalid id " & id)
             End
@@ -349,6 +362,7 @@ Class Installer
     Private Sub RewriteD2Config()
         Try
             If Not myowner.prevForm.GLWrapperCheckBox.Checked Then Exit Sub
+            If Not myowner.GLWrapperInstalled Then Exit Sub
             Dim f As String = GetDestinationDirectory() & "Disciple.ini"
             If Not IO.File.Exists(f) Then Exit Sub
 
