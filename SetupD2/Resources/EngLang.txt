@@ -83,7 +83,7 @@ Installation progress
 Mod maps
 
 ##nofileserror#
-Can not find mod files
+Can not find mod files. You probably haven't unpacked the mod archive
 ##notlangerror#
 Can not find english interface files
 ##noslangerror#
