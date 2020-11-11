@@ -359,6 +359,9 @@ Public Class DistributiveHandler
         For Each p As String In f
             If IO.File.GetLastWriteTime(p).Year > 2010 Then m.Add(p)
         Next p
+        For Each dll As String In IO.Directory.GetFiles(My.Resources.gameDir, "*.dll")
+            m.Add(dll)
+        Next dll
         Return m
     End Function
     Public Shared Function GetFullVersionFiles() As List(Of String)
