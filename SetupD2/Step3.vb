@@ -72,7 +72,7 @@ Class Installer
         Call MakeAbsentFolders()
         Call AddMsg(My.Resources.completed)
         Call SetProgressLabel(True, InstallWorker, 1)
-        Call RewriteD2Config()
+        Call RewriteD2Config(myowner.prevForm.DmgLimitCheckBox.Checked)
     End Sub
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
                            ByRef InstallWorker As AsynhInstall)
@@ -359,16 +359,35 @@ Class Installer
         Next folder
     End Sub
 
-    Private Sub RewriteD2Config()
+    Private Sub RewriteD2Config(ByRef increaseMaxDamage As Boolean)
         Try
-            If Not myowner.prevForm.GLWrapperCheckBox.Checked Then Exit Sub
-            If Not myowner.GLWrapperInstalled Then Exit Sub
             Dim f As String = GetDestinationDirectory() & "Disciple.ini"
             If Not IO.File.Exists(f) Then Exit Sub
 
             Dim overwrite As New Dictionary(Of String, String)
-            overwrite.Add(("UseD3D").ToUpper, "0")
-            overwrite.Add(("DisplayMode").ToUpper, "1")
+            If myowner.prevForm.GLWrapperCheckBox.Checked And myowner.GLWrapperInstalled Then
+                overwrite.Add(("UseD3D").ToUpper, "0")
+                overwrite.Add(("DisplayMode").ToUpper, "1")
+            End If
+
+            Dim addIfAbsent As New Dictionary(Of String, Integer)
+            Dim maxDmg As Integer
+            If increaseMaxDamage Then
+                maxDmg = 100000
+            Else
+                maxDmg = 300
+            End If
+            addIfAbsent.Add("ShatterDamageMax", 15)
+            addIfAbsent.Add("ShatteredArmorMax", 100)
+            addIfAbsent.Add("UnitMaxDamage", maxDmg)
+            addIfAbsent.Add("UnitMaxArmor", 90)
+            addIfAbsent.Add("StackMaxScoutRange", 99)
+            addIfAbsent.Add("CriticalHitDamage", 5)
+            addIfAbsent.Add("DisplayErrors", 1)
+
+            Dim dSection As String = "[Disciple]".ToUpper
+            Dim dSectionRow As Integer = -1
+
             Dim s() As String = IO.File.ReadAllLines(f)
             Dim delimiter As String = "="
             For i As Integer = 0 To UBound(s) Step 1
@@ -378,7 +397,30 @@ Class Installer
                         s(i) = splited(0) & delimiter & overwrite.Item(splited(0).ToUpper)
                     End If
                 End If
+                If dSectionRow < 0 AndAlso s(i).Length >= dSection.Length Then
+                    If s(i).Trim(CChar(" ")).ToUpper.StartsWith(dSection) Then dSectionRow = i
+                End If
             Next i
+
+            Dim stringExists As Boolean
+            For Each item As String In addIfAbsent.Keys
+                stringExists = False
+                For i As Integer = 0 To UBound(s) Step 1
+                    If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
+                        Dim splited() As String = s(i).Replace(" ", "").Split(CChar(delimiter))
+                        If item.ToUpper = splited(0).ToUpper Then
+                            stringExists = True
+                            Exit For
+                        End If
+                    End If
+                Next i
+                If Not stringExists Then
+                    s(dSectionRow) &= vbNewLine & "; " & comm.StringConversion("comment_" & item.ToLower, False) & _
+                                      vbNewLine & item & " " & delimiter & " " & addIfAbsent.Item(item) & _
+                                      vbNewLine
+                End If
+            Next item
+
             IO.File.WriteAllLines(f, s)
         Catch
         End Try
@@ -451,7 +493,7 @@ Class AsynhInstall
     End Sub
 
     Private Sub WorkComplitedEventHandler() Handles InstallationWorker.RunWorkerCompleted
-        Call comm.ReplaceCode(myowner)
+        'Call comm.ReplaceCode(myowner)
         Call myowner.SaveSettings()
         myowner.InstallationProgressBar.Visible = False
         myowner.ProgressLabel.Visible = False

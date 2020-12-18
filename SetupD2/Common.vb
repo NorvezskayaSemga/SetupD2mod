@@ -184,25 +184,31 @@
         If Not content = "" Then lang.Add(name, content)
     End Sub
 
+    Public Function StringConversion(ByVal str As String, Optional ByRef riseExceptionOnError As Boolean = True) As String
+        Dim res As String
+        str = str.Replace(Chr(10), "")
+        If lang.ContainsKey(str) Then
+            res = lang.Item(str)
+        Else
+            If str.Length >= My.Resources.errorMsgTag.Length AndAlso str.StartsWith(My.Resources.errorMsgTag) Then
+                res = str
+            Else
+                Dim errTxt As String = "В словаре не хватает записи для " & str
+                If riseExceptionOnError Then
+                    Throw New Exception(errTxt)
+                    res = "***error"
+                Else
+                    res = errTxt
+                End If
+            End If
+        End If
+        Return res
+    End Function
     Public Function MultiStringConversion(ByRef str As String, Optional ByRef riseExceptionOnError As Boolean = True) As String
         Dim s() As String = str.Split(CChar(vbNewLine))
         Dim res As String = ""
         For i As Integer = 0 To UBound(s) Step 1
-            s(i) = s(i).Replace(Chr(10), "")
-            If lang.ContainsKey(s(i)) Then
-                res &= lang.Item(s(i)) & vbNewLine
-            Else
-                If s(i).Length >= My.Resources.errorMsgTag.Length AndAlso s(i).Substring(0, My.Resources.errorMsgTag.Length) = My.Resources.errorMsgTag Then
-                    res &= s(i) & vbNewLine
-                Else
-                    Dim errTxt As String = "В словаре не хватает записи для " & s(i)
-                    If riseExceptionOnError Then
-                        Throw New Exception(errTxt)
-                    Else
-                        res &= errTxt & vbNewLine
-                    End If
-                End If
-            End If
+            res &= StringConversion(s(i), riseExceptionOnError) & vbNewLine
         Next i
         Return res.Remove(res.Length - 1)
     End Function
@@ -481,6 +487,7 @@ Public Class DownloadGLWrapper
                 Exit For
             End If
             r(k) = {p, res}
+            If IO.File.Exists(res & "\Imgs\IsoClouds.ff") Then IO.File.Delete(res & "\Imgs\IsoClouds.ff")
         Next k
         Return r
     End Function

@@ -136,3 +136,18 @@ GL Wrapper успешно скачан и установлен
 ќграничение урона юнитов успешно убрано
 ##limitremoveerror#
 Ќе получилось убрать лимит урона: веро€тно, у вас верси€ из Steam или не файла Discipl2.exe
+
+#comment_shatterdamagemax
+максимум разрушени€ брони за удар
+#comment_shatteredarmormax
+максимум суммарного разрушени€ брони юнита
+#comment_unitmaxddamage
+максимальный урон
+#comment_unitmaxarmor
+максимальна€ брон€ юнита
+#comment_stackmaxscoutrange
+максимальный радиус разведки
+#comment_criticalhitdamage
+бонус от крит. удара
+#comment_displayerrors
+показывать текст ошибок
