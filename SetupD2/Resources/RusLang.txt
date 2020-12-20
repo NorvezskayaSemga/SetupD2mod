@@ -141,13 +141,13 @@ GL Wrapper успешно скачан и установлен
 максимум разрушения брони за удар
 #comment_shatteredarmormax
 максимум суммарного разрушения брони юнита
-#comment_unitmaxddamage
-максимальный урон
+#comment_unitmaxdamage
+максимальный урон юнита
 #comment_unitmaxarmor
 максимальная броня юнита
 #comment_stackmaxscoutrange
 максимальный радиус разведки
 #comment_criticalhitdamage
-бонус от крит. удара
+бонус от критического удара
 #comment_displayerrors
 показывать текст ошибок

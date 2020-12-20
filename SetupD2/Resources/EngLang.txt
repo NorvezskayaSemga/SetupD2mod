@@ -136,3 +136,18 @@ Remove units damage limit
 Units damage limit removed successfully
 ##limitremoveerror#
 Failed to remove the damage limit: probably you have a version from Steam or fine Discipl2.exe does not exist
+
+#comment_shatterdamagemax
+Maximum armor shattered by one hit
+#comment_shatteredarmormax
+Maximum armor shatter
+#comment_unitmaxdamage
+Maximum unit damage
+#comment_unitmaxarmor
+Maxmum unit armor
+#comment_stackmaxscoutrange
+Maximum scout radius
+#comment_criticalhitdamage
+Critical hit bonus damage
+#comment_displayerrors
+Display errors text
