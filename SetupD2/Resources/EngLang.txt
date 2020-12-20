@@ -27,7 +27,7 @@ Cancel
 #SelectButton
 Select a folder
 #InfoLabel
-Select a folder to install an already patched game
+Select an empty folder to install an already patched game
 or
 folder with Disciples 2 Rise of the Elves 3.01 from GOG, Russobit-M or Akella.
 Then click "Next"
