@@ -53,7 +53,7 @@ guide by Timur Findme
 If you have problems launching 
 a map or a saga mission,
 you need to use the converter located
-in the Tools folder (ChangeMaxLevel)
+in the Tools folder ((C)sgConverter)
 #HintLabel31
 If you have questions, suggestions
 or just want to say thank you,
