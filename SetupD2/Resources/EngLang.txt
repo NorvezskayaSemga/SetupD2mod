@@ -67,6 +67,10 @@ If an error occurred while downloading GL Wrapper,
 download it from
 #WrapperLinkLabel
 Verok's blog page
+#HintLabel51
+You can chage units damage limit and other settings
+#HintLabel52
+in the Disciples.ini anytime you want
 #FinishButton
 Exit
 #ProgressLabel

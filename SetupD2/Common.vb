@@ -144,6 +144,9 @@
                 Call PlaceLabel(CType(c, InstallForm).HintLabel42, CType(c, InstallForm).HintLabel41, False)
                 Call PlaceLinkLabel(CType(c, InstallForm).WrapperLinkLabel, CType(c, InstallForm).HintLabel42)
 
+                Call PlaceLabel(CType(c, InstallForm).HintLabel51, CType(c, InstallForm).HintLabel42, True)
+                Call PlaceLabel(CType(c, InstallForm).HintLabel52, CType(c, InstallForm).HintLabel51, False)
+
                 For Each item As Control In CType(c, InstallForm).HintPanel.Controls
                     CType(c, InstallForm).HintPanel.Size = New Size(Math.Max(CType(c, InstallForm).HintPanel.Size.Width, item.Location.X + item.Size.Width + 2), _
                                                               Math.Max(CType(c, InstallForm).HintPanel.Size.Height, item.Location.Y + item.Size.Height + 2))
@@ -461,10 +464,16 @@ Public Class DownloadGLWrapper
     Public Function Download() As String()()
         'давать ссылку на верка, на случай, если не получится скачать
         downloadStep = 1
-        Dim link() As ParseResult = GetLink()
-        If IsNothing(link(0)) Or IsNothing(link(1)) Then Throw New Exception(My.Resources.noGLWrapperLinks)
-        Dim r(1)() As String
-        For k As Integer = 0 To 1 Step 1
+        Dim link() As ParseResult = GetLink(True)
+        For i As Integer = 0 To UBound(link) Step 1
+            If IsNothing(link(i)) Then Throw New Exception(My.Resources.noGLWrapperLinks)
+        Next i
+        Dim r(UBound(link))() As String
+        Net.ServicePointManager.SecurityProtocol = CType(3072, Net.SecurityProtocolType) Or _
+                                                   CType(768, Net.SecurityProtocolType) Or _
+                                                   CType(192, Net.SecurityProtocolType) Or _
+                                                   CType(48, Net.SecurityProtocolType)
+        For k As Integer = 0 To UBound(link) Step 1
             Dim p As String = IO.Path.GetTempPath & link(k).fileName
             downloadStep = 2 + k
             resumeWork = False
@@ -492,32 +501,40 @@ Public Class DownloadGLWrapper
         Return r
     End Function
 
-    Private Function GetLink() As ParseResult()
-        Dim blogLink As String = My.Resources.VerokBlog
-        page = ""
-        resumeWork = False
-        downloader.DownloadStringAsync(New System.Uri(blogLink))
-        Call WaitDownload()
-        Dim splited() As String = page.Split(CChar("<"))
-        Dim link() As ParseResult = New ParseResult() {New ParseResult With {.fileName = "", .link = Nothing}, _
-                                                       New ParseResult With {.fileName = "", .link = Nothing}}
-        Dim p, f As String
-        For i As Integer = 0 To UBound(splited) Step 1
-            If splited(i).Contains("Download") Then
-                For k As Integer = 0 To 1 Step 1
-                    Dim j As Integer = i + 4 * (k + 1)
-                    If j <= UBound(splited) AndAlso splited(j).Contains("a href=") Then
-                        p = splited(j).Substring(splited(j).IndexOf("=") + 1)
-                        p = p.Replace("/open?id=", "/uc?id=")
-                        f = p.Substring(p.IndexOf(">") + 1)
-                        p = p.Remove(p.IndexOf(">")).Replace("""", "")
-                        link(k).fileName = f
-                        link(k).link = New System.Uri(p)
-                        If k = 1 Then i = splited.Length
-                    End If
-                Next k
-            End If
-        Next i
+    Private Function GetLink(ByRef fromGit As Boolean) As ParseResult()
+        Dim link() As ParseResult
+        If fromGit Then
+            Dim f As String = "DisciplesGL.7z"
+            link = New ParseResult() {New ParseResult With {.fileName = f, _
+                                                            .link = New System.Uri(My.Resources.VerokGit & f)}, _
+                                      New ParseResult With {.fileName = "Wrapper.zip", _
+                                                            .link = New System.Uri(My.Resources.googleDriveCommon & My.Resources.googleDriveWrapper)}}
+        Else
+            page = ""
+            resumeWork = False
+            downloader.DownloadStringAsync(New System.Uri(My.Resources.VerokBlog))
+            Call WaitDownload()
+            Dim splited() As String = page.Split(CChar("<"))
+            link = New ParseResult() {New ParseResult With {.fileName = "", .link = Nothing}, _
+                                      New ParseResult With {.fileName = "", .link = Nothing}}
+            Dim p, f As String
+            For i As Integer = 0 To UBound(splited) Step 1
+                If splited(i).Contains("Download") Then
+                    For k As Integer = 0 To UBound(link) Step 1
+                        Dim j As Integer = i + 2 * (k + 1)
+                        If j <= UBound(splited) AndAlso splited(j).Contains(" href=") Then
+                            p = splited(j).Substring(splited(j).IndexOf("=") + 1)
+                            p = p.Replace("/open?id=", "/uc?id=")
+                            f = p.Substring(p.IndexOf(">") + 1)
+                            p = p.Remove(p.IndexOf(">")).Replace("""", "")
+                            link(k).fileName = f
+                            link(k).link = New System.Uri(p)
+                            If k = 1 Then i = splited.Length
+                        End If
+                    Next k
+                End If
+            Next i
+        End If
         Return link
     End Function
     Private Function createDestinationFolder(ByRef path As String) As String

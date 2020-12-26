@@ -67,6 +67,10 @@ Eng
 скачайте его со
 #WrapperLinkLabel
 страницы блога Верока
+#HintLabel51
+Ограничение урона и другие настройки
+#HintLabel52
+в любое время можно изменить в Disciples.ini
 #FinishButton
 Выход
 #ProgressLabel

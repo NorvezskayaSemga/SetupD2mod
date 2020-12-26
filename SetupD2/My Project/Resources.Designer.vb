@@ -270,7 +270,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Select a folder
         '''#InfoLabel
-        '''Select a folder to insta [rest of string was truncated]&quot;;.
+        '''Select an empty folder t [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -311,6 +311,24 @@ Namespace My.Resources
         Friend ReadOnly Property gameDir() As String
             Get
                 Return ResourceManager.GetString("gameDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://docs.google.com/uc?export=download&amp;id=.
+        '''</summary>
+        Friend ReadOnly Property googleDriveCommon() As String
+            Get
+                Return ResourceManager.GetString("googleDriveCommon", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 1nUyQTOXCpCV1eguqiR2P8ijJufSmornU.
+        '''</summary>
+        Friend ReadOnly Property googleDriveWrapper() As String
+            Get
+                Return ResourceManager.GetString("googleDriveWrapper", resourceCulture)
             End Get
         End Property
         
@@ -503,6 +521,15 @@ Namespace My.Resources
         Friend ReadOnly Property VerokBlog() As String
             Get
                 Return ResourceManager.GetString("VerokBlog", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://github.com/Verokster/DisciplesGL/raw/master/builds/.
+        '''</summary>
+        Friend ReadOnly Property VerokGit() As String
+            Get
+                Return ResourceManager.GetString("VerokGit", resourceCulture)
             End Get
         End Property
         

@@ -253,4 +253,13 @@
   <data name="noGLWrapperLinks" xml:space="preserve">
     <value>#noglwrapperlinks#</value>
   </data>
+  <data name="googleDriveCommon" xml:space="preserve">
+    <value>https://docs.google.com/uc?export=download&amp;id=</value>
+  </data>
+  <data name="googleDriveWrapper" xml:space="preserve">
+    <value>1nUyQTOXCpCV1eguqiR2P8ijJufSmornU</value>
+  </data>
+  <data name="VerokGit" xml:space="preserve">
+    <value>https://github.com/Verokster/DisciplesGL/raw/master/builds/</value>
+  </data>
 </root>

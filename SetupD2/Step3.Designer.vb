@@ -45,6 +45,8 @@ Partial Class InstallForm
         Me.MapsLabel = New System.Windows.Forms.Label()
         Me.LogLabel = New System.Windows.Forms.Label()
         Me.ModMapsLabel = New System.Windows.Forms.TextBox()
+        Me.HintLabel51 = New System.Windows.Forms.Label()
+        Me.HintLabel52 = New System.Windows.Forms.Label()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
         Me.HintPanel.SuspendLayout()
@@ -114,6 +116,8 @@ Partial Class InstallForm
         '
         'HintPanel
         '
+        Me.HintPanel.Controls.Add(Me.HintLabel52)
+        Me.HintPanel.Controls.Add(Me.HintLabel51)
         Me.HintPanel.Controls.Add(Me.HintLabel42)
         Me.HintPanel.Controls.Add(Me.WrapperLinkLabel)
         Me.HintPanel.Controls.Add(Me.HintLabel41)
@@ -126,7 +130,7 @@ Partial Class InstallForm
         Me.HintPanel.Controls.Add(Me.HintLabel11)
         Me.HintPanel.Location = New System.Drawing.Point(3, 3)
         Me.HintPanel.Name = "HintPanel"
-        Me.HintPanel.Size = New System.Drawing.Size(293, 100)
+        Me.HintPanel.Size = New System.Drawing.Size(293, 153)
         Me.HintPanel.TabIndex = 6
         '
         'HintLabel42
@@ -295,6 +299,26 @@ Partial Class InstallForm
         Me.ModMapsLabel.Size = New System.Drawing.Size(232, 116)
         Me.ModMapsLabel.TabIndex = 16
         '
+        'HintLabel51
+        '
+        Me.HintLabel51.AutoSize = True
+        Me.HintLabel51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel51.Location = New System.Drawing.Point(3, 114)
+        Me.HintLabel51.Name = "HintLabel51"
+        Me.HintLabel51.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel51.TabIndex = 13
+        Me.HintLabel51.Text = "InfoLabel"
+        '
+        'HintLabel52
+        '
+        Me.HintLabel52.AutoSize = True
+        Me.HintLabel52.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel52.Location = New System.Drawing.Point(79, 114)
+        Me.HintLabel52.Name = "HintLabel52"
+        Me.HintLabel52.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel52.TabIndex = 14
+        Me.HintLabel52.Text = "InfoLabel"
+        '
         'InstallForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -342,4 +366,6 @@ Partial Class InstallForm
     Friend WithEvents InstallationProgressBar As System.Windows.Forms.ProgressBar
     Friend WithEvents ModMapsLabel As System.Windows.Forms.TextBox
     Friend WithEvents HintLabel42 As System.Windows.Forms.Label
+    Friend WithEvents HintLabel51 As System.Windows.Forms.Label
+    Friend WithEvents HintLabel52 As System.Windows.Forms.Label
 End Class
