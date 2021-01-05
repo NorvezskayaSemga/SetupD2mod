@@ -44,7 +44,7 @@ Partial Class Main
         Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NextButton.Enabled = False
         Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.NextButton.Location = New System.Drawing.Point(351, 303)
+        Me.NextButton.Location = New System.Drawing.Point(351, 389)
         Me.NextButton.Name = "NextButton"
         Me.NextButton.Size = New System.Drawing.Size(100, 28)
         Me.NextButton.TabIndex = 0
@@ -56,7 +56,7 @@ Partial Class Main
         Me.BackButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BackButton.Enabled = False
         Me.BackButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.BackButton.Location = New System.Drawing.Point(245, 303)
+        Me.BackButton.Location = New System.Drawing.Point(245, 389)
         Me.BackButton.Name = "BackButton"
         Me.BackButton.Size = New System.Drawing.Size(100, 28)
         Me.BackButton.TabIndex = 11
@@ -67,7 +67,7 @@ Partial Class Main
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.CancButton.Location = New System.Drawing.Point(517, 303)
+        Me.CancButton.Location = New System.Drawing.Point(517, 389)
         Me.CancButton.Name = "CancButton"
         Me.CancButton.Size = New System.Drawing.Size(82, 28)
         Me.CancButton.TabIndex = 2
@@ -80,14 +80,14 @@ Partial Class Main
         Me.PictureBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox.Name = "PictureBox"
-        Me.PictureBox.Size = New System.Drawing.Size(236, 336)
+        Me.PictureBox.Size = New System.Drawing.Size(236, 422)
         Me.PictureBox.TabIndex = 3
         Me.PictureBox.TabStop = False
         '
         'SelectTextBox
         '
         Me.SelectTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.SelectTextBox.Location = New System.Drawing.Point(117, 255)
+        Me.SelectTextBox.Location = New System.Drawing.Point(117, 327)
         Me.SelectTextBox.Name = "SelectTextBox"
         Me.SelectTextBox.Size = New System.Drawing.Size(237, 22)
         Me.SelectTextBox.TabIndex = 3
@@ -95,7 +95,7 @@ Partial Class Main
         'SelectButton
         '
         Me.SelectButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.SelectButton.Location = New System.Drawing.Point(3, 252)
+        Me.SelectButton.Location = New System.Drawing.Point(3, 324)
         Me.SelectButton.Name = "SelectButton"
         Me.SelectButton.Size = New System.Drawing.Size(109, 29)
         Me.SelectButton.TabIndex = 2
@@ -106,7 +106,7 @@ Partial Class Main
         '
         Me.InfoLabel.AutoSize = True
         Me.InfoLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.InfoLabel.Location = New System.Drawing.Point(7, 63)
+        Me.InfoLabel.Location = New System.Drawing.Point(7, 135)
         Me.InfoLabel.MaximumSize = New System.Drawing.Size(300, 0)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(63, 16)
@@ -121,7 +121,7 @@ Partial Class Main
         Me.Panel.Controls.Add(Me.SelectTextBox)
         Me.Panel.Location = New System.Drawing.Point(242, 0)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(357, 296)
+        Me.Panel.Size = New System.Drawing.Size(357, 383)
         Me.Panel.TabIndex = 4
         '
         'LangPanel
@@ -159,7 +159,7 @@ Partial Class Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 336)
+        Me.ClientSize = New System.Drawing.Size(611, 422)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.NextButton)

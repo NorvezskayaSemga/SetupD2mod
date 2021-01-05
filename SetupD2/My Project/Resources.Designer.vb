@@ -232,6 +232,51 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #setdifficultymsgerror#.
+        '''</summary>
+        Friend ReadOnly Property DifficultyError() As String
+            Get
+                Return ResourceManager.GetString("DifficultyError", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #setdifficultymsgsuccessfullexpplus#.
+        '''</summary>
+        Friend ReadOnly Property DifficultyExpPlus() As String
+            Get
+                Return ResourceManager.GetString("DifficultyExpPlus", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #setdifficultymsgsuccessfullnormal#.
+        '''</summary>
+        Friend ReadOnly Property DifficultyNormal() As String
+            Get
+                Return ResourceManager.GetString("DifficultyNormal", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #setdifficultymsgunexpectedgai#.
+        '''</summary>
+        Friend ReadOnly Property DifficultyUnexpected() As String
+            Get
+                Return ResourceManager.GetString("DifficultyUnexpected", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #setdifficultymsgsuccessfullvanilla#.
+        '''</summary>
+        Friend ReadOnly Property DifficultyVanilla() As String
+            Get
+                Return ResourceManager.GetString("DifficultyVanilla", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to .\Eng.
         '''</summary>
         Friend ReadOnly Property engFilesDir() As String

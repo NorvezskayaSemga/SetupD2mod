@@ -262,4 +262,19 @@
   <data name="VerokGit" xml:space="preserve">
     <value>https://github.com/Verokster/DisciplesGL/raw/master/builds/</value>
   </data>
+  <data name="DifficultyError" xml:space="preserve">
+    <value>#setdifficultymsgerror#</value>
+  </data>
+  <data name="DifficultyExpPlus" xml:space="preserve">
+    <value>#setdifficultymsgsuccessfullexpplus#</value>
+  </data>
+  <data name="DifficultyNormal" xml:space="preserve">
+    <value>#setdifficultymsgsuccessfullnormal#</value>
+  </data>
+  <data name="DifficultyUnexpected" xml:space="preserve">
+    <value>#setdifficultymsgunexpectedgai#</value>
+  </data>
+  <data name="DifficultyVanilla" xml:space="preserve">
+    <value>#setdifficultymsgsuccessfullvanilla#</value>
+  </data>
 </root>

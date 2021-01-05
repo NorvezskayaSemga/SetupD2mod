@@ -9,6 +9,7 @@
         ' Add any initialization after the InitializeComponent() call.
         comm = c
         prevForm = previous
+        Call SetInterfacePos()
     End Sub
 
     Private Sub meload() Handles Me.Load
@@ -29,6 +30,19 @@
 
     Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
+    End Sub
+
+    Private Sub SetInterfacePos()
+        Dim controls() As Control = {InstallModeLabel, PanelInstallation, TextLangLabel, PanelTextLang, SoundLangLabel, PanelSoundLang, GAILabel, PanelDifficulty, PanelOther}
+        Dim d As Integer
+        For i As Integer = 1 To UBound(controls) Step 1
+            If TypeOf (controls(i - 1)) Is Label Then
+                d = 1
+            Else
+                d = 4
+            End If
+            controls(i).Location = New Point(controls(i - 1).Location.X, controls(i - 1).Location.Y + controls(i - 1).Height + d)
+        Next i
     End Sub
 
 End Class

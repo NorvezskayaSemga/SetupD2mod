@@ -155,3 +155,23 @@ GL Wrapper успешно скачан и установлен
 бонус от критического удара
 #comment_displayerrors
 показывать текст ошибок
+
+#GAILabel
+Настройки сложности
+#VanillaGAIRadioButton
+Немодифицированный ИИ (очень просто)
+#NormalGAIRadioButton
+Обычный ИИ мода (как задумывалось автором)
+#ExpPlusGAIRadioButton
+Exp+ ИИ мода (больше опыта для ИИ и нейтралов)
+
+##setdifficultymsgsuccessfullvanilla#
+Сложность успешно задана: оригинальная
+##setdifficultymsgsuccessfullnormal#
+Сложность успешно задана: нормальная
+##setdifficultymsgsuccessfullexpplus#
+Сложность успешно задана: exp+
+##setdifficultymsgunexpectedgai#
+Выбран неожиданный файл настроек сложности
+##setdifficultymsgerror#
+Произошла ошибка при задании сложности:

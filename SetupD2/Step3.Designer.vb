@@ -29,6 +29,8 @@ Partial Class InstallForm
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
+        Me.HintLabel52 = New System.Windows.Forms.Label()
+        Me.HintLabel51 = New System.Windows.Forms.Label()
         Me.HintLabel42 = New System.Windows.Forms.Label()
         Me.WrapperLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.HintLabel41 = New System.Windows.Forms.Label()
@@ -45,8 +47,6 @@ Partial Class InstallForm
         Me.MapsLabel = New System.Windows.Forms.Label()
         Me.LogLabel = New System.Windows.Forms.Label()
         Me.ModMapsLabel = New System.Windows.Forms.TextBox()
-        Me.HintLabel51 = New System.Windows.Forms.Label()
-        Me.HintLabel52 = New System.Windows.Forms.Label()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
         Me.HintPanel.SuspendLayout()
@@ -60,14 +60,14 @@ Partial Class InstallForm
         Me.Panel.Controls.Add(Me.HintPanel)
         Me.Panel.Location = New System.Drawing.Point(244, 0)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(360, 284)
+        Me.Panel.Size = New System.Drawing.Size(360, 380)
         Me.Panel.TabIndex = 14
         '
         'InstallationProgressBar
         '
         Me.InstallationProgressBar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.InstallationProgressBar.Location = New System.Drawing.Point(9, 256)
+        Me.InstallationProgressBar.Location = New System.Drawing.Point(9, 350)
         Me.InstallationProgressBar.Name = "InstallationProgressBar"
         Me.InstallationProgressBar.Size = New System.Drawing.Size(348, 18)
         Me.InstallationProgressBar.TabIndex = 8
@@ -77,7 +77,7 @@ Partial Class InstallForm
         Me.ProgressLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ProgressLabel.AutoSize = True
         Me.ProgressLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.ProgressLabel.Location = New System.Drawing.Point(6, 237)
+        Me.ProgressLabel.Location = New System.Drawing.Point(6, 331)
         Me.ProgressLabel.Name = "ProgressLabel"
         Me.ProgressLabel.Size = New System.Drawing.Size(49, 16)
         Me.ProgressLabel.TabIndex = 7
@@ -132,6 +132,26 @@ Partial Class InstallForm
         Me.HintPanel.Name = "HintPanel"
         Me.HintPanel.Size = New System.Drawing.Size(293, 153)
         Me.HintPanel.TabIndex = 6
+        '
+        'HintLabel52
+        '
+        Me.HintLabel52.AutoSize = True
+        Me.HintLabel52.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel52.Location = New System.Drawing.Point(79, 114)
+        Me.HintLabel52.Name = "HintLabel52"
+        Me.HintLabel52.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel52.TabIndex = 14
+        Me.HintLabel52.Text = "InfoLabel"
+        '
+        'HintLabel51
+        '
+        Me.HintLabel51.AutoSize = True
+        Me.HintLabel51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HintLabel51.Location = New System.Drawing.Point(3, 114)
+        Me.HintLabel51.Name = "HintLabel51"
+        Me.HintLabel51.Size = New System.Drawing.Size(63, 16)
+        Me.HintLabel51.TabIndex = 13
+        Me.HintLabel51.Text = "InfoLabel"
         '
         'HintLabel42
         '
@@ -241,7 +261,7 @@ Partial Class InstallForm
         Me.FinishButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FinishButton.Enabled = False
         Me.FinishButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.FinishButton.Location = New System.Drawing.Point(323, 300)
+        Me.FinishButton.Location = New System.Drawing.Point(323, 386)
         Me.FinishButton.Name = "FinishButton"
         Me.FinishButton.Size = New System.Drawing.Size(66, 24)
         Me.FinishButton.TabIndex = 10
@@ -252,7 +272,7 @@ Partial Class InstallForm
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.CancButton.Location = New System.Drawing.Point(542, 300)
+        Me.CancButton.Location = New System.Drawing.Point(542, 386)
         Me.CancButton.Name = "CancButton"
         Me.CancButton.Size = New System.Drawing.Size(66, 24)
         Me.CancButton.TabIndex = 12
@@ -296,34 +316,14 @@ Partial Class InstallForm
         Me.ModMapsLabel.Multiline = True
         Me.ModMapsLabel.Name = "ModMapsLabel"
         Me.ModMapsLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.ModMapsLabel.Size = New System.Drawing.Size(232, 116)
+        Me.ModMapsLabel.Size = New System.Drawing.Size(232, 202)
         Me.ModMapsLabel.TabIndex = 16
-        '
-        'HintLabel51
-        '
-        Me.HintLabel51.AutoSize = True
-        Me.HintLabel51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.HintLabel51.Location = New System.Drawing.Point(3, 114)
-        Me.HintLabel51.Name = "HintLabel51"
-        Me.HintLabel51.Size = New System.Drawing.Size(63, 16)
-        Me.HintLabel51.TabIndex = 13
-        Me.HintLabel51.Text = "InfoLabel"
-        '
-        'HintLabel52
-        '
-        Me.HintLabel52.AutoSize = True
-        Me.HintLabel52.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.HintLabel52.Location = New System.Drawing.Point(79, 114)
-        Me.HintLabel52.Name = "HintLabel52"
-        Me.HintLabel52.Size = New System.Drawing.Size(63, 16)
-        Me.HintLabel52.TabIndex = 14
-        Me.HintLabel52.Text = "InfoLabel"
         '
         'InstallForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 336)
+        Me.ClientSize = New System.Drawing.Size(611, 422)
         Me.Controls.Add(Me.LogLabel)
         Me.Controls.Add(Me.MapsLabel)
         Me.Controls.Add(Me.ModMapsLabel)

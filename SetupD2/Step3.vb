@@ -70,9 +70,10 @@ Class Installer
             Call CopyFolder(IsError, skipCopy, id, InstallWorker)
         Next id
         Call MakeAbsentFolders()
+        Call SetDifficulty()
+        Call RewriteD2Config(myowner.prevForm.DmgLimitCheckBox.Checked)
         Call AddMsg(My.Resources.completed)
         Call SetProgressLabel(True, InstallWorker, 1)
-        Call RewriteD2Config(myowner.prevForm.DmgLimitCheckBox.Checked)
     End Sub
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _
                            ByRef InstallWorker As AsynhInstall)
@@ -325,6 +326,37 @@ Class Installer
         End If
         Return rootfolder & dest
     End Function
+
+    Private Sub SetDifficulty()
+        Try
+            Dim source, destination, wdir As String
+            wdir = GetDestinationDirectory() & "Globals\"
+            destination = "GAI.dbf"
+            If myowner.prevForm.VanillaGAIRadioButton.Checked Then
+                source = "GAI_vanilla.dbf"
+            ElseIf myowner.prevForm.NormalGAIRadioButton.Checked Then
+                source = "GAI_normal.dbf"
+            ElseIf myowner.prevForm.ExpPlusGAIRadioButton.Checked Then
+                source = "GAI_exp+.dbf"
+            Else
+                Throw New Exception(My.Resources.DifficultyUnexpected)
+            End If
+            IO.File.Copy(wdir & source, wdir & destination, True)
+            If myowner.prevForm.VanillaGAIRadioButton.Checked Then
+                Call AddMsg(My.Resources.DifficultyVanilla)
+            ElseIf myowner.prevForm.NormalGAIRadioButton.Checked Then
+                Call AddMsg(My.Resources.DifficultyNormal)
+            ElseIf myowner.prevForm.ExpPlusGAIRadioButton.Checked Then
+                Call AddMsg(My.Resources.DifficultyExpPlus)
+            Else
+                Throw New Exception(My.Resources.DifficultyUnexpected)
+            End If
+        Catch ex As Exception
+            Call AddMsg(My.Resources.DifficultyError)
+            Call AddMsg(My.Resources.errorMsgTag & ex.Message)
+        End Try
+
+    End Sub
 
     Private Sub CopyFile(ByRef source As String, ByRef destination As String)
         Dim s() As String = destination.Split(CChar("\"))

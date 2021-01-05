@@ -155,3 +155,23 @@ Maximum scout radius
 Critical hit bonus damage
 #comment_displayerrors
 Display errors text
+
+#GAILabel
+Difficulty settings
+#VanillaGAIRadioButton
+Unmodified AI (very easy)
+#NormalGAIRadioButton
+Normal mod AI (as intended by the author)
+#ExpPlusGAIRadioButton
+Exp+ mod AI (more experience for AI and neutrals)
+
+##setdifficultymsgsuccessfullvanilla#
+Difficulty set successfully: original
+##setdifficultymsgsuccessfullnormal#
+Difficulty set successfully: normal
+##setdifficultymsgsuccessfullexpplus#
+Difficulty set successfully: exp+
+##setdifficultymsgunexpectedgai#
+Unexpected difficulty settings file selected
+##setdifficultymsgerror#
+An error occurred while setting the difficulty:

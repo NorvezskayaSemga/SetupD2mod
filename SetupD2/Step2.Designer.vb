@@ -26,40 +26,46 @@ Partial Class SettingsForm
         Me.BackButton = New System.Windows.Forms.Button()
         Me.PictureBox = New System.Windows.Forms.PictureBox()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.GAILabel = New System.Windows.Forms.Label()
+        Me.PanelDifficulty = New System.Windows.Forms.Panel()
+        Me.ExpPlusGAIRadioButton = New System.Windows.Forms.RadioButton()
+        Me.NormalGAIRadioButton = New System.Windows.Forms.RadioButton()
+        Me.VanillaGAIRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.SoundLangLabel = New System.Windows.Forms.Label()
-        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.PanelSoundLang = New System.Windows.Forms.Panel()
         Me.EnSoundRadioButton = New System.Windows.Forms.RadioButton()
         Me.RuSoundRadioButton = New System.Windows.Forms.RadioButton()
         Me.TextLangLabel = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PanelTextLang = New System.Windows.Forms.Panel()
         Me.EnTextRadioButton = New System.Windows.Forms.RadioButton()
         Me.RuTextRadioButton = New System.Windows.Forms.RadioButton()
-        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.PanelOther = New System.Windows.Forms.Panel()
         Me.DmgLimitCheckBox = New System.Windows.Forms.CheckBox()
         Me.ToolsCheckBox = New System.Windows.Forms.CheckBox()
         Me.GLWrapperCheckBox = New System.Windows.Forms.CheckBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.PanelInstallation = New System.Windows.Forms.Panel()
         Me.PatchRadioButton = New System.Windows.Forms.RadioButton()
         Me.InstallRadioButton = New System.Windows.Forms.RadioButton()
         Me.InstallModeLabel = New System.Windows.Forms.Label()
         Me.InstallButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel.SuspendLayout()
+        Me.PanelDifficulty.SuspendLayout()
         Me.LangPanel.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel4.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.PanelSoundLang.SuspendLayout()
+        Me.PanelTextLang.SuspendLayout()
+        Me.PanelOther.SuspendLayout()
+        Me.PanelInstallation.SuspendLayout()
         Me.SuspendLayout()
         '
         'CancButton
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.CancButton.Location = New System.Drawing.Point(456, 300)
+        Me.CancButton.Location = New System.Drawing.Point(456, 411)
         Me.CancButton.Name = "CancButton"
         Me.CancButton.Size = New System.Drawing.Size(66, 24)
         Me.CancButton.TabIndex = 7
@@ -70,7 +76,7 @@ Partial Class SettingsForm
         '
         Me.BackButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BackButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.BackButton.Location = New System.Drawing.Point(249, 300)
+        Me.BackButton.Location = New System.Drawing.Point(249, 411)
         Me.BackButton.Name = "BackButton"
         Me.BackButton.Size = New System.Drawing.Size(66, 24)
         Me.BackButton.TabIndex = 6
@@ -82,24 +88,78 @@ Partial Class SettingsForm
         Me.PictureBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox.Name = "PictureBox"
-        Me.PictureBox.Size = New System.Drawing.Size(236, 336)
+        Me.PictureBox.Size = New System.Drawing.Size(236, 447)
         Me.PictureBox.TabIndex = 8
         Me.PictureBox.TabStop = False
         '
         'Panel
         '
+        Me.Panel.Controls.Add(Me.GAILabel)
+        Me.Panel.Controls.Add(Me.PanelDifficulty)
         Me.Panel.Controls.Add(Me.LangPanel)
         Me.Panel.Controls.Add(Me.SoundLangLabel)
-        Me.Panel.Controls.Add(Me.Panel5)
+        Me.Panel.Controls.Add(Me.PanelSoundLang)
         Me.Panel.Controls.Add(Me.TextLangLabel)
-        Me.Panel.Controls.Add(Me.Panel2)
-        Me.Panel.Controls.Add(Me.Panel4)
-        Me.Panel.Controls.Add(Me.Panel3)
+        Me.Panel.Controls.Add(Me.PanelTextLang)
+        Me.Panel.Controls.Add(Me.PanelOther)
+        Me.Panel.Controls.Add(Me.PanelInstallation)
         Me.Panel.Controls.Add(Me.InstallModeLabel)
         Me.Panel.Location = New System.Drawing.Point(242, 0)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(360, 301)
+        Me.Panel.Size = New System.Drawing.Size(360, 405)
         Me.Panel.TabIndex = 9
+        '
+        'GAILabel
+        '
+        Me.GAILabel.AutoSize = True
+        Me.GAILabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.GAILabel.Location = New System.Drawing.Point(5, 230)
+        Me.GAILabel.Name = "GAILabel"
+        Me.GAILabel.Size = New System.Drawing.Size(63, 16)
+        Me.GAILabel.TabIndex = 9
+        Me.GAILabel.Text = "InfoLabel"
+        '
+        'PanelDifficulty
+        '
+        Me.PanelDifficulty.Controls.Add(Me.ExpPlusGAIRadioButton)
+        Me.PanelDifficulty.Controls.Add(Me.NormalGAIRadioButton)
+        Me.PanelDifficulty.Controls.Add(Me.VanillaGAIRadioButton)
+        Me.PanelDifficulty.Location = New System.Drawing.Point(4, 256)
+        Me.PanelDifficulty.Name = "PanelDifficulty"
+        Me.PanelDifficulty.Size = New System.Drawing.Size(306, 70)
+        Me.PanelDifficulty.TabIndex = 7
+        '
+        'ExpPlusGAIRadioButton
+        '
+        Me.ExpPlusGAIRadioButton.AutoSize = True
+        Me.ExpPlusGAIRadioButton.Location = New System.Drawing.Point(3, 49)
+        Me.ExpPlusGAIRadioButton.Name = "ExpPlusGAIRadioButton"
+        Me.ExpPlusGAIRadioButton.Size = New System.Drawing.Size(282, 17)
+        Me.ExpPlusGAIRadioButton.TabIndex = 7
+        Me.ExpPlusGAIRadioButton.Text = "Use exp+ mod AI (more experience for AI and neutrals)"
+        Me.ExpPlusGAIRadioButton.UseVisualStyleBackColor = True
+        '
+        'NormalGAIRadioButton
+        '
+        Me.NormalGAIRadioButton.AutoSize = True
+        Me.NormalGAIRadioButton.Checked = True
+        Me.NormalGAIRadioButton.Location = New System.Drawing.Point(4, 26)
+        Me.NormalGAIRadioButton.Name = "NormalGAIRadioButton"
+        Me.NormalGAIRadioButton.Size = New System.Drawing.Size(243, 17)
+        Me.NormalGAIRadioButton.TabIndex = 6
+        Me.NormalGAIRadioButton.TabStop = True
+        Me.NormalGAIRadioButton.Text = "Use normal mod AI (as intended by the author)"
+        Me.NormalGAIRadioButton.UseVisualStyleBackColor = True
+        '
+        'VanillaGAIRadioButton
+        '
+        Me.VanillaGAIRadioButton.AutoSize = True
+        Me.VanillaGAIRadioButton.Location = New System.Drawing.Point(4, 3)
+        Me.VanillaGAIRadioButton.Name = "VanillaGAIRadioButton"
+        Me.VanillaGAIRadioButton.Size = New System.Drawing.Size(144, 17)
+        Me.VanillaGAIRadioButton.TabIndex = 5
+        Me.VanillaGAIRadioButton.Text = "Use vanilla AI (very easy)"
+        Me.VanillaGAIRadioButton.UseVisualStyleBackColor = True
         '
         'LangPanel
         '
@@ -142,14 +202,14 @@ Partial Class SettingsForm
         Me.SoundLangLabel.TabIndex = 7
         Me.SoundLangLabel.Text = "InfoLabel"
         '
-        'Panel5
+        'PanelSoundLang
         '
-        Me.Panel5.Controls.Add(Me.EnSoundRadioButton)
-        Me.Panel5.Controls.Add(Me.RuSoundRadioButton)
-        Me.Panel5.Location = New System.Drawing.Point(4, 168)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(306, 51)
-        Me.Panel5.TabIndex = 5
+        Me.PanelSoundLang.Controls.Add(Me.EnSoundRadioButton)
+        Me.PanelSoundLang.Controls.Add(Me.RuSoundRadioButton)
+        Me.PanelSoundLang.Location = New System.Drawing.Point(4, 168)
+        Me.PanelSoundLang.Name = "PanelSoundLang"
+        Me.PanelSoundLang.Size = New System.Drawing.Size(306, 51)
+        Me.PanelSoundLang.TabIndex = 5
         '
         'EnSoundRadioButton
         '
@@ -183,14 +243,14 @@ Partial Class SettingsForm
         Me.TextLangLabel.TabIndex = 5
         Me.TextLangLabel.Text = "InfoLabel"
         '
-        'Panel2
+        'PanelTextLang
         '
-        Me.Panel2.Controls.Add(Me.EnTextRadioButton)
-        Me.Panel2.Controls.Add(Me.RuTextRadioButton)
-        Me.Panel2.Location = New System.Drawing.Point(4, 95)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(306, 51)
-        Me.Panel2.TabIndex = 4
+        Me.PanelTextLang.Controls.Add(Me.EnTextRadioButton)
+        Me.PanelTextLang.Controls.Add(Me.RuTextRadioButton)
+        Me.PanelTextLang.Location = New System.Drawing.Point(4, 95)
+        Me.PanelTextLang.Name = "PanelTextLang"
+        Me.PanelTextLang.Size = New System.Drawing.Size(306, 51)
+        Me.PanelTextLang.TabIndex = 4
         '
         'EnTextRadioButton
         '
@@ -214,15 +274,15 @@ Partial Class SettingsForm
         Me.RuTextRadioButton.Text = "Русский"
         Me.RuTextRadioButton.UseVisualStyleBackColor = True
         '
-        'Panel4
+        'PanelOther
         '
-        Me.Panel4.Controls.Add(Me.DmgLimitCheckBox)
-        Me.Panel4.Controls.Add(Me.ToolsCheckBox)
-        Me.Panel4.Controls.Add(Me.GLWrapperCheckBox)
-        Me.Panel4.Location = New System.Drawing.Point(4, 225)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(306, 70)
-        Me.Panel4.TabIndex = 6
+        Me.PanelOther.Controls.Add(Me.DmgLimitCheckBox)
+        Me.PanelOther.Controls.Add(Me.ToolsCheckBox)
+        Me.PanelOther.Controls.Add(Me.GLWrapperCheckBox)
+        Me.PanelOther.Location = New System.Drawing.Point(4, 332)
+        Me.PanelOther.Name = "PanelOther"
+        Me.PanelOther.Size = New System.Drawing.Size(306, 70)
+        Me.PanelOther.TabIndex = 6
         '
         'DmgLimitCheckBox
         '
@@ -260,14 +320,14 @@ Partial Class SettingsForm
         Me.GLWrapperCheckBox.Text = "Try to download and install Verok's GL Wrapper"
         Me.GLWrapperCheckBox.UseVisualStyleBackColor = True
         '
-        'Panel3
+        'PanelInstallation
         '
-        Me.Panel3.Controls.Add(Me.PatchRadioButton)
-        Me.Panel3.Controls.Add(Me.InstallRadioButton)
-        Me.Panel3.Location = New System.Drawing.Point(4, 22)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(306, 51)
-        Me.Panel3.TabIndex = 3
+        Me.PanelInstallation.Controls.Add(Me.PatchRadioButton)
+        Me.PanelInstallation.Controls.Add(Me.InstallRadioButton)
+        Me.PanelInstallation.Location = New System.Drawing.Point(4, 22)
+        Me.PanelInstallation.Name = "PanelInstallation"
+        Me.PanelInstallation.Size = New System.Drawing.Size(306, 51)
+        Me.PanelInstallation.TabIndex = 3
         '
         'PatchRadioButton
         '
@@ -305,7 +365,7 @@ Partial Class SettingsForm
         '
         Me.InstallButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InstallButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.InstallButton.Location = New System.Drawing.Point(348, 300)
+        Me.InstallButton.Location = New System.Drawing.Point(348, 411)
         Me.InstallButton.Name = "InstallButton"
         Me.InstallButton.Size = New System.Drawing.Size(66, 24)
         Me.InstallButton.TabIndex = 0
@@ -316,7 +376,7 @@ Partial Class SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 336)
+        Me.ClientSize = New System.Drawing.Size(611, 447)
         Me.Controls.Add(Me.InstallButton)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.PictureBox)
@@ -327,16 +387,18 @@ Partial Class SettingsForm
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
+        Me.PanelDifficulty.ResumeLayout(False)
+        Me.PanelDifficulty.PerformLayout()
         Me.LangPanel.ResumeLayout(False)
         Me.LangPanel.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        Me.PanelSoundLang.ResumeLayout(False)
+        Me.PanelSoundLang.PerformLayout()
+        Me.PanelTextLang.ResumeLayout(False)
+        Me.PanelTextLang.PerformLayout()
+        Me.PanelOther.ResumeLayout(False)
+        Me.PanelOther.PerformLayout()
+        Me.PanelInstallation.ResumeLayout(False)
+        Me.PanelInstallation.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -344,16 +406,16 @@ Partial Class SettingsForm
     Friend WithEvents BackButton As System.Windows.Forms.Button
     Friend WithEvents PictureBox As System.Windows.Forms.PictureBox
     Friend WithEvents Panel As System.Windows.Forms.Panel
-    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents PanelOther As System.Windows.Forms.Panel
+    Friend WithEvents PanelInstallation As System.Windows.Forms.Panel
     Friend WithEvents PatchRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents InstallRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents SoundLangLabel As System.Windows.Forms.Label
-    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents PanelSoundLang As System.Windows.Forms.Panel
     Friend WithEvents EnSoundRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents RuSoundRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents TextLangLabel As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents PanelTextLang As System.Windows.Forms.Panel
     Friend WithEvents EnTextRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents RuTextRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents ToolsCheckBox As System.Windows.Forms.CheckBox
@@ -364,4 +426,9 @@ Partial Class SettingsForm
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents DmgLimitCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents InstallModeLabel As System.Windows.Forms.Label
+    Friend WithEvents PanelDifficulty As System.Windows.Forms.Panel
+    Friend WithEvents ExpPlusGAIRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents NormalGAIRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents VanillaGAIRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents GAILabel As System.Windows.Forms.Label
 End Class
