@@ -277,4 +277,10 @@
   <data name="DifficultyVanilla" xml:space="preserve">
     <value>#setdifficultymsgsuccessfullvanilla#</value>
   </data>
+  <data name="IfYouHaveProblemsMsg" xml:space="preserve">
+    <value>#ifyouhaveproblems#</value>
+  </data>
+  <data name="LinesDelimiter" xml:space="preserve">
+    <value>#linesdelimiter#</value>
+  </data>
 </root>

@@ -109,6 +109,10 @@ Copying scripts
 Trying to download GL Wrapper
 ##completed#
 Installation completed
+##linesdelimiter#
+-------
+##ifyouhaveproblems#
+If you have any problems during installation (strange message from Windows after installation does not count), you can easily install the mod manually following the instructions in Readme\Eng\How to install.txt
 
 ##copyfilesok#
 Mod files have been copied successfully

@@ -73,6 +73,8 @@ Class Installer
         Call SetDifficulty()
         Call RewriteD2Config(myowner.prevForm.DmgLimitCheckBox.Checked)
         Call AddMsg(My.Resources.completed)
+        Call AddMsg(My.Resources.LinesDelimiter)
+        Call AddMsg(My.Resources.IfYouHaveProblemsMsg)
         Call SetProgressLabel(True, InstallWorker, 1)
     End Sub
     Private Sub CopyFolder(ByRef IsError As Boolean, ByRef skipCopy As Boolean, ByRef id As Integer, _

@@ -378,6 +378,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to #ifyouhaveproblems#.
+        '''</summary>
+        Friend ReadOnly Property IfYouHaveProblemsMsg() As String
+            Get
+                Return ResourceManager.GetString("IfYouHaveProblemsMsg", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Links#SaveGame#ScreenShots#Discipl2.exe.crash.txt.
         '''</summary>
         Friend ReadOnly Property IgnoreIOItem() As String
@@ -401,6 +410,15 @@ Namespace My.Resources
         Friend ReadOnly Property limitRemoveOk() As String
             Get
                 Return ResourceManager.GetString("limitRemoveOk", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #linesdelimiter#.
+        '''</summary>
+        Friend ReadOnly Property LinesDelimiter() As String
+            Get
+                Return ResourceManager.GetString("LinesDelimiter", resourceCulture)
             End Get
         End Property
         
