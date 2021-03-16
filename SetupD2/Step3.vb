@@ -158,7 +158,15 @@ Class Installer
                 res = New List(Of String)
                 ReDim tmpDirs(UBound(p))
                 For k As Integer = 0 To UBound(p) Step 1
-                    If IO.File.Exists(p(k)(0)) Then IO.File.Delete(p(k)(0))
+                    If IO.File.Exists(p(k)(0)) Then
+                        Try
+                            IO.File.Delete(p(k)(0))
+                        Catch ex As UnauthorizedAccessException
+                            Console.WriteLine(ex.Message)
+                        Catch ex As Exception
+                            Throw ex
+                        End Try
+                    End If
                     tmpDirs(k) = p(k)(1)
                     L(k) = DistributiveHandler.GetWrapperFiles(p(k)(1))
                     For Each s As String In L(k)
