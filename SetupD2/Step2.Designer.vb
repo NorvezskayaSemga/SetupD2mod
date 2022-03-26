@@ -126,7 +126,7 @@ Partial Class SettingsForm
         Me.PanelDifficulty.Controls.Add(Me.VanillaGAIRadioButton)
         Me.PanelDifficulty.Location = New System.Drawing.Point(4, 256)
         Me.PanelDifficulty.Name = "PanelDifficulty"
-        Me.PanelDifficulty.Size = New System.Drawing.Size(306, 70)
+        Me.PanelDifficulty.Size = New System.Drawing.Size(353, 70)
         Me.PanelDifficulty.TabIndex = 7
         '
         'ExpPlusGAIRadioButton
@@ -281,7 +281,7 @@ Partial Class SettingsForm
         Me.PanelOther.Controls.Add(Me.GLWrapperCheckBox)
         Me.PanelOther.Location = New System.Drawing.Point(4, 332)
         Me.PanelOther.Name = "PanelOther"
-        Me.PanelOther.Size = New System.Drawing.Size(306, 70)
+        Me.PanelOther.Size = New System.Drawing.Size(353, 70)
         Me.PanelOther.TabIndex = 6
         '
         'DmgLimitCheckBox

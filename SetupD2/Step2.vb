@@ -1,5 +1,7 @@
 ﻿Public Class SettingsForm
 
+    Public Const EnableGLWrapper As Boolean = False
+
     Private comm As Common
     Public prevForm As Main
 
@@ -14,8 +16,8 @@
 
     Private Sub meload() Handles Me.Load
         Call comm.actOnLoad(Me, CType(prevForm, Form))
-        GLWrapperCheckBox.Checked = False
-        GLWrapperCheckBox.Enabled = False
+        GLWrapperCheckBox.Checked = EnableGLWrapper
+        GLWrapperCheckBox.Enabled = EnableGLWrapper
     End Sub
     Private Sub goNext() Handles InstallButton.Click
         Call comm.goNext(New InstallForm(Me, comm))

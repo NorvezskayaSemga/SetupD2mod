@@ -18,6 +18,9 @@
     Private Sub meload() Handles Me.Load
         Call comm.actOnLoad(Me, CType(prevForm, Form))
         inst.InstallationWorker.RunWorkerAsync()
+        HintLabel41.Visible = SettingsForm.EnableGLWrapper
+        HintLabel42.Visible = SettingsForm.EnableGLWrapper
+        WrapperLinkLabel.Visible = SettingsForm.EnableGLWrapper
     End Sub
     Private Sub finishInstall() Handles FinishButton.Click
         End
