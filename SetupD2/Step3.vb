@@ -430,6 +430,51 @@ Class RewriteSettings
         'criticalHitDamage
         'criticalHitChance
         '
+        Try
+            Dim f As String = destinationDirectory & "Disciple.ini"
+            If Not IO.File.Exists(f) Then Exit Sub
+
+            Dim overwrite As New Dictionary(Of String, String)
+            If True Or (myowner.prevForm.GLWrapperCheckBox.Checked And myowner.GLWrapperInstalled) Then
+                overwrite.Add(("UseD3D").ToUpper, "0")
+                overwrite.Add(("DisplayMode").ToUpper, "1")
+            End If
+            Dim s() As String = IO.File.ReadAllLines(f)
+            Dim delimiter As String = "="
+            Dim k As String
+            For i As Integer = 0 To UBound(s) Step 1
+                If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
+                    Dim splited() As String = s(i).Split(CChar(delimiter))
+                    k = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
+                    If overwrite.ContainsKey(k) Then
+                        s(i) = splited(0) & delimiter & overwrite.Item(k)
+                    End If
+                End If
+            Next i
+            IO.File.WriteAllLines(f, s)
+
+            f = destinationDirectory & "Scripts\settings.lua"
+            If Not IO.File.Exists(f) Then Exit Sub
+            s = IO.File.ReadAllLines(f)
+            overwrite.Clear()
+            
+            overwrite.Add(("carryOverItemsMax").ToUpper, myowner.prevForm.carryOverItemsMaxTextBox.Text)
+            overwrite.Add(("unitMaxDamage").ToUpper, myowner.prevForm.unitMaxDamageTextBox.Text)
+            overwrite.Add(("criticalHitDamage").ToUpper, myowner.prevForm.criticalHitDamageTextBox.Text)
+            overwrite.Add(("criticalHitChance").ToUpper, myowner.prevForm.criticalHitChanceTextBox.Text)
+
+            For i As Integer = 0 To UBound(s) Step 1
+                If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
+                    Dim splited() As String = s(i).Split(CChar(delimiter))
+                    k = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
+                    If overwrite.ContainsKey(k) Then
+                        s(i) = splited(0) & delimiter & " " & overwrite.Item(k) & ","
+                    End If
+                End If
+            Next i
+            IO.File.WriteAllLines(f, s)
+        Catch
+        End Try
     End Sub
 
     Private Sub DiscipleIni()
@@ -465,8 +510,8 @@ Class RewriteSettings
             Dim delimiter As String = "="
             For i As Integer = 0 To UBound(s) Step 1
                 If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
-                    Dim splited() As String = s(i).Replace(" ", "").Split(CChar(delimiter))
-                    If overwrite.ContainsKey(splited(0).ToUpper) Then
+                    Dim splited() As String = s(i).Split(CChar(delimiter))
+                    If overwrite.ContainsKey(splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper) Then
                         s(i) = splited(0) & delimiter & overwrite.Item(splited(0).ToUpper)
                     End If
                 End If
@@ -480,8 +525,8 @@ Class RewriteSettings
                 stringExists = False
                 For i As Integer = 0 To UBound(s) Step 1
                     If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
-                        Dim splited() As String = s(i).Replace(" ", "").Split(CChar(delimiter))
-                        If item.ToUpper = splited(0).ToUpper Then
+                        Dim splited() As String = s(i).Split(CChar(delimiter))
+                        If item.ToUpper = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper Then
                             stringExists = True
                             Exit For
                         End If
