@@ -131,9 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Step2.resx">
       <DependentUpon>Step2.vb</DependentUpon>
@@ -154,6 +154,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\imusic" />
     <None Include="Resources\RusLang.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,8 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\SFXProjectFiles.txt" />
+    <None Include="Resources\menutrck" />
     <Content Include="Resources\semga.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

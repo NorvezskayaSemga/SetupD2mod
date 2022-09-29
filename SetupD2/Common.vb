@@ -75,6 +75,10 @@
         For Each item As Control In current.Controls
             If TypeOf item Is Panel Then
                 Call LoadRegistryControlSettings(item)
+            ElseIf TypeOf item Is TabControl Then
+                For Each page As TabPage In CType(item, TabControl).TabPages
+                    Call LoadRegistryControlSettings(page.Controls(0))
+                Next page
             Else
                 Call settings.ReadSetting(item)
             End If
@@ -84,6 +88,10 @@
         For Each item As Control In current.Controls
             If TypeOf item Is Panel Then
                 Call SaveRegistryControlSettings(item, IgnoreNames)
+            ElseIf TypeOf item Is TabControl Then
+                For Each page As TabPage In CType(item, TabControl).TabPages
+                    Call SaveRegistryControlSettings(page.Controls(0), IgnoreNames)
+                Next page
             Else
                 Call settings.WriteSettings(item, IgnoreNames)
             End If
@@ -127,6 +135,10 @@
                 Dim msg As String = CType(item.Parent, InstallForm).progressList
                 If msg = "" Then msg = item.Name
                 item.Text = MultiStringConversion(msg)
+            ElseIf TypeOf item Is TabControl Then
+                For Each page As TabPage In CType(item, TabControl).TabPages
+                    Call SetLang(page.Controls(0), LangRButton)
+                Next page
             End If
         Next item
         If TypeOf c Is InstallForm Then
@@ -361,7 +373,7 @@ Public Class DistributiveHandler
         Return v
     End Function
 
-    Public Shared Function GetModFiles() As List(Of String)
+    Public Shared Function GetModFiles(ByRef settings As SettingsForm) As List(Of String)
         Dim f, m As New List(Of String)
         Dim ig As List(Of String) = IgnoreList()
         Call GetFolderFiles(f, ig, True, My.Resources.gameDir)
@@ -371,13 +383,13 @@ Public Class DistributiveHandler
         For Each dll As String In IO.Directory.GetFiles(My.Resources.gameDir, "*.dll")
             m.Add(dll)
         Next dll
-        Return m
+        Return SFXProjectFilesFilter(m, settings)
     End Function
-    Public Shared Function GetFullVersionFiles() As List(Of String)
+    Public Shared Function GetFullVersionFiles(ByRef settings As SettingsForm) As List(Of String)
         Dim f As New List(Of String)
         Dim ig As List(Of String) = IgnoreList()
         Call GetFolderFiles(f, ig, False, My.Resources.gameDir)
-        Return f
+        Return SFXProjectFilesFilter(f, settings)
     End Function
     Public Shared Function GetEngFiles(ByRef text As Boolean) As List(Of String)
         Dim f, r As New List(Of String)
@@ -411,6 +423,37 @@ Public Class DistributiveHandler
         Call GetFolderFiles(f, New List(Of String), False, path)
         Return f
     End Function
+    Public Shared Function SFXProjectFilesFilter(ByRef list As List(Of String), ByRef settings As SettingsForm) As List(Of String)
+        If settings.SFXProjectCheckBox.Checked Then Return list
+        Dim sfx, filtered As New List(Of String)
+        For Each t In My.Resources.SFXProjectFiles.Split({Chr(10), Chr(13)})
+            If t.Length > 1 Then sfx.Add(t.ToLower)
+        Next t
+        Dim remove As Boolean
+        For Each p As String In list
+            remove = False
+            For Each f As String In sfx
+                If p.ToLower.EndsWith("\music\" & f) Then
+                    remove = True
+                    Exit For
+                End If
+            Next f
+            If Not remove Then filtered.Add(p)
+        Next p
+        Return filtered
+    End Function
+    Public Shared Sub CompleteSFXProjectRemove(ByRef f As InstallForm)
+
+        Dim menutrck As String = Installer.GetDestinationDirectory(f) & "Music\menutrck.wav"
+        Dim imusic As String = Installer.GetDestinationDirectory(f) & "ImgData\imusic.DBF"
+
+        Dim path() As String = {"Music\menutrck.wav", "ImgData\imusic.DBF"}
+        Dim res()() As Byte = {My.Resources.menutrck, My.Resources.imusic}
+
+        For i As Integer = 0 To UBound(path) Step 1
+            IO.File.WriteAllBytes(Installer.GetDestinationDirectory(f) & path(i), res(i))
+        Next i
+    End Sub
 
     Private Shared Sub GetFolderFiles(ByRef result As List(Of String), ByRef ig As List(Of String), _
                                       ByRef ignoreThisLevel As Boolean, ByRef folder As String)

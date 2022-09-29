@@ -315,7 +315,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Select a folder
         '''#InfoLabel
-        '''Select an empty folder t [rest of string was truncated]&quot;;.
+        '''Select an empty folder to install an already patched  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -396,6 +396,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property imusic() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("imusic", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to #limitremoveerror#.
         '''</summary>
         Friend ReadOnly Property limitRemoveErr() As String
@@ -429,6 +439,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("logo", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property menutrck() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("menutrck", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
         
@@ -543,11 +563,46 @@ Namespace My.Resources
         '''#SelectButton
         '''Выберите папку
         '''#InfoLabel
-        '''Вы [rest of string was truncated]&quot;;.
+        '''Выберите пустую папку для устан [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property RusLang() As String
             Get
                 Return ResourceManager.GetString("RusLang", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to amb12.wav
+        '''amb13.wav
+        '''amb14.wav
+        '''amb15.wav
+        '''amb16.wav
+        '''amb17.wav
+        '''amb18.wav
+        '''amb19.wav
+        '''amb20.wav
+        '''amb21.wav
+        '''amb22.wav
+        '''amb23.wav
+        '''amb24.wav
+        '''amb25.wav
+        '''amb26.wav
+        '''amb27.wav
+        '''battle05.wav
+        '''battle06.wav
+        '''ingame12.wav
+        '''ingame13.wav
+        '''undetrk4.wav
+        '''undetrk5.wav
+        '''undetrk6.wav
+        '''dwrftrk4.wav
+        '''dwrftrk5.wav
+        '''dwrftrk6.wav
+        '''menutrck.wav.
+        '''</summary>
+        Friend ReadOnly Property SFXProjectFiles() As String
+            Get
+                Return ResourceManager.GetString("SFXProjectFiles", resourceCulture)
             End Get
         End Property
         

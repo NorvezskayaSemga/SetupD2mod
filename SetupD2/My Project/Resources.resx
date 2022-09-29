@@ -283,4 +283,13 @@
   <data name="LinesDelimiter" xml:space="preserve">
     <value>#linesdelimiter#</value>
   </data>
+  <data name="imusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\imusic;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menutrck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\menutrck;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SFXProjectFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SFXProjectFiles.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>

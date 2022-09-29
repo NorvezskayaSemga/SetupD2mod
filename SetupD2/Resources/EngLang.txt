@@ -70,7 +70,7 @@ Verok's blog page
 #HintLabel51
 You can chage units damage limit and other settings
 #HintLabel52
-in the Disciples.ini anytime you want
+in the Scripts\settings.lua anytime you want
 #FinishButton
 Exit
 #ProgressLabel
@@ -179,3 +179,22 @@ Difficulty set successfully: exp+
 Unexpected difficulty settings file selected
 ##setdifficultymsgerror#
 An error occurred while setting the difficulty:
+
+#mustbegreaterorequalerror
+Must be greater or equal
+#mustbelowerorequalerror
+Must be lower or equal
+#mustbeintegererror
+Must be an integer
+
+#carryOverItemsMaxLabel
+Items number allowed to transfer
+between campaign scenarios
+#unitMaxDamageLabel
+Maximum unit damage
+#criticalHitDamageLabel
+Percentage damage of critical hit
+#criticalHitChanceLabel
+Percentage chance of critical hit
+#SFXProjectCheckBox
+Install music from SFX Project by Zeriosis

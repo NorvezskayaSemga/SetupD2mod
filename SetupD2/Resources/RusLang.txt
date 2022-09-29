@@ -70,7 +70,7 @@ Eng
 #HintLabel51
 Ограничение урона и другие настройки
 #HintLabel52
-в любое время можно изменить в Disciples.ini
+в любое время можно изменить в Scripts\settings.lua
 #FinishButton
 Выход
 #ProgressLabel
@@ -179,3 +179,22 @@ Exp+ ИИ мода (больше опыта для ИИ и нейтралов)
 Выбран неожиданный файл настроек сложности
 ##setdifficultymsgerror#
 Произошла ошибка при задании сложности:
+
+#mustbegreaterorequalerror
+Должно быть больше или равно
+#mustbelowerorequalerror
+Должно быть меньше или равно
+#mustbeintegererror
+Должно быть числом
+
+#carryOverItemsMaxLabel
+Количество предметов, которые можно
+перенести между миссиями саги
+#unitMaxDamageLabel
+Максимальный урон юнита
+#criticalHitDamageLabel
+Процент урона критического удара
+#criticalHitChanceLabel
+Шанс нанести критический удар
+#SFXProjectCheckBox
+Установить музыку из SFX Project от Zeriosis

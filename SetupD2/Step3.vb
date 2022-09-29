@@ -74,7 +74,8 @@ Class Installer
         Next id
         Call MakeAbsentFolders()
         Call SetDifficulty()
-        Call RewriteD2Config(myowner.prevForm.DmgLimitCheckBox.Checked)
+        If Not myowner.prevForm.SFXProjectCheckBox.Checked Then Call DistributiveHandler.CompleteSFXProjectRemove(myowner)
+        Call (New RewriteSettings(comm, myowner, GetDestinationDirectory)).Rewrite()
         Call AddMsg(My.Resources.completed)
         Call AddMsg(My.Resources.LinesDelimiter)
         Call AddMsg(My.Resources.IfYouHaveProblemsMsg)
@@ -109,9 +110,9 @@ Class Installer
 
             Dim s As String
             If myowner.prevForm.InstallRadioButton.Checked Then
-                L = DistributiveHandler.GetFullVersionFiles()
+                L = DistributiveHandler.GetFullVersionFiles(myowner.prevForm)
             Else
-                L = DistributiveHandler.GetModFiles()
+                L = DistributiveHandler.GetModFiles(myowner.prevForm)
             End If
             myowner.mapsList = ""
             For Each p As String In L
@@ -404,9 +405,36 @@ Class Installer
         Next folder
     End Sub
 
-    Private Sub RewriteD2Config(ByRef increaseMaxDamage As Boolean)
+End Class
+
+Class RewriteSettings
+
+    Private comm As Common
+    Private myowner As InstallForm
+    Private destinationDirectory As String
+
+    Public Sub New(ByRef c As Common, ByRef o As InstallForm, ByRef destDir As String)
+        comm = c
+        myowner = o
+        destinationDirectory = destDir
+    End Sub
+
+    Public Sub Rewrite()
+        Call SettingsLua()
+        'Call DiscipleIni() -- old method
+    End Sub
+
+    Private Sub SettingsLua()
+        'carryOverItemsMax
+        'unitMaxDamage
+        'criticalHitDamage
+        'criticalHitChance
+        '
+    End Sub
+
+    Private Sub DiscipleIni()
         Try
-            Dim f As String = GetDestinationDirectory() & "Disciple.ini"
+            Dim f As String = destinationDirectory & "Disciple.ini"
             If Not IO.File.Exists(f) Then Exit Sub
 
             Dim overwrite As New Dictionary(Of String, String)
@@ -417,7 +445,7 @@ Class Installer
 
             Dim addIfAbsent As New Dictionary(Of String, Integer)
             Dim maxDmg As Integer
-            If increaseMaxDamage Then
+            If myowner.prevForm.DmgLimitCheckBox.Checked Then
                 maxDmg = 100000
             Else
                 maxDmg = 300
