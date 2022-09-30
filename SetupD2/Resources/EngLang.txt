@@ -198,3 +198,11 @@ Percentage damage of critical hit
 Percentage chance of critical hit
 #SFXProjectCheckBox
 Install music from SFX Project by Zeriosis
+#MissUseSingleRollRadioButton
+Use single roll to attacks miss check
+(the chance corresponds to the numbers in the stats)
+#MissUseDoubleRollRadioButton
+Use double roll to attacks miss check
+(as in the original game.
+actual hit chance above 50% accuracy is inflated.
+actual hit chance below 50% accuracy is underestimated)

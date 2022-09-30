@@ -459,6 +459,11 @@ Class RewriteSettings
             overwrite.Add(("unitMaxDamage").ToUpper, myowner.prevForm.unitMaxDamageTextBox.Text)
             overwrite.Add(("criticalHitDamage").ToUpper, myowner.prevForm.criticalHitDamageTextBox.Text)
             overwrite.Add(("criticalHitChance").ToUpper, myowner.prevForm.criticalHitChanceTextBox.Text)
+            If myowner.prevForm.MissUseSingleRollRadioButton.Checked Then
+                overwrite.Add(("missChanceSingleRoll").ToUpper, "true")
+            Else
+                overwrite.Add(("missChanceSingleRoll").ToUpper, "false")
+            End If
 
             For i As Integer = 0 To UBound(s) Step 1
                 If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then

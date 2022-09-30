@@ -51,13 +51,14 @@ Partial Class SettingsForm
         Me.PanelLuaSettings = New System.Windows.Forms.Panel()
         Me.criticalHitChanceLabel = New System.Windows.Forms.Label()
         Me.criticalHitChanceTextBox = New System.Windows.Forms.TextBox()
+        Me.carryOverItemsMaxLabel = New System.Windows.Forms.Label()
+        Me.carryOverItemsMaxTextBox = New System.Windows.Forms.TextBox()
         Me.criticalHitDamageLabel = New System.Windows.Forms.Label()
         Me.criticalHitDamageTextBox = New System.Windows.Forms.TextBox()
         Me.unitMaxDamageLabel = New System.Windows.Forms.Label()
         Me.unitMaxDamageTextBox = New System.Windows.Forms.TextBox()
-        Me.carryOverItemsMaxLabel = New System.Windows.Forms.Label()
-        Me.carryOverItemsMaxTextBox = New System.Windows.Forms.TextBox()
         Me.PanelOther = New System.Windows.Forms.Panel()
+        Me.SFXProjectCheckBox = New System.Windows.Forms.CheckBox()
         Me.ToolsCheckBox = New System.Windows.Forms.CheckBox()
         Me.GLWrapperCheckBox = New System.Windows.Forms.CheckBox()
         Me.DmgLimitCheckBox = New System.Windows.Forms.CheckBox()
@@ -65,7 +66,8 @@ Partial Class SettingsForm
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
-        Me.SFXProjectCheckBox = New System.Windows.Forms.CheckBox()
+        Me.MissUseSingleRollRadioButton = New System.Windows.Forms.RadioButton()
+        Me.MissUseDoubleRollRadioButton = New System.Windows.Forms.RadioButton()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.PanelDifficulty.SuspendLayout()
@@ -357,6 +359,8 @@ Partial Class SettingsForm
         '
         'PanelLuaSettings
         '
+        Me.PanelLuaSettings.Controls.Add(Me.MissUseDoubleRollRadioButton)
+        Me.PanelLuaSettings.Controls.Add(Me.MissUseSingleRollRadioButton)
         Me.PanelLuaSettings.Controls.Add(Me.criticalHitChanceLabel)
         Me.PanelLuaSettings.Controls.Add(Me.criticalHitChanceTextBox)
         Me.PanelLuaSettings.Controls.Add(Me.carryOverItemsMaxLabel)
@@ -367,7 +371,7 @@ Partial Class SettingsForm
         Me.PanelLuaSettings.Controls.Add(Me.unitMaxDamageTextBox)
         Me.PanelLuaSettings.Location = New System.Drawing.Point(4, 3)
         Me.PanelLuaSettings.Name = "PanelLuaSettings"
-        Me.PanelLuaSettings.Size = New System.Drawing.Size(348, 125)
+        Me.PanelLuaSettings.Size = New System.Drawing.Size(348, 220)
         Me.PanelLuaSettings.TabIndex = 13
         '
         'criticalHitChanceLabel
@@ -386,6 +390,23 @@ Partial Class SettingsForm
         Me.criticalHitChanceTextBox.Size = New System.Drawing.Size(36, 20)
         Me.criticalHitChanceTextBox.TabIndex = 6
         Me.criticalHitChanceTextBox.Text = "80"
+        '
+        'carryOverItemsMaxLabel
+        '
+        Me.carryOverItemsMaxLabel.AutoSize = True
+        Me.carryOverItemsMaxLabel.Location = New System.Drawing.Point(45, 78)
+        Me.carryOverItemsMaxLabel.Name = "carryOverItemsMaxLabel"
+        Me.carryOverItemsMaxLabel.Size = New System.Drawing.Size(300, 13)
+        Me.carryOverItemsMaxLabel.TabIndex = 1
+        Me.carryOverItemsMaxLabel.Text = "Items number allowed to transfer between campaign scenarios"
+        '
+        'carryOverItemsMaxTextBox
+        '
+        Me.carryOverItemsMaxTextBox.Location = New System.Drawing.Point(3, 82)
+        Me.carryOverItemsMaxTextBox.Name = "carryOverItemsMaxTextBox"
+        Me.carryOverItemsMaxTextBox.Size = New System.Drawing.Size(36, 20)
+        Me.carryOverItemsMaxTextBox.TabIndex = 0
+        Me.carryOverItemsMaxTextBox.Text = "5"
         '
         'criticalHitDamageLabel
         '
@@ -421,32 +442,27 @@ Partial Class SettingsForm
         Me.unitMaxDamageTextBox.TabIndex = 2
         Me.unitMaxDamageTextBox.Text = "300"
         '
-        'carryOverItemsMaxLabel
-        '
-        Me.carryOverItemsMaxLabel.AutoSize = True
-        Me.carryOverItemsMaxLabel.Location = New System.Drawing.Point(45, 78)
-        Me.carryOverItemsMaxLabel.Name = "carryOverItemsMaxLabel"
-        Me.carryOverItemsMaxLabel.Size = New System.Drawing.Size(300, 13)
-        Me.carryOverItemsMaxLabel.TabIndex = 1
-        Me.carryOverItemsMaxLabel.Text = "Items number allowed to transfer between campaign scenarios"
-        '
-        'carryOverItemsMaxTextBox
-        '
-        Me.carryOverItemsMaxTextBox.Location = New System.Drawing.Point(3, 82)
-        Me.carryOverItemsMaxTextBox.Name = "carryOverItemsMaxTextBox"
-        Me.carryOverItemsMaxTextBox.Size = New System.Drawing.Size(36, 20)
-        Me.carryOverItemsMaxTextBox.TabIndex = 0
-        Me.carryOverItemsMaxTextBox.Text = "5"
-        '
         'PanelOther
         '
         Me.PanelOther.Controls.Add(Me.SFXProjectCheckBox)
         Me.PanelOther.Controls.Add(Me.ToolsCheckBox)
         Me.PanelOther.Controls.Add(Me.GLWrapperCheckBox)
-        Me.PanelOther.Location = New System.Drawing.Point(3, 207)
+        Me.PanelOther.Location = New System.Drawing.Point(3, 252)
         Me.PanelOther.Name = "PanelOther"
         Me.PanelOther.Size = New System.Drawing.Size(350, 81)
         Me.PanelOther.TabIndex = 12
+        '
+        'SFXProjectCheckBox
+        '
+        Me.SFXProjectCheckBox.AutoSize = True
+        Me.SFXProjectCheckBox.Checked = True
+        Me.SFXProjectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.SFXProjectCheckBox.Location = New System.Drawing.Point(4, 50)
+        Me.SFXProjectCheckBox.Name = "SFXProjectCheckBox"
+        Me.SFXProjectCheckBox.Size = New System.Drawing.Size(218, 17)
+        Me.SFXProjectCheckBox.TabIndex = 4
+        Me.SFXProjectCheckBox.Text = "Install music from SFX Project by Zeriosis"
+        Me.SFXProjectCheckBox.UseVisualStyleBackColor = True
         '
         'ToolsCheckBox
         '
@@ -525,17 +541,30 @@ Partial Class SettingsForm
         Me.LangRuRadioButton.Text = "Рус"
         Me.LangRuRadioButton.UseVisualStyleBackColor = True
         '
-        'SFXProjectCheckBox
+        'MissUseSingleRollRadioButton
         '
-        Me.SFXProjectCheckBox.AutoSize = True
-        Me.SFXProjectCheckBox.Checked = True
-        Me.SFXProjectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.SFXProjectCheckBox.Location = New System.Drawing.Point(4, 50)
-        Me.SFXProjectCheckBox.Name = "SFXProjectCheckBox"
-        Me.SFXProjectCheckBox.Size = New System.Drawing.Size(218, 17)
-        Me.SFXProjectCheckBox.TabIndex = 4
-        Me.SFXProjectCheckBox.Text = "Install music from SFX Project by Zeriosis"
-        Me.SFXProjectCheckBox.UseVisualStyleBackColor = True
+        Me.MissUseSingleRollRadioButton.AutoSize = True
+        Me.MissUseSingleRollRadioButton.Location = New System.Drawing.Point(3, 108)
+        Me.MissUseSingleRollRadioButton.Name = "MissUseSingleRollRadioButton"
+        Me.MissUseSingleRollRadioButton.Size = New System.Drawing.Size(273, 30)
+        Me.MissUseSingleRollRadioButton.TabIndex = 8
+        Me.MissUseSingleRollRadioButton.Text = "Use single roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(the chance corresponds to the numbers in " & _
+    "the stats)"
+        Me.MissUseSingleRollRadioButton.UseVisualStyleBackColor = True
+        '
+        'MissUseDoubleRollRadioButton
+        '
+        Me.MissUseDoubleRollRadioButton.AutoSize = True
+        Me.MissUseDoubleRollRadioButton.Checked = True
+        Me.MissUseDoubleRollRadioButton.Location = New System.Drawing.Point(4, 144)
+        Me.MissUseDoubleRollRadioButton.Name = "MissUseDoubleRollRadioButton"
+        Me.MissUseDoubleRollRadioButton.Size = New System.Drawing.Size(300, 56)
+        Me.MissUseDoubleRollRadioButton.TabIndex = 9
+        Me.MissUseDoubleRollRadioButton.TabStop = True
+        Me.MissUseDoubleRollRadioButton.Text = "Use double roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(as in original game." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy abo" & _
+    "ve 50% is higher than number in stats." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy below 50% is lower than " & _
+    "number in stats)"
+        Me.MissUseDoubleRollRadioButton.UseVisualStyleBackColor = True
         '
         'SettingsForm
         '
@@ -620,4 +649,6 @@ Partial Class SettingsForm
     Friend WithEvents criticalHitDamageLabel As System.Windows.Forms.Label
     Friend WithEvents criticalHitDamageTextBox As System.Windows.Forms.TextBox
     Friend WithEvents SFXProjectCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents MissUseDoubleRollRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents MissUseSingleRollRadioButton As System.Windows.Forms.RadioButton
 End Class
