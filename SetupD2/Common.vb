@@ -137,6 +137,7 @@
                 item.Text = MultiStringConversion(msg)
             ElseIf TypeOf item Is TabControl Then
                 For Each page As TabPage In CType(item, TabControl).TabPages
+                    page.Text = MultiStringConversion(page.Name)
                     Call SetLang(page.Controls(0), LangRButton)
                 Next page
             End If

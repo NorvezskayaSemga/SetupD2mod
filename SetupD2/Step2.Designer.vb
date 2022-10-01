@@ -44,11 +44,13 @@ Partial Class SettingsForm
         Me.InstallRadioButton = New System.Windows.Forms.RadioButton()
         Me.InstallModeLabel = New System.Windows.Forms.Label()
         Me.InstallButton = New System.Windows.Forms.Button()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.SettingsTabControl = New System.Windows.Forms.TabControl()
+        Me.SettingsTabPage1 = New System.Windows.Forms.TabPage()
+        Me.SettingsTabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PanelLuaSettings = New System.Windows.Forms.Panel()
+        Me.MissUseDoubleRollRadioButton = New System.Windows.Forms.RadioButton()
+        Me.MissUseSingleRollRadioButton = New System.Windows.Forms.RadioButton()
         Me.criticalHitChanceLabel = New System.Windows.Forms.Label()
         Me.criticalHitChanceTextBox = New System.Windows.Forms.TextBox()
         Me.carryOverItemsMaxLabel = New System.Windows.Forms.Label()
@@ -66,17 +68,15 @@ Partial Class SettingsForm
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
-        Me.MissUseSingleRollRadioButton = New System.Windows.Forms.RadioButton()
-        Me.MissUseDoubleRollRadioButton = New System.Windows.Forms.RadioButton()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.PanelDifficulty.SuspendLayout()
         Me.PanelSoundLang.SuspendLayout()
         Me.PanelTextLang.SuspendLayout()
         Me.PanelInstallation.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.SettingsTabControl.SuspendLayout()
+        Me.SettingsTabPage1.SuspendLayout()
+        Me.SettingsTabPage2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.PanelLuaSettings.SuspendLayout()
         Me.PanelOther.SuspendLayout()
@@ -316,37 +316,38 @@ Partial Class SettingsForm
         Me.InstallButton.Text = "Next"
         Me.InstallButton.UseVisualStyleBackColor = True
         '
-        'TabControl1
+        'SettingsTabControl
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(366, 378)
-        Me.TabControl1.TabIndex = 10
+        Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage1)
+        Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage2)
+        Me.SettingsTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+        Me.SettingsTabControl.Location = New System.Drawing.Point(0, 0)
+        Me.SettingsTabControl.Name = "SettingsTabControl"
+        Me.SettingsTabControl.SelectedIndex = 0
+        Me.SettingsTabControl.Size = New System.Drawing.Size(366, 378)
+        Me.SettingsTabControl.TabIndex = 10
         '
-        'TabPage1
+        'SettingsTabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Panel1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(358, 352)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Settings#1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.SettingsTabPage1.Controls.Add(Me.Panel1)
+        Me.SettingsTabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.SettingsTabPage1.Name = "SettingsTabPage1"
+        Me.SettingsTabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.SettingsTabPage1.Size = New System.Drawing.Size(358, 352)
+        Me.SettingsTabPage1.TabIndex = 0
+        Me.SettingsTabPage1.Text = "SettingsPage#1"
+        Me.SettingsTabPage1.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'SettingsTabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Panel2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(358, 352)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Settings#2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.SettingsTabPage2.Controls.Add(Me.Panel2)
+        Me.SettingsTabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.SettingsTabPage2.Name = "SettingsTabPage2"
+        Me.SettingsTabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.SettingsTabPage2.Size = New System.Drawing.Size(358, 352)
+        Me.SettingsTabPage2.TabIndex = 1
+        Me.SettingsTabPage2.Text = "SettingsPage#2"
+        Me.SettingsTabPage2.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -373,6 +374,31 @@ Partial Class SettingsForm
         Me.PanelLuaSettings.Name = "PanelLuaSettings"
         Me.PanelLuaSettings.Size = New System.Drawing.Size(348, 220)
         Me.PanelLuaSettings.TabIndex = 13
+        '
+        'MissUseDoubleRollRadioButton
+        '
+        Me.MissUseDoubleRollRadioButton.AutoSize = True
+        Me.MissUseDoubleRollRadioButton.Checked = True
+        Me.MissUseDoubleRollRadioButton.Location = New System.Drawing.Point(4, 144)
+        Me.MissUseDoubleRollRadioButton.Name = "MissUseDoubleRollRadioButton"
+        Me.MissUseDoubleRollRadioButton.Size = New System.Drawing.Size(300, 56)
+        Me.MissUseDoubleRollRadioButton.TabIndex = 9
+        Me.MissUseDoubleRollRadioButton.TabStop = True
+        Me.MissUseDoubleRollRadioButton.Text = "Use double roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(as in original game." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy abo" & _
+    "ve 50% is higher than number in stats." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy below 50% is lower than " & _
+    "number in stats)"
+        Me.MissUseDoubleRollRadioButton.UseVisualStyleBackColor = True
+        '
+        'MissUseSingleRollRadioButton
+        '
+        Me.MissUseSingleRollRadioButton.AutoSize = True
+        Me.MissUseSingleRollRadioButton.Location = New System.Drawing.Point(3, 108)
+        Me.MissUseSingleRollRadioButton.Name = "MissUseSingleRollRadioButton"
+        Me.MissUseSingleRollRadioButton.Size = New System.Drawing.Size(273, 30)
+        Me.MissUseSingleRollRadioButton.TabIndex = 8
+        Me.MissUseSingleRollRadioButton.Text = "Use single roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(the chance corresponds to the numbers in " & _
+    "the stats)"
+        Me.MissUseSingleRollRadioButton.UseVisualStyleBackColor = True
         '
         'criticalHitChanceLabel
         '
@@ -504,7 +530,7 @@ Partial Class SettingsForm
         'Panel
         '
         Me.Panel.Controls.Add(Me.LangPanel)
-        Me.Panel.Controls.Add(Me.TabControl1)
+        Me.Panel.Controls.Add(Me.SettingsTabControl)
         Me.Panel.Location = New System.Drawing.Point(236, 0)
         Me.Panel.Name = "Panel"
         Me.Panel.Size = New System.Drawing.Size(375, 405)
@@ -541,31 +567,6 @@ Partial Class SettingsForm
         Me.LangRuRadioButton.Text = "Рус"
         Me.LangRuRadioButton.UseVisualStyleBackColor = True
         '
-        'MissUseSingleRollRadioButton
-        '
-        Me.MissUseSingleRollRadioButton.AutoSize = True
-        Me.MissUseSingleRollRadioButton.Location = New System.Drawing.Point(3, 108)
-        Me.MissUseSingleRollRadioButton.Name = "MissUseSingleRollRadioButton"
-        Me.MissUseSingleRollRadioButton.Size = New System.Drawing.Size(273, 30)
-        Me.MissUseSingleRollRadioButton.TabIndex = 8
-        Me.MissUseSingleRollRadioButton.Text = "Use single roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(the chance corresponds to the numbers in " & _
-    "the stats)"
-        Me.MissUseSingleRollRadioButton.UseVisualStyleBackColor = True
-        '
-        'MissUseDoubleRollRadioButton
-        '
-        Me.MissUseDoubleRollRadioButton.AutoSize = True
-        Me.MissUseDoubleRollRadioButton.Checked = True
-        Me.MissUseDoubleRollRadioButton.Location = New System.Drawing.Point(4, 144)
-        Me.MissUseDoubleRollRadioButton.Name = "MissUseDoubleRollRadioButton"
-        Me.MissUseDoubleRollRadioButton.Size = New System.Drawing.Size(300, 56)
-        Me.MissUseDoubleRollRadioButton.TabIndex = 9
-        Me.MissUseDoubleRollRadioButton.TabStop = True
-        Me.MissUseDoubleRollRadioButton.Text = "Use double roll to attacks miss check" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(as in original game." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy abo" & _
-    "ve 50% is higher than number in stats." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "actual accuracy below 50% is lower than " & _
-    "number in stats)"
-        Me.MissUseDoubleRollRadioButton.UseVisualStyleBackColor = True
-        '
         'SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -590,9 +591,9 @@ Partial Class SettingsForm
         Me.PanelTextLang.PerformLayout()
         Me.PanelInstallation.ResumeLayout(False)
         Me.PanelInstallation.PerformLayout()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
+        Me.SettingsTabControl.ResumeLayout(False)
+        Me.SettingsTabPage1.ResumeLayout(False)
+        Me.SettingsTabPage2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.PanelLuaSettings.ResumeLayout(False)
         Me.PanelLuaSettings.PerformLayout()
@@ -627,9 +628,9 @@ Partial Class SettingsForm
     Friend WithEvents NormalGAIRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents VanillaGAIRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents GAILabel As System.Windows.Forms.Label
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents SettingsTabControl As System.Windows.Forms.TabControl
+    Friend WithEvents SettingsTabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents SettingsTabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents DmgLimitCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents Panel As System.Windows.Forms.Panel
     Friend WithEvents LangPanel As System.Windows.Forms.Panel

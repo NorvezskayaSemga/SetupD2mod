@@ -84,4 +84,19 @@
         End If
     End Function
 
+    Private Sub SettingsTabControl_DrawItem(sender As Object, e As DrawItemEventArgs) Handles SettingsTabControl.DrawItem
+        If e.Index = 0 Then
+            e.Graphics.FillRectangle(New SolidBrush(Color.IndianRed), e.Bounds)
+        ElseIf e.Index = 1 Then
+            e.Graphics.FillRectangle(New SolidBrush(Color.RoyalBlue), e.Bounds)
+        ElseIf e.Index = 2 Then
+            e.Graphics.FillRectangle(New SolidBrush(Color.Orchid), e.Bounds)
+        ElseIf e.Index = 3 Then
+            e.Graphics.FillRectangle(New SolidBrush(Color.LimeGreen), e.Bounds)
+        End If
+        Dim paddedBounds As Rectangle = e.Bounds
+        paddedBounds.Inflate(0, -2)
+        e.Graphics.DrawString(SettingsTabControl.TabPages(e.Index).Text, Me.Font, SystemBrushes.HighlightText, paddedBounds)
+    End Sub
+
 End Class
