@@ -37,7 +37,29 @@
         End If
     End Sub
     Private Sub SelectedFolder() Handles SelectTextBox.TextChanged
-        NextButton.Enabled = IO.Directory.Exists(SelectTextBox.Text)
+        NextButton.Enabled = False
+        SelectFolderErrorLabel.Visible = False
+        SteamErrorLabel.Visible = False
+        If Not IO.Directory.Exists(SelectTextBox.Text) Then
+            SelectFolderErrorLabel.Visible = True
+        ElseIf IsSteamFolder(SelectTextBox.Text) Then
+            SteamErrorLabel.Visible = True
+        Else
+            NextButton.Enabled = True
+        End If
     End Sub
+
+    Private Function IsSteamFolder(ByRef path As String) As Boolean
+        If IO.File.Exists(path & "\Discipl2.exe") Then
+            Dim sizeInBytes As Long = New IO.FileInfo(path & "\Discipl2.exe").Length
+            If sizeInBytes = Common.RussobitExeSize Or sizeInBytes = Common.AkellaExeSize Or sizeInBytes = Common.GOGExeSize Then
+                Return False
+            Else
+                Return True
+            End If
+        Else
+            Return False
+        End If
+    End Function
 
 End Class

@@ -248,6 +248,10 @@
         pb.Value = CInt(pb.Maximum * Math.Min(0.01 * value, 1))
     End Sub
 
+    Public Const RussobitExeSize As Integer = 4187648
+    Public Const AkellaExeSize As Integer = 4474880
+    Public Const GOGExeSize As Integer = 3907200
+
     Public Sub ReplaceCode(ByRef f As InstallForm)
         If Not f.prevForm.DmgLimitCheckBox.Checked Then Exit Sub
         Dim path As String = Installer.GetDestinationDirectory(f) & "Discipl2.exe"
@@ -256,7 +260,7 @@
         If Not IO.File.Exists(path) Then msg = My.Resources.limitRemoveErr
         If msg = "" Then
             Dim bias() As Integer = New Integer() {3058044, 3049244, 3055484}
-            Dim len() As Integer = New Integer() {3907200, 4474880, 4187648}
+            Dim len() As Integer = New Integer() {GOGExeSize, AkellaExeSize, RussobitExeSize}
             Dim bytes() As Byte = IO.File.ReadAllBytes(path)
             For i As Integer = 0 To UBound(len) Step 1
                 If bytes.Length = len(i) Then

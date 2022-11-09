@@ -215,3 +215,8 @@ Settings#2
 Settings#3
 #SettingsTabPage4
 Settings#4
+
+#SteamErrorLabel
+It seems that the folder with the version from Steam is selected. Do not do it this way
+#SelectFolderErrorLabel
+You need to select an existing folder

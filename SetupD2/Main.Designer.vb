@@ -31,6 +31,8 @@ Partial Class Main
         Me.SelectButton = New System.Windows.Forms.Button()
         Me.InfoLabel = New System.Windows.Forms.Label()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.SteamErrorLabel = New System.Windows.Forms.Label()
+        Me.SelectFolderErrorLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
@@ -115,6 +117,8 @@ Partial Class Main
         '
         'Panel
         '
+        Me.Panel.Controls.Add(Me.SteamErrorLabel)
+        Me.Panel.Controls.Add(Me.SelectFolderErrorLabel)
         Me.Panel.Controls.Add(Me.LangPanel)
         Me.Panel.Controls.Add(Me.InfoLabel)
         Me.Panel.Controls.Add(Me.SelectButton)
@@ -123,6 +127,30 @@ Partial Class Main
         Me.Panel.Name = "Panel"
         Me.Panel.Size = New System.Drawing.Size(357, 383)
         Me.Panel.TabIndex = 4
+        '
+        'SteamErrorLabel
+        '
+        Me.SteamErrorLabel.AutoSize = True
+        Me.SteamErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.SteamErrorLabel.ForeColor = System.Drawing.Color.Red
+        Me.SteamErrorLabel.Location = New System.Drawing.Point(7, 275)
+        Me.SteamErrorLabel.MaximumSize = New System.Drawing.Size(300, 0)
+        Me.SteamErrorLabel.Name = "SteamErrorLabel"
+        Me.SteamErrorLabel.Size = New System.Drawing.Size(49, 16)
+        Me.SteamErrorLabel.TabIndex = 12
+        Me.SteamErrorLabel.Text = "Label1"
+        '
+        'SelectFolderErrorLabel
+        '
+        Me.SelectFolderErrorLabel.AutoSize = True
+        Me.SelectFolderErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.SelectFolderErrorLabel.ForeColor = System.Drawing.Color.Red
+        Me.SelectFolderErrorLabel.Location = New System.Drawing.Point(7, 275)
+        Me.SelectFolderErrorLabel.MaximumSize = New System.Drawing.Size(300, 0)
+        Me.SelectFolderErrorLabel.Name = "SelectFolderErrorLabel"
+        Me.SelectFolderErrorLabel.Size = New System.Drawing.Size(49, 16)
+        Me.SelectFolderErrorLabel.TabIndex = 11
+        Me.SelectFolderErrorLabel.Text = "Label1"
         '
         'LangPanel
         '
@@ -187,5 +215,7 @@ Partial Class Main
     Friend WithEvents LangPanel As System.Windows.Forms.Panel
     Friend WithEvents LangEnRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents SteamErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents SelectFolderErrorLabel As System.Windows.Forms.Label
 
 End Class
