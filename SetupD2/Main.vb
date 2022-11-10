@@ -40,10 +40,13 @@
         NextButton.Enabled = False
         SelectFolderErrorLabel.Visible = False
         SteamErrorLabel.Visible = False
+        NonlatinErrorLabel.Visible = False
         If Not IO.Directory.Exists(SelectTextBox.Text) Then
             SelectFolderErrorLabel.Visible = True
         ElseIf IsSteamFolder(SelectTextBox.Text) Then
             SteamErrorLabel.Visible = True
+        ElseIf Not IsRightPath(SelectTextBox.Text) Then
+            NonlatinErrorLabel.Visible = True
         Else
             NextButton.Enabled = True
         End If
@@ -60,6 +63,19 @@
         Else
             Return False
         End If
+    End Function
+    Private Function IsRightPath(ByRef path As String) As Boolean
+        Dim rightChars As New List(Of String)
+        Dim s As String = "qwertyuiop[]asdfghjkl;:'\|zxcvbnm,./?<>1234567890- =+_*!@#$%^&*{}"
+        For Each c As String In s
+            rightChars.Add(c.ToLower)
+        Next c
+        For Each c As String In path
+            If Not rightChars.Contains(c.ToLower) Then
+                Return False
+            End If
+        Next c
+        Return True
     End Function
 
 End Class

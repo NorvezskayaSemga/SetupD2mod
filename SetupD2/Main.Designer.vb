@@ -31,6 +31,7 @@ Partial Class Main
         Me.SelectButton = New System.Windows.Forms.Button()
         Me.InfoLabel = New System.Windows.Forms.Label()
         Me.Panel = New System.Windows.Forms.Panel()
+        Me.NonlatinErrorLabel = New System.Windows.Forms.Label()
         Me.SteamErrorLabel = New System.Windows.Forms.Label()
         Me.SelectFolderErrorLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
@@ -117,6 +118,7 @@ Partial Class Main
         '
         'Panel
         '
+        Me.Panel.Controls.Add(Me.NonlatinErrorLabel)
         Me.Panel.Controls.Add(Me.SteamErrorLabel)
         Me.Panel.Controls.Add(Me.SelectFolderErrorLabel)
         Me.Panel.Controls.Add(Me.LangPanel)
@@ -128,13 +130,25 @@ Partial Class Main
         Me.Panel.Size = New System.Drawing.Size(357, 383)
         Me.Panel.TabIndex = 4
         '
+        'NonlatinErrorLabel
+        '
+        Me.NonlatinErrorLabel.AutoSize = True
+        Me.NonlatinErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.NonlatinErrorLabel.ForeColor = System.Drawing.Color.Red
+        Me.NonlatinErrorLabel.Location = New System.Drawing.Point(7, 275)
+        Me.NonlatinErrorLabel.MaximumSize = New System.Drawing.Size(320, 0)
+        Me.NonlatinErrorLabel.Name = "NonlatinErrorLabel"
+        Me.NonlatinErrorLabel.Size = New System.Drawing.Size(49, 16)
+        Me.NonlatinErrorLabel.TabIndex = 13
+        Me.NonlatinErrorLabel.Text = "Label1"
+        '
         'SteamErrorLabel
         '
         Me.SteamErrorLabel.AutoSize = True
         Me.SteamErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.SteamErrorLabel.ForeColor = System.Drawing.Color.Red
         Me.SteamErrorLabel.Location = New System.Drawing.Point(7, 275)
-        Me.SteamErrorLabel.MaximumSize = New System.Drawing.Size(300, 0)
+        Me.SteamErrorLabel.MaximumSize = New System.Drawing.Size(320, 0)
         Me.SteamErrorLabel.Name = "SteamErrorLabel"
         Me.SteamErrorLabel.Size = New System.Drawing.Size(49, 16)
         Me.SteamErrorLabel.TabIndex = 12
@@ -146,7 +160,7 @@ Partial Class Main
         Me.SelectFolderErrorLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.SelectFolderErrorLabel.ForeColor = System.Drawing.Color.Red
         Me.SelectFolderErrorLabel.Location = New System.Drawing.Point(7, 275)
-        Me.SelectFolderErrorLabel.MaximumSize = New System.Drawing.Size(300, 0)
+        Me.SelectFolderErrorLabel.MaximumSize = New System.Drawing.Size(320, 0)
         Me.SelectFolderErrorLabel.Name = "SelectFolderErrorLabel"
         Me.SelectFolderErrorLabel.Size = New System.Drawing.Size(49, 16)
         Me.SelectFolderErrorLabel.TabIndex = 11
@@ -217,5 +231,6 @@ Partial Class Main
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents SteamErrorLabel As System.Windows.Forms.Label
     Friend WithEvents SelectFolderErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents NonlatinErrorLabel As System.Windows.Forms.Label
 
 End Class
