@@ -415,7 +415,7 @@ Partial Class SettingsForm
         Me.criticalHitChanceTextBox.Name = "criticalHitChanceTextBox"
         Me.criticalHitChanceTextBox.Size = New System.Drawing.Size(36, 20)
         Me.criticalHitChanceTextBox.TabIndex = 6
-        Me.criticalHitChanceTextBox.Text = "80"
+        Me.criticalHitChanceTextBox.Text = "70"
         '
         'carryOverItemsMaxLabel
         '
