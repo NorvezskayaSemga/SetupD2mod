@@ -49,14 +49,11 @@ Partial Class SettingsForm
         Me.SettingsTabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PanelLuaSettings = New System.Windows.Forms.Panel()
+        Me.AIAccuracyBonusCheckBox = New System.Windows.Forms.CheckBox()
         Me.MissUseDoubleRollRadioButton = New System.Windows.Forms.RadioButton()
         Me.MissUseSingleRollRadioButton = New System.Windows.Forms.RadioButton()
-        Me.criticalHitChanceLabel = New System.Windows.Forms.Label()
-        Me.criticalHitChanceTextBox = New System.Windows.Forms.TextBox()
         Me.carryOverItemsMaxLabel = New System.Windows.Forms.Label()
         Me.carryOverItemsMaxTextBox = New System.Windows.Forms.TextBox()
-        Me.criticalHitDamageLabel = New System.Windows.Forms.Label()
-        Me.criticalHitDamageTextBox = New System.Windows.Forms.TextBox()
         Me.unitMaxDamageLabel = New System.Windows.Forms.Label()
         Me.unitMaxDamageTextBox = New System.Windows.Forms.TextBox()
         Me.PanelOther = New System.Windows.Forms.Panel()
@@ -324,7 +321,7 @@ Partial Class SettingsForm
         Me.SettingsTabControl.Location = New System.Drawing.Point(0, 0)
         Me.SettingsTabControl.Name = "SettingsTabControl"
         Me.SettingsTabControl.SelectedIndex = 0
-        Me.SettingsTabControl.Size = New System.Drawing.Size(366, 378)
+        Me.SettingsTabControl.Size = New System.Drawing.Size(372, 378)
         Me.SettingsTabControl.TabIndex = 10
         '
         'SettingsTabPage1
@@ -333,7 +330,7 @@ Partial Class SettingsForm
         Me.SettingsTabPage1.Location = New System.Drawing.Point(4, 22)
         Me.SettingsTabPage1.Name = "SettingsTabPage1"
         Me.SettingsTabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.SettingsTabPage1.Size = New System.Drawing.Size(358, 352)
+        Me.SettingsTabPage1.Size = New System.Drawing.Size(364, 352)
         Me.SettingsTabPage1.TabIndex = 0
         Me.SettingsTabPage1.Text = "SettingsPage#1"
         Me.SettingsTabPage1.UseVisualStyleBackColor = True
@@ -344,7 +341,7 @@ Partial Class SettingsForm
         Me.SettingsTabPage2.Location = New System.Drawing.Point(4, 22)
         Me.SettingsTabPage2.Name = "SettingsTabPage2"
         Me.SettingsTabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.SettingsTabPage2.Size = New System.Drawing.Size(358, 352)
+        Me.SettingsTabPage2.Size = New System.Drawing.Size(364, 352)
         Me.SettingsTabPage2.TabIndex = 1
         Me.SettingsTabPage2.Text = "SettingsPage#2"
         Me.SettingsTabPage2.UseVisualStyleBackColor = True
@@ -360,20 +357,27 @@ Partial Class SettingsForm
         '
         'PanelLuaSettings
         '
+        Me.PanelLuaSettings.Controls.Add(Me.AIAccuracyBonusCheckBox)
         Me.PanelLuaSettings.Controls.Add(Me.MissUseDoubleRollRadioButton)
         Me.PanelLuaSettings.Controls.Add(Me.MissUseSingleRollRadioButton)
-        Me.PanelLuaSettings.Controls.Add(Me.criticalHitChanceLabel)
-        Me.PanelLuaSettings.Controls.Add(Me.criticalHitChanceTextBox)
         Me.PanelLuaSettings.Controls.Add(Me.carryOverItemsMaxLabel)
         Me.PanelLuaSettings.Controls.Add(Me.carryOverItemsMaxTextBox)
-        Me.PanelLuaSettings.Controls.Add(Me.criticalHitDamageLabel)
-        Me.PanelLuaSettings.Controls.Add(Me.criticalHitDamageTextBox)
         Me.PanelLuaSettings.Controls.Add(Me.unitMaxDamageLabel)
         Me.PanelLuaSettings.Controls.Add(Me.unitMaxDamageTextBox)
         Me.PanelLuaSettings.Location = New System.Drawing.Point(4, 3)
         Me.PanelLuaSettings.Name = "PanelLuaSettings"
-        Me.PanelLuaSettings.Size = New System.Drawing.Size(348, 220)
+        Me.PanelLuaSettings.Size = New System.Drawing.Size(356, 220)
         Me.PanelLuaSettings.TabIndex = 13
+        '
+        'AIAccuracyBonusCheckBox
+        '
+        Me.AIAccuracyBonusCheckBox.AutoSize = True
+        Me.AIAccuracyBonusCheckBox.Location = New System.Drawing.Point(4, 66)
+        Me.AIAccuracyBonusCheckBox.Name = "AIAccuracyBonusCheckBox"
+        Me.AIAccuracyBonusCheckBox.Size = New System.Drawing.Size(239, 17)
+        Me.AIAccuracyBonusCheckBox.TabIndex = 5
+        Me.AIAccuracyBonusCheckBox.Text = "Disable AI accuracy dependency on difficulty"
+        Me.AIAccuracyBonusCheckBox.UseVisualStyleBackColor = True
         '
         'MissUseDoubleRollRadioButton
         '
@@ -400,27 +404,10 @@ Partial Class SettingsForm
     "the stats)"
         Me.MissUseSingleRollRadioButton.UseVisualStyleBackColor = True
         '
-        'criticalHitChanceLabel
-        '
-        Me.criticalHitChanceLabel.AutoSize = True
-        Me.criticalHitChanceLabel.Location = New System.Drawing.Point(45, 59)
-        Me.criticalHitChanceLabel.Name = "criticalHitChanceLabel"
-        Me.criticalHitChanceLabel.Size = New System.Drawing.Size(160, 13)
-        Me.criticalHitChanceLabel.TabIndex = 7
-        Me.criticalHitChanceLabel.Text = "Percentage chance of critical hit"
-        '
-        'criticalHitChanceTextBox
-        '
-        Me.criticalHitChanceTextBox.Location = New System.Drawing.Point(3, 56)
-        Me.criticalHitChanceTextBox.Name = "criticalHitChanceTextBox"
-        Me.criticalHitChanceTextBox.Size = New System.Drawing.Size(36, 20)
-        Me.criticalHitChanceTextBox.TabIndex = 6
-        Me.criticalHitChanceTextBox.Text = "70"
-        '
         'carryOverItemsMaxLabel
         '
         Me.carryOverItemsMaxLabel.AutoSize = True
-        Me.carryOverItemsMaxLabel.Location = New System.Drawing.Point(45, 78)
+        Me.carryOverItemsMaxLabel.Location = New System.Drawing.Point(46, 26)
         Me.carryOverItemsMaxLabel.Name = "carryOverItemsMaxLabel"
         Me.carryOverItemsMaxLabel.Size = New System.Drawing.Size(300, 13)
         Me.carryOverItemsMaxLabel.TabIndex = 1
@@ -428,28 +415,11 @@ Partial Class SettingsForm
         '
         'carryOverItemsMaxTextBox
         '
-        Me.carryOverItemsMaxTextBox.Location = New System.Drawing.Point(3, 82)
+        Me.carryOverItemsMaxTextBox.Location = New System.Drawing.Point(4, 30)
         Me.carryOverItemsMaxTextBox.Name = "carryOverItemsMaxTextBox"
         Me.carryOverItemsMaxTextBox.Size = New System.Drawing.Size(36, 20)
         Me.carryOverItemsMaxTextBox.TabIndex = 0
         Me.carryOverItemsMaxTextBox.Text = "5"
-        '
-        'criticalHitDamageLabel
-        '
-        Me.criticalHitDamageLabel.AutoSize = True
-        Me.criticalHitDamageLabel.Location = New System.Drawing.Point(45, 33)
-        Me.criticalHitDamageLabel.Name = "criticalHitDamageLabel"
-        Me.criticalHitDamageLabel.Size = New System.Drawing.Size(162, 13)
-        Me.criticalHitDamageLabel.TabIndex = 5
-        Me.criticalHitDamageLabel.Text = "Percentage damage of critical hit"
-        '
-        'criticalHitDamageTextBox
-        '
-        Me.criticalHitDamageTextBox.Location = New System.Drawing.Point(3, 30)
-        Me.criticalHitDamageTextBox.Name = "criticalHitDamageTextBox"
-        Me.criticalHitDamageTextBox.Size = New System.Drawing.Size(36, 20)
-        Me.criticalHitDamageTextBox.TabIndex = 4
-        Me.criticalHitDamageTextBox.Text = "20"
         '
         'unitMaxDamageLabel
         '
@@ -645,11 +615,8 @@ Partial Class SettingsForm
     Friend WithEvents carryOverItemsMaxTextBox As System.Windows.Forms.TextBox
     Friend WithEvents unitMaxDamageLabel As System.Windows.Forms.Label
     Friend WithEvents unitMaxDamageTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents criticalHitChanceLabel As System.Windows.Forms.Label
-    Friend WithEvents criticalHitChanceTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents criticalHitDamageLabel As System.Windows.Forms.Label
-    Friend WithEvents criticalHitDamageTextBox As System.Windows.Forms.TextBox
     Friend WithEvents SFXProjectCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents MissUseDoubleRollRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents MissUseSingleRollRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents AIAccuracyBonusCheckBox As System.Windows.Forms.CheckBox
 End Class

@@ -18,6 +18,10 @@
         Call comm.actOnLoad(Me, CType(prevForm, Form))
         GLWrapperCheckBox.Checked = EnableGLWrapper
         GLWrapperCheckBox.Enabled = EnableGLWrapper
+
+        EnTextRadioButton.Enabled = False
+        EnTextRadioButton.Checked = False
+        RuTextRadioButton.Checked = True
     End Sub
     Private Sub goNext() Handles InstallButton.Click
         If Not checkSettings() Then Exit Sub
@@ -54,10 +58,10 @@
     End Sub
 
     Private Function checkSettings() As Boolean
-        Dim boxes() As TextBox = {carryOverItemsMaxTextBox, unitMaxDamageTextBox, criticalHitDamageTextBox, criticalHitChanceTextBox}
-        Dim labels() As Label = {carryOverItemsMaxLabel, unitMaxDamageLabel, criticalHitDamageLabel, criticalHitChanceLabel}
-        Dim minVal() As Integer = {0, 300, 0, 0}
-        Dim maxVal() As Integer = {Integer.MaxValue, Integer.MaxValue, 255, 100}
+        Dim boxes() As TextBox = {carryOverItemsMaxTextBox, unitMaxDamageTextBox, carryOverItemsMaxTextBox} ', criticalHitDamageTextBox, criticalHitChanceTextBox}
+        Dim labels() As Label = {carryOverItemsMaxLabel, unitMaxDamageLabel, carryOverItemsMaxLabel} ', criticalHitDamageLabel, criticalHitChanceLabel}
+        Dim minVal() As Integer = {0, 300, 0} ', 0, 0}
+        Dim maxVal() As Integer = {Integer.MaxValue, Integer.MaxValue, Integer.MaxValue} ', 255, 100}
         Dim errors As String = ""
         Dim e As String
         Dim v As Long

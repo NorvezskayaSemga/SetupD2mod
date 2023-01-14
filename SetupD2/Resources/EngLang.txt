@@ -34,7 +34,7 @@ Then click "Next"
 #RuTextRadioButton
 Russian
 #EnTextRadioButton
-English
+English (not yet available)
 #RuSoundRadioButton
 Russian
 #EnSoundRadioButton
@@ -223,3 +223,6 @@ You need to select an existing folder
 #NonlatinErrorLabel
 Use latin characters and numbers in the path.
 Some users have problems due to non latin characters
+
+#AIAccuracyBonusCheckBox
+Disable AI accuracy dependency on difficulty

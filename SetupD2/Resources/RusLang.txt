@@ -34,7 +34,7 @@ Eng
 #RuTextRadioButton
 Русский
 #EnTextRadioButton
-Английский
+Английский (пока недоступен)
 #RuSoundRadioButton
 Русский
 #EnSoundRadioButton
@@ -223,3 +223,6 @@ Exp+ ИИ мода (больше опыта для ИИ и нейтралов)
 #NonlatinErrorLabel
 Используйте латинские буквы и цифры в пути.
 У некоторых пользователей возникают проблемы из-за нелатинских символов
+
+#AIAccuracyBonusCheckBox
+Отключить зависимость точности ИИ от сложности

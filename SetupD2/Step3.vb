@@ -457,12 +457,23 @@ Class RewriteSettings
 
             overwrite.Add(("carryOverItemsMax").ToUpper, myowner.prevForm.carryOverItemsMaxTextBox.Text)
             overwrite.Add(("unitMaxDamage").ToUpper, myowner.prevForm.unitMaxDamageTextBox.Text)
-            overwrite.Add(("criticalHitDamage").ToUpper, myowner.prevForm.criticalHitDamageTextBox.Text)
-            overwrite.Add(("criticalHitChance").ToUpper, myowner.prevForm.criticalHitChanceTextBox.Text)
+            'overwrite.Add(("criticalHitDamage").ToUpper, myowner.prevForm.criticalHitDamageTextBox.Text)
+            'overwrite.Add(("criticalHitChance").ToUpper, myowner.prevForm.criticalHitChanceTextBox.Text)
             If myowner.prevForm.MissUseSingleRollRadioButton.Checked Then
                 overwrite.Add(("missChanceSingleRoll").ToUpper, "true")
             Else
                 overwrite.Add(("missChanceSingleRoll").ToUpper, "false")
+            End If
+            If myowner.prevForm.AIAccuracyBonusCheckBox.Checked Then
+                overwrite.Add(("easy").ToUpper, "0")
+                overwrite.Add(("average").ToUpper, "0")
+                overwrite.Add(("hard").ToUpper, "0")
+                overwrite.Add(("veryHard").ToUpper, "0")
+            Else
+                overwrite.Add(("easy").ToUpper, "-15")
+                overwrite.Add(("average").ToUpper, "0")
+                overwrite.Add(("hard").ToUpper, "5")
+                overwrite.Add(("veryHard").ToUpper, "10")
             End If
 
             For i As Integer = 0 To UBound(s) Step 1

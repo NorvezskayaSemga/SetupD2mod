@@ -313,11 +313,17 @@ Public Class RegSettings
             If IsNothing(value) Then Exit Try
 
             If TypeOf c Is TextBox Then
+                'If CType(c, TextBox).Visible Then
                 CType(c, TextBox).Text = value.ToString
+                'End If
             ElseIf TypeOf c Is CheckBox Then
+                'If CType(c, CheckBox).Visible Then
                 CType(c, CheckBox).Checked = CBool(value)
+                'End If
             ElseIf TypeOf c Is RadioButton Then
+                'If CType(c, RadioButton).Visible Then
                 CType(c, RadioButton).Checked = CBool(value)
+                'End If
             End If
         Catch ex As Exception
             errorText = ex.Message
