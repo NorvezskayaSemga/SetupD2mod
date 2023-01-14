@@ -401,7 +401,7 @@ Public Class DistributiveHandler
         Call GetFolderFiles(f, New List(Of String), False, My.Resources.engFilesDir)
         For Each item As String In f
             Dim s As String = item.Substring(item.LastIndexOf(".")).ToLower
-            If text = CBool(Not s = ".wdb" And Not s = ".wdt") Then r.Add(item)
+            If text = CBool(Not s = ".wdb" And Not s = ".wdt" And Not s = ".wav") Then r.Add(item)
         Next item
         Return r
     End Function
@@ -458,6 +458,28 @@ Public Class DistributiveHandler
         For i As Integer = 0 To UBound(path) Step 1
             IO.File.WriteAllBytes(Installer.GetDestinationDirectory(f) & path(i), res(i))
         Next i
+
+        Dim remName() As String = {"amb", "battle", "dwrftrk", "elftrk", "heretrk", "humntrk", "undetrk", "ingame"}
+        Dim remNum() As Integer = {12, 5, 4, 4, 4, 4, 4, 12}
+        Dim removeList As New List(Of String)
+        Dim p, s As String
+        For j As Integer = 0 To UBound(remName) Step 1
+            For i As Integer = remNum(j) To 99 Step 1
+                For r As Integer = 0 To 1 Step 1
+                    If r = 0 Then
+                        s = ""
+                    Else
+                        If i < 10 Then
+                            s = "0"
+                        Else
+                            Exit For
+                        End If
+                    End If
+                    p = Installer.GetDestinationDirectory(f) & "Music\" & remName(j) & s & i & ".wav"
+                    If IO.File.Exists(p) Then Kill(p)
+                Next r
+            Next i
+        Next j
     End Sub
 
     Private Shared Sub GetFolderFiles(ByRef result As List(Of String), ByRef ig As List(Of String), _
