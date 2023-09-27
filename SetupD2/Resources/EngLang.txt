@@ -34,7 +34,7 @@ Then click "Next"
 #RuTextRadioButton
 Russian
 #EnTextRadioButton
-English (not yet available)
+English (beta)
 #RuSoundRadioButton
 Russian
 #EnSoundRadioButton

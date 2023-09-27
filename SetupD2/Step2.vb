@@ -19,9 +19,9 @@
         GLWrapperCheckBox.Checked = EnableGLWrapper
         GLWrapperCheckBox.Enabled = EnableGLWrapper
 
-        EnTextRadioButton.Enabled = False
-        EnTextRadioButton.Checked = False
-        RuTextRadioButton.Checked = True
+        'EnTextRadioButton.Enabled = False
+        'EnTextRadioButton.Checked = False
+        'RuTextRadioButton.Checked = True
     End Sub
     Private Sub goNext() Handles InstallButton.Click
         If Not checkSettings() Then Exit Sub

@@ -34,7 +34,7 @@ Eng
 #RuTextRadioButton
 Русский
 #EnTextRadioButton
-Английский (пока недоступен)
+Английский (бета)
 #RuSoundRadioButton
 Русский
 #EnSoundRadioButton
