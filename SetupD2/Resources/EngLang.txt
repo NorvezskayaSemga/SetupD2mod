@@ -42,7 +42,7 @@ English
 #GLWrapperCheckBox
 Try to download and install Verok's GL Wrapper
 #ToolsCheckBox
-Copy usful scripts and readme to the game folder
+Copy useful scripts and readme to the game folder
 #HintLabel11
 If the game does not start, you need
 #HintLabel12
