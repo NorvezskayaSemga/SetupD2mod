@@ -231,3 +231,31 @@ Disable AI accuracy dependency on difficulty
 Esp
 #EspTextRadioButton
 Spanish
+#ShowModeInfoLabel
+Unit characteristics display mode
+#ShowModeInfoLinkLabel
+Link to the Wiki with description
+#defaultStatsShowModeLabel
+Defauilt mode
+#alternativeStatsShowModeLabel
+Alternative mode
+#statsShowModeSwitchKeyLabel
+Modes switch button
+#SpreadModeLinkLabel
+Link to the Wiki with spread parameters description
+#damageSpreadModeLabel
+Direct damage spread mode
+#damageSpreadMultiLabel
+Direct damage spread multiplier
+#LuckEffectModeLabel
+Luck effect on spread mode
+#damageSpreadApplyPowerLabel
+Base accuracy effect on spread
+#healSpreadModeLabel
+Heal spread mode
+#healSpreadMultiLabel
+Heal spread multiplier
+#healLuckChanceLabel
+Luck heal chance
+#healUnluckMultiLabel
+Unluck heal multiplier
