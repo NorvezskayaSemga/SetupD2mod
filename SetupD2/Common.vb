@@ -29,6 +29,10 @@
             'CType(current, Step2).RuSoundRadioButton.Checked = CType(current, Step2).LangRuRadioButton.Checked
             'CType(current, Step2).EnTextRadioButton.Checked = CType(current, Step2).LangEnRadioButton.Checked
             'CType(current, Step2).EnSoundRadioButton.Checked = CType(current, Step2).LangEnRadioButton.Checked
+            CType(current, SettingsForm).ShowModeInfoLinkLabel.Links.Clear()
+            CType(current, SettingsForm).ShowModeInfoLinkLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.unitStatsWindowLink})
+            CType(current, SettingsForm).SpreadModeLinkLabel.Links.Clear()
+            CType(current, SettingsForm).SpreadModeLinkLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.spreadLink})
         ElseIf TypeOf current Is InstallForm Then
             CType(current, InstallForm).GuideLabel.Links.Clear()
             CType(current, InstallForm).GuideLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.startGuideLink})
@@ -318,6 +322,10 @@ Public Class RegSettings
                 'If CType(c, TextBox).Visible Then
                 CType(c, TextBox).Text = value.ToString
                 'End If
+            ElseIf TypeOf c Is ComboBox Then
+                'If CType(c, TextBox).Visible Then
+                CType(c, ComboBox).Text = value.ToString
+                'End If
             ElseIf TypeOf c Is CheckBox Then
                 'If CType(c, CheckBox).Visible Then
                 CType(c, CheckBox).Checked = CBool(value)
@@ -341,9 +349,11 @@ Public Class RegSettings
         Try
             key = My.Computer.Registry.CurrentUser.OpenSubKey(My.Resources.regKey, True)
             If IsNothing(key) Then Exit Sub
-
+            
             If TypeOf c Is TextBox Then
                 key.SetValue(c.Name, CType(c, TextBox).Text)
+            ElseIf TypeOf c Is ComboBox Then
+                key.SetValue(c.Name, CType(c, ComboBox).Text)
             ElseIf TypeOf c Is CheckBox Then
                 key.SetValue(c.Name, CType(c, CheckBox).Checked)
             ElseIf TypeOf c Is RadioButton Then
@@ -357,6 +367,7 @@ Public Class RegSettings
     Private Function IsRightControl(ByRef c As Control) As Boolean
         If IsNothing(c) Then Return False
         If Not TypeOf c Is TextBox _
+        And Not TypeOf c Is ComboBox _
         And Not TypeOf c Is CheckBox _
         And Not TypeOf c Is RadioButton Then Return False
         Return True

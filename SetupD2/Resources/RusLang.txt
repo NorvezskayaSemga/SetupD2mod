@@ -231,3 +231,31 @@ Exp+ ИИ мода (больше опыта для ИИ и нейтралов)
 Esp
 #EspTextRadioButton
 Испанский
+#ShowModeInfoLabel
+Режим отображения характеристик юнита
+#ShowModeInfoLinkLabel
+Ссылка на Вики с описанием
+#defaultStatsShowModeLabel
+Режим по умолчанию
+#alternativeStatsShowModeLabel
+Альтернативный режим
+#statsShowModeSwitchKeyLabel
+Кнопка переключения режимов
+#SpreadModeLinkLabel
+Ссылка на Вики с описанием параметров разброса
+#damageSpreadModeLabel
+Режим разброса прямого урона
+#damageSpreadMultiLabel
+Множитель разброса прямого урона
+#LuckEffectModeLabel
+Режим влияния удачи на разброс
+#damageSpreadApplyPowerLabel
+Влияние баз. точности на разброс
+#healSpreadModeLabel
+Режим разброса лечения
+#healSpreadMultiLabel
+Множитель разброса лечения
+#healLuckChanceLabel
+Шанс удачного лечения
+#healUnluckMultiLabel
+Множитель лечения при неудачи

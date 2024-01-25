@@ -60,10 +60,41 @@ Class Installer
     Private myowner As InstallForm
     Private comm As Common
     Private tmpDirs() As String
+    Private modSettings As New Dictionary(Of String, String)
+    Private state As New Dictionary(Of String, Boolean)
 
     Public Sub New(ByRef s As InstallForm, ByRef c As Common)
         myowner = s
         comm = c
+        Call loadModSettings(CType(s.prevForm, Control))
+    End Sub
+
+    Private Sub loadModSettings(ByRef current As Control)
+        For Each item As Control In current.Controls
+            If TypeOf item Is Panel Then
+                Call loadModSettings(item)
+            ElseIf TypeOf item Is TabControl Then
+                For Each page As TabPage In CType(item, TabControl).TabPages
+                    Call loadModSettings(page.Controls(0))
+                Next page
+            Else
+                Dim addEnabled As Boolean = True
+                If TypeOf item Is TextBox Then
+                    modSettings.Add(item.Name & ".Text", CType(item, TextBox).Text)
+                ElseIf TypeOf item Is ComboBox Then
+                    modSettings.Add(item.Name & ".Text", CType(item, ComboBox).Text)
+                ElseIf TypeOf item Is CheckBox Then
+                    state.Add(item.Name & ".Checked", CType(item, CheckBox).Checked)
+                ElseIf TypeOf item Is RadioButton Then
+                    state.Add(item.Name & ".Checked", CType(item, RadioButton).Checked)
+                Else
+                    addEnabled = False
+                End If
+                If addEnabled Then
+                    state.Add(item.Name & ".Enabled", item.Enabled)
+                End If
+            End If
+        Next item
     End Sub
 
     Friend Sub InstallTask(ByRef InstallWorker As AsynhInstall)
@@ -75,7 +106,7 @@ Class Installer
         Call MakeAbsentFolders()
         Call SetDifficulty()
         If Not myowner.prevForm.SFXProjectCheckBox.Checked Then Call DistributiveHandler.CompleteSFXProjectRemove(myowner)
-        Call (New RewriteSettings(comm, myowner, GetDestinationDirectory)).Rewrite()
+        Call (New RewriteSettings(comm, myowner, GetDestinationDirectory)).Rewrite(modSettings, state)
         Call AddMsg(My.Resources.completed)
         Call AddMsg(My.Resources.LinesDelimiter)
         Call AddMsg(My.Resources.IfYouHaveProblemsMsg)
@@ -421,38 +452,81 @@ Class RewriteSettings
         destinationDirectory = destDir
     End Sub
 
-    Public Sub Rewrite()
-        Call SettingsLua()
+    Public Sub Rewrite(modSettings As Dictionary(Of String, String), state As Dictionary(Of String, Boolean))
+        Call SettingsLua(modSettings, state)
         'Call DiscipleIni() -- old method
     End Sub
 
-    Private Sub SettingsLua()
+    Private Class OverwriteInfo
+        Public value As String
+        Public parameter As String
+        Public containerUpper As String
+        Public container As String
+        Public added As Boolean = False
+
+        Public Sub New(v As String, c As String, p As String)
+            value = v
+            containerUpper = c.ToUpper
+            container = c
+            parameter = p
+        End Sub
+
+        Public Shared Sub Add(ByRef overwrite As Dictionary(Of String, OverwriteInfo), key As String, val As String, cont As String)
+            Dim info As New OverwriteInfo(val, cont.Replace(" ", ""), key)
+            overwrite.Add(key.ToUpper, info)
+        End Sub
+
+        Public Shared Function HandleString(s As String) As Boolean
+            Return (s.Length > 0 AndAlso s.Trim(CChar(" "), CChar(vbTab)).StartsWith("--") = False)
+        End Function
+        Public Shared Function GetKey(splited() As String) As String
+            Return splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
+        End Function
+        Public Shared Function GetValue(splited() As String) As String
+            If splited.Length > 1 Then
+                Return splited(1).Trim(CChar(" "), CChar(vbTab))
+            Else
+                Return ""
+            End If
+        End Function
+        Public Shared Sub ResizeContainer(ByRef currentContainer() As String, k As String, enlarge As Boolean)
+            If enlarge Then
+                ReDim Preserve currentContainer(currentContainer.Length)
+                currentContainer(UBound(currentContainer)) = k.Replace(",", "")
+            Else
+                ReDim Preserve currentContainer(UBound(currentContainer) - 1)
+            End If
+        End Sub
+    End Class
+
+    Private Sub SettingsLua(modSettings As Dictionary(Of String, String), state As Dictionary(Of String, Boolean))
 
         Try
             Dim f As String = destinationDirectory & "Disciple.ini"
             If Not IO.File.Exists(f) Then Exit Sub
 
-            Dim overwrite As New Dictionary(Of String, String)
+            Dim overwrite As New Dictionary(Of String, OverwriteInfo)
 
-            If Not myowner.prevForm.GLWrapperCheckBox.Enabled Or (myowner.prevForm.GLWrapperCheckBox.Checked And myowner.GLWrapperInstalled) Then
-                overwrite.Add(("UseD3D").ToUpper, "0")
-                overwrite.Add(("DisplayMode").ToUpper, "1")
+            If Not state("GLWrapperCheckBox.Enabled") Or (state("GLWrapperCheckBox.Checked") And myowner.GLWrapperInstalled) Then
+                OverwriteInfo.Add(overwrite, "UseD3D", "0", "")
+                OverwriteInfo.Add(overwrite, "DisplayMode", "1", "")
             End If
-            If myowner.prevForm.EspTextRadioButton.Checked Then
-                overwrite.Add(("Locale").ToUpper, "1034")
+            If state("EspTextRadioButton.Checked") Then
+                OverwriteInfo.Add(overwrite, "Locale", "1034", "")
             Else
-                overwrite.Add(("Locale").ToUpper, "1049")
+                OverwriteInfo.Add(overwrite, "Locale", "1049", "")
             End If
 
             Dim s() As String = IO.File.ReadAllLines(f)
             Dim delimiter As String = "="
-            Dim k As String
+            Dim k, v As String
             For i As Integer = 0 To UBound(s) Step 1
                 If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
                     Dim splited() As String = s(i).Split(CChar(delimiter))
                     k = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
                     If overwrite.ContainsKey(k) Then
-                        s(i) = splited(0) & delimiter & overwrite.Item(k)
+                        s(i) = splited(0) & delimiter & overwrite.Item(k).value
+                        overwrite.Item(k).added = True
                     End If
                 End If
             Next i
@@ -463,36 +537,165 @@ Class RewriteSettings
             s = IO.File.ReadAllLines(f)
             overwrite.Clear()
 
-            overwrite.Add(("carryOverItemsMax").ToUpper, myowner.prevForm.carryOverItemsMaxTextBox.Text)
-            overwrite.Add(("unitMaxDamage").ToUpper, myowner.prevForm.unitMaxDamageTextBox.Text)
+            OverwriteInfo.Add(overwrite, "carryOverItemsMax", modSettings("carryOverItemsMaxTextBox.Text"), "settings")
+            OverwriteInfo.Add(overwrite, "unitMaxDamage", modSettings("unitMaxDamageTextBox.Text"), "settings")
+
             'overwrite.Add(("criticalHitDamage").ToUpper, myowner.prevForm.criticalHitDamageTextBox.Text)
             'overwrite.Add(("criticalHitChance").ToUpper, myowner.prevForm.criticalHitChanceTextBox.Text)
-            If myowner.prevForm.MissUseSingleRollRadioButton.Checked Then
-                overwrite.Add(("missChanceSingleRoll").ToUpper, "true")
+            If state("MissUseSingleRollRadioButton.Checked") Then
+                OverwriteInfo.Add(overwrite, "missChanceSingleRoll", "true", "settings")
             Else
-                overwrite.Add(("missChanceSingleRoll").ToUpper, "false")
+                OverwriteInfo.Add(overwrite, "missChanceSingleRoll", "false", "settings")
             End If
-            If myowner.prevForm.AIAccuracyBonusCheckBox.Checked Then
-                overwrite.Add(("easy").ToUpper, "0")
-                overwrite.Add(("average").ToUpper, "0")
-                overwrite.Add(("hard").ToUpper, "0")
-                overwrite.Add(("veryHard").ToUpper, "0")
+            If state("AIAccuracyBonusCheckBox.Checked") Then
+                OverwriteInfo.Add(overwrite, "easy", "0", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "average", "0", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "hard", "0", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "veryHard", "0", "settings,aiAccuracyBonus")
             Else
-                overwrite.Add(("easy").ToUpper, "-15")
-                overwrite.Add(("average").ToUpper, "0")
-                overwrite.Add(("hard").ToUpper, "5")
-                overwrite.Add(("veryHard").ToUpper, "10")
+                OverwriteInfo.Add(overwrite, "easy", "-15", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "average", "0", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "hard", "5", "settings,aiAccuracyBonus")
+                OverwriteInfo.Add(overwrite, "veryHard", "10", "settings,aiAccuracyBonus")
             End If
 
+            OverwriteInfo.Add(overwrite, "defaultStatsShowMode", "'unitEncyclopedia_" & modSettings("defaultStatsShowModeComboBox.Text") & "'", "mnsSettings")
+            OverwriteInfo.Add(overwrite, "alternativeStatsShowMode", "'unitEncyclopedia_" & modSettings("alternativeStatsShowModeComboBox.Text") & "'", "mnsSettings")
+            OverwriteInfo.Add(overwrite, "statsShowModeSwitchKey", "KeyboardKey." & modSettings("statsShowModeSwitchKeyComboBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "LuckEffectMode", "'LuckEffectMode." & modSettings("LuckEffectModeComboBox.Text") & "'", "mnsSettings")
+            OverwriteInfo.Add(overwrite, "damageSpreadMode", "SpreadMode." & modSettings("damageSpreadModeComboBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "damageSpreadApplyPower", modSettings("damageSpreadApplyPowerComboBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "damageSpreadUpperMulti", modSettings("damageSpreadMultiTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "damageSpreadLowerMulti", modSettings("damageSpreadMultiTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healSpreadMode", modSettings("healSpreadModeComboBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healSpreadUpperMulti", modSettings("healSpreadMultiTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healSpreadLowerMulti", modSettings("healSpreadMultiTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healLuckChance", modSettings("healLuckChanceTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healUnluckMulti", modSettings("healUnluckMultiTextBox.Text"), "mnsSettings")
+
+            Dim currentContainer(-1) As String
+
+            ' замена параметров
             For i As Integer = 0 To UBound(s) Step 1
-                If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
+                If OverwriteInfo.HandleString(s(i)) Then
                     Dim splited() As String = s(i).Split(CChar(delimiter))
-                    k = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
-                    If overwrite.ContainsKey(k) Then
-                        s(i) = splited(0) & delimiter & " " & overwrite.Item(k) & ","
+                    k = OverwriteInfo.GetKey(splited)
+                    v = OverwriteInfo.GetValue(splited)
+                    If s(i).Contains(delimiter) Then
+                        If v.StartsWith("{") Then
+                            Call OverwriteInfo.ResizeContainer(currentContainer, k, True)
+                        End If
+                        If overwrite.ContainsKey(k) Then
+                            If overwrite.Item(k).containerUpper = String.Join(",", currentContainer).ToUpper Then
+                                s(i) = splited(0) & delimiter & " " & overwrite.Item(k).value & ","
+                                overwrite.Item(k).added = True
+                            End If
+                        End If
+                    End If
+                    If k.StartsWith("}") Then
+                        Call OverwriteInfo.ResizeContainer(currentContainer, k, False)
                     End If
                 End If
             Next i
+
+            ' добавление контейнеров
+            Dim maxContainerLen, maxContainerI, addAfterI, q, d As Integer
+            Dim maxContainer As String
+            For Each key As String In overwrite.Keys
+                If Not overwrite.Item(key).added Then
+                    maxContainer = ""
+                    maxContainerLen = 0
+                    maxContainerI = -1
+                    For i As Integer = 0 To UBound(s) Step 1
+                        If OverwriteInfo.HandleString(s(i)) Then
+                            Dim splited() As String = s(i).Split(CChar(delimiter))
+                            k = OverwriteInfo.GetKey(splited)
+                            v = OverwriteInfo.GetValue(splited)
+                            If s(i).Contains(delimiter) Then
+                                If v.StartsWith("{") Then
+                                    Call OverwriteInfo.ResizeContainer(currentContainer, k, True)
+                                    If overwrite.Item(key).containerUpper.StartsWith(String.Join(",", currentContainer).ToUpper) Then
+                                        If maxContainerLen < currentContainer.Length Then
+                                            maxContainerLen = currentContainer.Length
+                                            maxContainerI = i
+                                            maxContainer = String.Join(",", currentContainer).ToUpper
+                                        End If
+                                    End If
+                                End If
+                            End If
+                            If k.StartsWith("}") Then
+                                Call OverwriteInfo.ResizeContainer(currentContainer, k, False)
+                            End If
+                        End If
+                    Next i
+                    If Not maxContainer = overwrite.Item(key).containerUpper Then
+                        If maxContainerI > -1 Then
+                            addAfterI = maxContainerI
+                        Else
+                            addAfterI = UBound(s)
+                        End If
+                        Dim sContainer() As String = overwrite.Item(key).container.Split(CChar(","))
+                        d = 2 * (sContainer.Length - maxContainerLen)
+                        ReDim Preserve s(UBound(s) + d)
+                        For j As Integer = UBound(s) To addAfterI + d Step -1
+                            s(j) = s(j - d)
+                        Next j
+                        For n As Integer = maxContainerLen To UBound(sContainer) Step 1
+                            q = addAfterI + n + 1 - maxContainerLen
+                            s(q) = sContainer(n) & " " & delimiter & " {"
+                            For j = 1 To n Step 1
+                                s(q) = vbTab & s(q)
+                            Next j
+                            q = addAfterI + d - n + maxContainerLen
+                            s(q) = "}"
+                            If n = 0 Then
+                                s(q) &= vbNewLine
+                            Else
+                                s(q) &= ","
+                            End If
+                            For j = 1 To n Step 1
+                                s(q) = vbTab & s(q)
+                            Next j
+                        Next n
+                    End If
+                End If
+            Next key
+
+            ' добавление параметров в контейнеры
+            For Each key As String In overwrite.Keys
+                If Not overwrite.Item(key).added Then
+                    For i As Integer = 0 To UBound(s) Step 1
+                        If OverwriteInfo.HandleString(s(i)) Then
+                            Dim splited() As String = s(i).Split(CChar(delimiter))
+                            k = OverwriteInfo.GetKey(splited)
+                            v = OverwriteInfo.GetValue(splited)
+                           If s(i).Contains(delimiter) Then
+                                If v.StartsWith("{") Then
+                                    Call OverwriteInfo.ResizeContainer(currentContainer, k, True)
+                                    If overwrite.Item(key).containerUpper = String.Join(",", currentContainer).ToUpper Then
+                                        ReDim Preserve s(s.Length)
+                                        For j As Integer = UBound(s) To i + 2 Step -1
+                                            s(j) = s(j - 1)
+                                        Next j
+                                        i = i + 1
+                                        s(i) = ""
+                                        For n As Integer = 0 To UBound(currentContainer) Step 1
+                                            s(i) &= vbTab
+                                        Next n
+                                        s(i) &= overwrite.Item(key).parameter & " " & delimiter & " " & overwrite.Item(key).value & ","
+                                        overwrite.Item(key).added = True
+                                        ReDim currentContainer(-1)
+                                        Exit For
+                                    End If
+                                End If
+                            End If
+                            If k.StartsWith("}") Then
+                                Call OverwriteInfo.ResizeContainer(currentContainer, k, False)
+                            End If
+                        End If
+                    Next i
+                End If
+            Next key
             IO.File.WriteAllLines(f, s)
         Catch
         End Try

@@ -37,6 +37,10 @@
         Call comm.closeEventSub()
     End Sub
 
+    Private Sub OpenWebPage(sender As Object, e As System.EventArgs) Handles ShowModeInfoLinkLabel.MouseClick, SpreadModeLinkLabel.MouseClick
+        Dim L As LinkLabel.Link = CType(sender, LinkLabel).Links.Item(0)
+        System.Diagnostics.Process.Start(L.LinkData.ToString)
+    End Sub
     Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged, LangEspRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
@@ -103,4 +107,7 @@
         e.Graphics.DrawString(SettingsTabControl.TabPages(e.Index).Text, Me.Font, SystemBrushes.HighlightText, paddedBounds)
     End Sub
 
+    Private Sub OpenWebPage(sender As System.Object, e As System.Windows.Forms.MouseEventArgs) Handles ShowModeInfoLinkLabel.MouseClick, SpreadModeLinkLabel.MouseClick
+
+    End Sub
 End Class

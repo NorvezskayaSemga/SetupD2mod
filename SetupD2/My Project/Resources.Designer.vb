@@ -625,6 +625,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to https://dis2modding.fandom.com/ru/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC%D1%8B_%D1%80%D0%B0%D0%B7%D0%B1%D1%80%D0%BE%D1%81%D0%B0_%D1%83%D1%80%D0%BE%D0%BD%D0%B0_%D0%B2_%D0%BC%D0%BE%D0%B4%D0%B5_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8.
+        '''</summary>
+        Friend ReadOnly Property spreadLink() As String
+            Get
+                Return ResourceManager.GetString("spreadLink", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to https://www.youtube.com/watch?v=XEFrECQ8yH4.
         '''</summary>
         Friend ReadOnly Property startGuideLink() As String
@@ -648,6 +657,15 @@ Namespace My.Resources
         Friend ReadOnly Property toolsDir() As String
             Get
                 Return ResourceManager.GetString("toolsDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://dis2modding.fandom.com/ru/wiki/%D0%9E%D0%BA%D0%BD%D0%BE_%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BA_%D1%8E%D0%BD%D0%B8%D1%82%D0%B0_%D0%B2_%D0%BC%D0%BE%D0%B4%D0%B5_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8.
+        '''</summary>
+        Friend ReadOnly Property unitStatsWindowLink() As String
+            Get
+                Return ResourceManager.GetString("unitStatsWindowLink", resourceCulture)
             End Get
         End Property
         
