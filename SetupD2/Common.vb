@@ -175,6 +175,8 @@
             txt = My.Resources.RusLang
         ElseIf LangRButton.Name = "LangEnRadioButton" Then
             txt = My.Resources.EngLang
+        ElseIf LangRButton.Name = "LangEspRadioButton" Then
+            txt = My.Resources.EspLang
         Else
             Throw New Exception("Unknown language")
             End
@@ -405,6 +407,19 @@ Public Class DistributiveHandler
     Public Shared Function GetEngFiles(ByRef text As Boolean) As List(Of String)
         Dim f, r As New List(Of String)
         Call GetFolderFiles(f, New List(Of String), False, My.Resources.engFilesDir)
+        For Each item As String In f
+            Dim s As String = item.Substring(item.LastIndexOf(".")).ToLower
+            If text = CBool(Not s = ".wdb" And Not s = ".wdt" And Not s = ".wav") Then r.Add(item)
+        Next item
+        Return r
+    End Function
+    Public Shared Function GetEspFiles(ByRef text As Boolean) As List(Of String)
+        Dim f, r As New List(Of String)
+        If Not text Then
+            MsgBox("There is no spanish sound")
+            Return r
+        End If
+        Call GetFolderFiles(f, New List(Of String), False, My.Resources.espFilesDir)
         For Each item As String In f
             Dim s As String = item.Substring(item.LastIndexOf(".")).ToLower
             If text = CBool(Not s = ".wdb" And Not s = ".wdt" And Not s = ".wav") Then r.Add(item)

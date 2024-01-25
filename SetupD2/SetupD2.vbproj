@@ -166,6 +166,7 @@
   <ItemGroup>
     <None Include="Resources\SFXProjectFiles.txt" />
     <None Include="Resources\menutrck" />
+    <None Include="Resources\EspLang.txt" />
     <Content Include="Resources\semga.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

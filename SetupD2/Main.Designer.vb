@@ -37,6 +37,7 @@ Partial Class Main
         Me.LangPanel = New System.Windows.Forms.Panel()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
+        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
@@ -168,11 +169,12 @@ Partial Class Main
         '
         'LangPanel
         '
+        Me.LangPanel.Controls.Add(Me.LangEspRadioButton)
         Me.LangPanel.Controls.Add(Me.LangEnRadioButton)
         Me.LangPanel.Controls.Add(Me.LangRuRadioButton)
         Me.LangPanel.Location = New System.Drawing.Point(302, 0)
         Me.LangPanel.Name = "LangPanel"
-        Me.LangPanel.Size = New System.Drawing.Size(55, 45)
+        Me.LangPanel.Size = New System.Drawing.Size(55, 63)
         Me.LangPanel.TabIndex = 10
         '
         'LangEnRadioButton
@@ -196,6 +198,17 @@ Partial Class Main
         Me.LangRuRadioButton.TabStop = True
         Me.LangRuRadioButton.Text = "Рус"
         Me.LangRuRadioButton.UseVisualStyleBackColor = True
+        '
+        'LangEspRadioButton
+        '
+        Me.LangEspRadioButton.AutoSize = True
+        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
+        Me.LangEspRadioButton.Name = "LangEspRadioButton"
+        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangEspRadioButton.TabIndex = 2
+        Me.LangEspRadioButton.TabStop = True
+        Me.LangEspRadioButton.Text = "Esp"
+        Me.LangEspRadioButton.UseVisualStyleBackColor = True
         '
         'Main
         '
@@ -232,5 +245,6 @@ Partial Class Main
     Friend WithEvents SteamErrorLabel As System.Windows.Forms.Label
     Friend WithEvents SelectFolderErrorLabel As System.Windows.Forms.Label
     Friend WithEvents NonlatinErrorLabel As System.Windows.Forms.Label
+    Friend WithEvents LangEspRadioButton As System.Windows.Forms.RadioButton
 
 End Class

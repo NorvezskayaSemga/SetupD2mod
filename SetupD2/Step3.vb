@@ -32,7 +32,7 @@
         Call comm.closeEventSub()
     End Sub
 
-    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
+    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged, LangEspRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
     Private Sub OpenWebPage(sender As Object, e As System.EventArgs) Handles GuideLabel.LinkClicked, SiteLinkLabel.LinkClicked, WrapperLinkLabel.LinkClicked
@@ -129,6 +129,8 @@ Class Installer
         ElseIf id = 2 Then
             If myowner.prevForm.EnTextRadioButton.Checked Then
                 Return New List(Of String)() {DistributiveHandler.GetEngFiles(True), IgnorFiles}
+            ElseIf myowner.prevForm.EspTextRadioButton.Checked Then
+                Return New List(Of String)() {DistributiveHandler.GetEspFiles(True), IgnorFiles}
             Else
                 Return Nothing
             End If
@@ -436,6 +438,12 @@ Class RewriteSettings
                 overwrite.Add(("UseD3D").ToUpper, "0")
                 overwrite.Add(("DisplayMode").ToUpper, "1")
             End If
+            If myowner.prevForm.EspTextRadioButton.Checked Then
+                overwrite.Add(("Locale").ToUpper, "1034")
+            Else
+                overwrite.Add(("Locale").ToUpper, "1049")
+            End If
+
             Dim s() As String = IO.File.ReadAllLines(f)
             Dim delimiter As String = "="
             Dim k As String

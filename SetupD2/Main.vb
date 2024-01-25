@@ -7,8 +7,10 @@
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
         comm = New Common()
-        If System.Globalization.CultureInfo.InstalledUICulture.Name = "ru-RU" Then
+        If System.Globalization.CultureInfo.InstalledUICulture.ThreeLetterISOLanguageName = "rus" Then
             LangRuRadioButton.Checked = True
+        ElseIf System.Globalization.CultureInfo.InstalledUICulture.ThreeLetterISOLanguageName = "spa" Then
+            LangEspRadioButton.Checked = True
         Else
             LangEnRadioButton.Checked = True
         End If
@@ -25,7 +27,7 @@
         Call comm.Cancel(Me)
     End Sub
 
-    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
+    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged, LangEspRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
 

@@ -25,6 +25,9 @@ Partial Class InstallForm
         Me.Panel = New System.Windows.Forms.Panel()
         Me.InstallationProgressBar = New System.Windows.Forms.ProgressBar()
         Me.ProgressLabel = New System.Windows.Forms.Label()
+        Me.LangPanel = New System.Windows.Forms.Panel()
+        Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
+        Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
         Me.HintLabel52 = New System.Windows.Forms.Label()
         Me.HintLabel51 = New System.Windows.Forms.Label()
@@ -44,12 +47,10 @@ Partial Class InstallForm
         Me.MapsLabel = New System.Windows.Forms.Label()
         Me.LogLabel = New System.Windows.Forms.Label()
         Me.ModMapsLabel = New System.Windows.Forms.TextBox()
-        Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
-        Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
-        Me.LangPanel = New System.Windows.Forms.Panel()
+        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
         Me.Panel.SuspendLayout()
-        Me.HintPanel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
+        Me.HintPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel
@@ -82,6 +83,38 @@ Partial Class InstallForm
         Me.ProgressLabel.Size = New System.Drawing.Size(49, 16)
         Me.ProgressLabel.TabIndex = 7
         Me.ProgressLabel.Text = "Label1"
+        '
+        'LangPanel
+        '
+        Me.LangPanel.Controls.Add(Me.LangEspRadioButton)
+        Me.LangPanel.Controls.Add(Me.LangRuRadioButton)
+        Me.LangPanel.Controls.Add(Me.LangEnRadioButton)
+        Me.LangPanel.Location = New System.Drawing.Point(302, 11)
+        Me.LangPanel.Name = "LangPanel"
+        Me.LangPanel.Size = New System.Drawing.Size(55, 63)
+        Me.LangPanel.TabIndex = 5
+        '
+        'LangRuRadioButton
+        '
+        Me.LangRuRadioButton.AutoSize = True
+        Me.LangRuRadioButton.Location = New System.Drawing.Point(9, 3)
+        Me.LangRuRadioButton.Name = "LangRuRadioButton"
+        Me.LangRuRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangRuRadioButton.TabIndex = 0
+        Me.LangRuRadioButton.TabStop = True
+        Me.LangRuRadioButton.Text = "Рус"
+        Me.LangRuRadioButton.UseVisualStyleBackColor = True
+        '
+        'LangEnRadioButton
+        '
+        Me.LangEnRadioButton.AutoSize = True
+        Me.LangEnRadioButton.Location = New System.Drawing.Point(9, 22)
+        Me.LangEnRadioButton.Name = "LangEnRadioButton"
+        Me.LangEnRadioButton.Size = New System.Drawing.Size(44, 17)
+        Me.LangEnRadioButton.TabIndex = 1
+        Me.LangEnRadioButton.TabStop = True
+        Me.LangEnRadioButton.Text = "Eng"
+        Me.LangEnRadioButton.UseVisualStyleBackColor = True
         '
         'HintPanel
         '
@@ -288,36 +321,16 @@ Partial Class InstallForm
         Me.ModMapsLabel.Size = New System.Drawing.Size(232, 202)
         Me.ModMapsLabel.TabIndex = 16
         '
-        'LangEnRadioButton
+        'LangEspRadioButton
         '
-        Me.LangEnRadioButton.AutoSize = True
-        Me.LangEnRadioButton.Location = New System.Drawing.Point(9, 22)
-        Me.LangEnRadioButton.Name = "LangEnRadioButton"
-        Me.LangEnRadioButton.Size = New System.Drawing.Size(44, 17)
-        Me.LangEnRadioButton.TabIndex = 1
-        Me.LangEnRadioButton.TabStop = True
-        Me.LangEnRadioButton.Text = "Eng"
-        Me.LangEnRadioButton.UseVisualStyleBackColor = True
-        '
-        'LangRuRadioButton
-        '
-        Me.LangRuRadioButton.AutoSize = True
-        Me.LangRuRadioButton.Location = New System.Drawing.Point(9, 3)
-        Me.LangRuRadioButton.Name = "LangRuRadioButton"
-        Me.LangRuRadioButton.Size = New System.Drawing.Size(43, 17)
-        Me.LangRuRadioButton.TabIndex = 0
-        Me.LangRuRadioButton.TabStop = True
-        Me.LangRuRadioButton.Text = "Рус"
-        Me.LangRuRadioButton.UseVisualStyleBackColor = True
-        '
-        'LangPanel
-        '
-        Me.LangPanel.Controls.Add(Me.LangRuRadioButton)
-        Me.LangPanel.Controls.Add(Me.LangEnRadioButton)
-        Me.LangPanel.Location = New System.Drawing.Point(302, 11)
-        Me.LangPanel.Name = "LangPanel"
-        Me.LangPanel.Size = New System.Drawing.Size(55, 45)
-        Me.LangPanel.TabIndex = 5
+        Me.LangEspRadioButton.AutoSize = True
+        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
+        Me.LangEspRadioButton.Name = "LangEspRadioButton"
+        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangEspRadioButton.TabIndex = 4
+        Me.LangEspRadioButton.TabStop = True
+        Me.LangEspRadioButton.Text = "Esp"
+        Me.LangEspRadioButton.UseVisualStyleBackColor = True
         '
         'InstallForm
         '
@@ -335,10 +348,10 @@ Partial Class InstallForm
         Me.Text = "Step3"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
-        Me.HintPanel.ResumeLayout(False)
-        Me.HintPanel.PerformLayout()
         Me.LangPanel.ResumeLayout(False)
         Me.LangPanel.PerformLayout()
+        Me.HintPanel.ResumeLayout(False)
+        Me.HintPanel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -368,4 +381,5 @@ Partial Class InstallForm
     Friend WithEvents LangPanel As System.Windows.Forms.Panel
     Friend WithEvents LangRuRadioButton As System.Windows.Forms.RadioButton
     Friend WithEvents LangEnRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents LangEspRadioButton As System.Windows.Forms.RadioButton
 End Class

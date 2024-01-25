@@ -226,3 +226,8 @@ Exp+ ИИ мода (больше опыта для ИИ и нейтралов)
 
 #AIAccuracyBonusCheckBox
 Отключить зависимость точности ИИ от сложности
+
+#LangEspRadioButton
+Esp
+#EspTextRadioButton
+Испанский

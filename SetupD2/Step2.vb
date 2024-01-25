@@ -37,7 +37,7 @@
         Call comm.closeEventSub()
     End Sub
 
-    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged
+    Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged, LangEspRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
 

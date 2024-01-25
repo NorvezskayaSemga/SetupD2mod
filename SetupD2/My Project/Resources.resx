@@ -292,4 +292,10 @@
   <data name="SFXProjectFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SFXProjectFiles.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="espFilesDir" xml:space="preserve">
+    <value>.\Esp</value>
+  </data>
+  <data name="EspLang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EspLang.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>

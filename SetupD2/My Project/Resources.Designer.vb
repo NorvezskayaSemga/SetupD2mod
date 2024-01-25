@@ -315,7 +315,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Select a folder
         '''#InfoLabel
-        '''Select an empty folder to install an already patched  [rest of string was truncated]&quot;;.
+        '''Select an empty folder t [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EngLang() As String
             Get
@@ -329,6 +329,24 @@ Namespace My.Resources
         Friend ReadOnly Property errorMsgTag() As String
             Get
                 Return ResourceManager.GetString("errorMsgTag", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Esp.
+        '''</summary>
+        Friend ReadOnly Property espFilesDir() As String
+            Get
+                Return ResourceManager.GetString("espFilesDir", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .
+        '''</summary>
+        Friend ReadOnly Property EspLang() As String
+            Get
+                Return ResourceManager.GetString("EspLang", resourceCulture)
             End Get
         End Property
         
@@ -563,7 +581,7 @@ Namespace My.Resources
         '''#SelectButton
         '''Выберите папку
         '''#InfoLabel
-        '''Выберите пустую папку для устан [rest of string was truncated]&quot;;.
+        '''Вы [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property RusLang() As String
             Get

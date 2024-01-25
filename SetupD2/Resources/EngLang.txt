@@ -226,3 +226,8 @@ Some users have problems due to non latin characters
 
 #AIAccuracyBonusCheckBox
 Disable AI accuracy dependency on difficulty
+
+#LangEspRadioButton
+Esp
+#EspTextRadioButton
+Spanish
