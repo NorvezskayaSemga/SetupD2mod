@@ -151,56 +151,110 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copyslang#.
+        '''  Looks up a localized string similar to #copyslang_eng#.
         '''</summary>
-        Friend ReadOnly Property copySoundLang() As String
+        Friend ReadOnly Property copySoundLang_eng() As String
             Get
-                Return ResourceManager.GetString("copySoundLang", resourceCulture)
+                Return ResourceManager.GetString("copySoundLang_eng", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copyslangerr#.
+        '''  Looks up a localized string similar to #copyslang_esp#.
         '''</summary>
-        Friend ReadOnly Property copySoundLangErr() As String
+        Friend ReadOnly Property copySoundLang_esp() As String
             Get
-                Return ResourceManager.GetString("copySoundLangErr", resourceCulture)
+                Return ResourceManager.GetString("copySoundLang_esp", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copyslangok#.
+        '''  Looks up a localized string similar to #copyslangerr_eng#.
         '''</summary>
-        Friend ReadOnly Property copySoundLangOk() As String
+        Friend ReadOnly Property copySoundLangErr_eng() As String
             Get
-                Return ResourceManager.GetString("copySoundLangOk", resourceCulture)
+                Return ResourceManager.GetString("copySoundLangErr_eng", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copytlang#.
+        '''  Looks up a localized string similar to #copyslangerr_esp#.
         '''</summary>
-        Friend ReadOnly Property copyTextLang() As String
+        Friend ReadOnly Property copySoundLangErr_esp() As String
             Get
-                Return ResourceManager.GetString("copyTextLang", resourceCulture)
+                Return ResourceManager.GetString("copySoundLangErr_esp", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copytlangerr#.
+        '''  Looks up a localized string similar to #copyslangok_eng#.
         '''</summary>
-        Friend ReadOnly Property copyTextLangErr() As String
+        Friend ReadOnly Property copySoundLangOk_eng() As String
             Get
-                Return ResourceManager.GetString("copyTextLangErr", resourceCulture)
+                Return ResourceManager.GetString("copySoundLangOk_eng", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #copytlangok#.
+        '''  Looks up a localized string similar to #copyslangok_esp#.
         '''</summary>
-        Friend ReadOnly Property copyTextLangOk() As String
+        Friend ReadOnly Property copySoundLangOk_esp() As String
             Get
-                Return ResourceManager.GetString("copyTextLangOk", resourceCulture)
+                Return ResourceManager.GetString("copySoundLangOk_esp", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlang_eng#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLang_eng() As String
+            Get
+                Return ResourceManager.GetString("copyTextLang_eng", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlang_esp#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLang_esp() As String
+            Get
+                Return ResourceManager.GetString("copyTextLang_esp", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangerr_eng#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangErr_eng() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangErr_eng", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangerr_esp#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangErr_esp() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangErr_esp", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangok_eng#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangOk_eng() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangOk_eng", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #copytlangok_esp#.
+        '''</summary>
+        Friend ReadOnly Property copyTextLangOk_esp() As String
+            Get
+                Return ResourceManager.GetString("copyTextLangOk_esp", resourceCulture)
             End Get
         End Property
         
@@ -498,20 +552,38 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #noslangerror#.
+        '''  Looks up a localized string similar to #noslangerror_eng#.
         '''</summary>
-        Friend ReadOnly Property noSoundLangFound() As String
+        Friend ReadOnly Property noSoundLangFound_eng() As String
             Get
-                Return ResourceManager.GetString("noSoundLangFound", resourceCulture)
+                Return ResourceManager.GetString("noSoundLangFound_eng", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to #notlangerror#.
+        '''  Looks up a localized string similar to #noslangerror_esp#.
         '''</summary>
-        Friend ReadOnly Property noTextLangFound() As String
+        Friend ReadOnly Property noSoundLangFound_esp() As String
             Get
-                Return ResourceManager.GetString("noTextLangFound", resourceCulture)
+                Return ResourceManager.GetString("noSoundLangFound_esp", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #notlangerror_eng#.
+        '''</summary>
+        Friend ReadOnly Property noTextLangFound_eng() As String
+            Get
+                Return ResourceManager.GetString("noTextLangFound_eng", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to #notlangerror_esp#.
+        '''</summary>
+        Friend ReadOnly Property noTextLangFound_esp() As String
+            Get
+                Return ResourceManager.GetString("noTextLangFound_esp", resourceCulture)
             End Get
         End Property
         

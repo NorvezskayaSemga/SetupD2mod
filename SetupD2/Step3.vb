@@ -229,9 +229,17 @@ Class Installer
                 IsError = True
                 Call AddMsg(My.Resources.noFilesFound)
             ElseIf id = 2 Then
-                Call AddMsg(My.Resources.noTextLangFound)
+                If myowner.prevForm.EnTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.noTextLangFound_eng)
+                ElseIf myowner.prevForm.EspTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.noTextLangFound_esp)
+                End If
             ElseIf id = 3 Then
-                Call AddMsg(My.Resources.noSoundLangFound)
+                If myowner.prevForm.EnSoundRadioButton.Checked Then
+                    Call AddMsg(My.Resources.noSoundLangFound_eng)
+                End If
+                'ElseIf myowner.prevForm.EspSoundRadioButton.Checked Then
+                '    Call AddMsg(My.Resources.noSoundLangFound_esp)
             ElseIf id = 4 Then
                 Call AddMsg(My.Resources.noToolsFound)
             ElseIf id = 5 Then
@@ -248,9 +256,17 @@ Class Installer
         If id = 1 Then
             Call AddMsg(My.Resources.copyFiles)
         ElseIf id = 2 Then
-            Call AddMsg(My.Resources.copyTextLang)
+            If myowner.prevForm.EnTextRadioButton.Checked Then
+                Call AddMsg(My.Resources.copyTextLang_eng)
+            ElseIf myowner.prevForm.EspTextRadioButton.Checked Then
+                Call AddMsg(My.Resources.copyTextLang_esp)
+            End If
         ElseIf id = 3 Then
-            Call AddMsg(My.Resources.copySoundLang)
+            If myowner.prevForm.EnSoundRadioButton.Checked Then
+                Call AddMsg(My.Resources.copySoundLang_eng)
+            End If
+            'ElseIf myowner.prevForm.EspSoundRadioButton.Checked Then
+            '    Call AddMsg(My.Resources.copySoundLang_esp)
         ElseIf id = 4 Then
             Call AddMsg(My.Resources.copyTools)
         ElseIf id = 5 Then
@@ -307,9 +323,17 @@ Class Installer
                 IsError = True
                 Call AddMsg(My.Resources.copyFilesErr)
             ElseIf id = 2 Then
-                Call AddMsg(My.Resources.copyTextLangErr)
+                If myowner.prevForm.EnTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copyTextLangErr_eng)
+                ElseIf myowner.prevForm.EspTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copyTextLangErr_esp)
+                End If
             ElseIf id = 3 Then
-                Call AddMsg(My.Resources.copySoundLangErr)
+                If myowner.prevForm.EnSoundRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copySoundLangErr_eng)
+                End If
+                'ElseIf myowner.prevForm.EspSoundRadioButton.Checked Then
+                '    Call AddMsg(My.Resources.copySoundLangErr_esp)
             ElseIf id = 4 Then
                 Call AddMsg(My.Resources.copyToolsErr)
             ElseIf id = 5 Then
@@ -325,9 +349,17 @@ Class Installer
             If id = 1 Then
                 Call AddMsg(My.Resources.copyFilesOk)
             ElseIf id = 2 Then
-                Call AddMsg(My.Resources.copyTextLangOk)
+                If myowner.prevForm.EnTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copyTextLangOk_eng)
+                ElseIf myowner.prevForm.EspTextRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copyTextLangOk_esp)
+                End If
             ElseIf id = 3 Then
-                Call AddMsg(My.Resources.copySoundLangOk)
+                If myowner.prevForm.EnSoundRadioButton.Checked Then
+                    Call AddMsg(My.Resources.copySoundLangOk_eng)
+                End If
+                'ElseIf myowner.prevForm.EspSoundRadioButton.Checked Then
+                '    Call AddMsg(My.Resources.copySoundLangOk_esp)
             ElseIf id = 4 Then
                 Call AddMsg(My.Resources.copyToolsOk)
             ElseIf id = 5 Then

@@ -1,4 +1,4 @@
-##cancmsg#
+Ôªø##cancmsg#
 Abort installation?
 ##yes#
 Yes
@@ -15,7 +15,7 @@ Install full and patched game
 #PatchRadioButton
 Patch my game (GOG, Russobit-M or Akella)
 #LangRuRadioButton
-–ÛÒ
+–†—É—Å
 #LangEnRadioButton
 Eng
 #NextButton
@@ -88,9 +88,9 @@ Mod maps
 
 ##nofileserror#
 Can not find mod files. You probably haven't unpacked the mod archive
-##notlangerror#
+##notlangerror_eng#
 Can not find english interface files
-##noslangerror#
+##noslangerror_eng#
 Can not find english sound files
 ##notoolserror#
 Can not find scripts
@@ -99,9 +99,9 @@ Can not find GL Wrapper files
 
 ##copyfiles#
 Copying mod files
-##copytlang#
+##copytlang_eng#
 Copying english interface files
-##copyslang#
+##copyslang_eng#
 Copying english sound files
 ##copytools#
 Copying scripts
@@ -116,9 +116,9 @@ If you have any problems during installation (strange message from Windows after
 
 ##copyfilesok#
 Mod files have been copied successfully
-##copytlangok#
+##copytlangok_eng#
 English interface files have been copied successfully
-##copyslangok#
+##copyslangok_eng#
 English sound files have been copied successfully
 ##copytoolsok#
 Scripts have been copied successfully
@@ -127,9 +127,9 @@ GL Wrapper has been downloaded and installed successfully
 
 ##copyfileserr#
 Failed to copy mod files: 
-##copytlangerr#
+##copytlangerr_eng#
 Failed to copy english interface files: 
-##copyslangerr#
+##copyslangerr_eng#
 Failed to copy english sound files: 
 ##copytoolserr#
 Failed to copy scripts: 
@@ -259,3 +259,20 @@ Heal spread multiplier
 Luck heal chance
 #healUnluckMultiLabel
 Unluck heal multiplier
+
+##notlangerror_esp#
+Can not find spanish interface files
+##noslangerror_esp#
+Can not find spanish sound files
+##copytlang_esp#
+Copying spanish interface files
+##copyslang_esp#
+Copying spanish sound files
+##copytlangok_esp#
+Spanish interface files have been copied successfully
+##copyslangok_esp#
+Spanish sound files have been copied successfully
+##copytlangerr_esp#
+Failed to copy spanish interface files: 
+##copyslangerr_esp#
+Failed to copy spanish sound files: 

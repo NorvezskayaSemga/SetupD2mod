@@ -196,23 +196,23 @@
   <data name="copyGLWrapperOk" xml:space="preserve">
     <value>#copyglwrapperok#</value>
   </data>
-  <data name="copySoundLang" xml:space="preserve">
-    <value>#copyslang#</value>
+  <data name="copySoundLang_eng" xml:space="preserve">
+    <value>#copyslang_eng#</value>
   </data>
-  <data name="copySoundLangErr" xml:space="preserve">
-    <value>#copyslangerr#</value>
+  <data name="copySoundLangErr_eng" xml:space="preserve">
+    <value>#copyslangerr_eng#</value>
   </data>
-  <data name="copySoundLangOk" xml:space="preserve">
-    <value>#copyslangok#</value>
+  <data name="copySoundLangOk_eng" xml:space="preserve">
+    <value>#copyslangok_eng#</value>
   </data>
-  <data name="copyTextLang" xml:space="preserve">
-    <value>#copytlang#</value>
+  <data name="copyTextLang_eng" xml:space="preserve">
+    <value>#copytlang_eng#</value>
   </data>
-  <data name="copyTextLangErr" xml:space="preserve">
-    <value>#copytlangerr#</value>
+  <data name="copyTextLangErr_eng" xml:space="preserve">
+    <value>#copytlangerr_eng#</value>
   </data>
-  <data name="copyTextLangOk" xml:space="preserve">
-    <value>#copytlangok#</value>
+  <data name="copyTextLangOk_eng" xml:space="preserve">
+    <value>#copytlangok_eng#</value>
   </data>
   <data name="copyToolsErr" xml:space="preserve">
     <value>#copytoolserr#</value>
@@ -220,11 +220,11 @@
   <data name="copyToolsOk" xml:space="preserve">
     <value>#copytoolsok#</value>
   </data>
-  <data name="noSoundLangFound" xml:space="preserve">
-    <value>#noslangerror#</value>
+  <data name="noSoundLangFound_eng" xml:space="preserve">
+    <value>#noslangerror_eng#</value>
   </data>
-  <data name="noTextLangFound" xml:space="preserve">
-    <value>#notlangerror#</value>
+  <data name="noTextLangFound_eng" xml:space="preserve">
+    <value>#notlangerror_eng#</value>
   </data>
   <data name="noToolsFound" xml:space="preserve">
     <value>#notoolserror#</value>
@@ -303,5 +303,29 @@
   </data>
   <data name="spreadLink" xml:space="preserve">
     <value>https://dis2modding.fandom.com/ru/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC%D1%8B_%D1%80%D0%B0%D0%B7%D0%B1%D1%80%D0%BE%D1%81%D0%B0_%D1%83%D1%80%D0%BE%D0%BD%D0%B0_%D0%B2_%D0%BC%D0%BE%D0%B4%D0%B5_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8</value>
+  </data>
+  <data name="copySoundLangErr_esp" xml:space="preserve">
+    <value>#copyslangerr_esp#</value>
+  </data>
+  <data name="copySoundLangOk_esp" xml:space="preserve">
+    <value>#copyslangok_esp#</value>
+  </data>
+  <data name="copySoundLang_esp" xml:space="preserve">
+    <value>#copyslang_esp#</value>
+  </data>
+  <data name="copyTextLangErr_esp" xml:space="preserve">
+    <value>#copytlangerr_esp#</value>
+  </data>
+  <data name="copyTextLangOk_esp" xml:space="preserve">
+    <value>#copytlangok_esp#</value>
+  </data>
+  <data name="copyTextLang_esp" xml:space="preserve">
+    <value>#copytlang_esp#</value>
+  </data>
+  <data name="noSoundLangFound_esp" xml:space="preserve">
+    <value>#noslangerror_esp#</value>
+  </data>
+  <data name="noTextLangFound_esp" xml:space="preserve">
+    <value>#notlangerror_esp#</value>
   </data>
 </root>
