@@ -1,1 +1,278 @@
-﻿
+﻿##cancmsg#
+¿Quieres cancelar la instalación?
+##yes#
+Si
+##no#
+No
+#InstallModeLabel
+Elige el modo de instalación
+#TextLangLabel
+Selecciona el idioma de texto de la interfaz
+#SoundLangLabel
+Selecciona el idioma de las voces en el mapa global
+#InstallRadioButton
+Instalar el juego completo y parcheado
+#PatchRadioButton
+Parchear el juego (GOG, Russobit-M or Akella)
+#LangRuRadioButton
+Рус
+#LangEnRadioButton
+Eng
+#NextButton
+Siguiente
+#BackButton
+Atrás
+#CancButton
+Cancelar
+#SelectButton
+Selecciona una carpeta
+#InfoLabel
+Seleccione una carpeta vacía para instalar un juego ya parcheado
+o
+selecciona una carpeta con Disciples 2 Rise of the Elves 3.01 de GOG, Russobit-M o Akella.
+Luego haz click en siguiente "Siguiente"
+#RuTextRadioButton
+Ruso
+#EnTextRadioButton
+Ingles (beta)
+#RuSoundRadioButton
+Ruso
+#EnSoundRadioButton
+Ingles
+#GLWrapperCheckBox
+Intentar descargar e instalar Verok's GL Wrapper
+#ToolsCheckBox
+Copiar scripts útiles and Readme en la carpeta del juego
+#HintLabel11
+Si el juego no se inicia, necesitas
+#HintLabel12
+ver esto
+#GuideLabel
+guia por Timur Findme
+#HintLabel2
+Si tienes un problema ejecutando 
+un mapa o una saga,
+necesitas usar el convertidor ubicado
+en la carpeta Tools ((C)sgConverter)
+#HintLabel31
+Si tienes preguntas, sugerencias.
+o simplemente quieres dar las gracias,
+#HintLabel32
+ve a
+#SiteLinkLabel
+web del mod
+#HintLabel41
+Si ha ocurrido algun error al descargar GL Wrapper,
+#HintLabel42
+descargalo desde
+#WrapperLinkLabel
+pagina del blog de Verok's
+#HintLabel51
+Puedes cambiar el límite de daño de las unidades y otras configuraciones.
+#HintLabel52
+en el archivo Scripts\settings.lua cuando quieras
+#FinishButton
+Salir
+#ProgressLabel
+Progreso
+#ActionLabel
+Trabajo actual
+#ModMapsLabel
+Mapas del mod
+#InstallButton
+Instalar
+#LogLabel
+Progreso de la instalación
+#MapsLabel
+Mapas del mod
+
+##nofileserror#
+No se pueden encontrar los archivos del mod. Probablemente no hayas descomprimido el archivo del mod.
+##notlangerror#
+No se encuentran los archivos de interfaz en inglés
+##noslangerror#
+No se encuentran los archivos de sonido en inglés
+##notoolserror#
+No se encuentran los scripts
+##nowrappererror#
+No se encuentran los archivos de GL Wrapper
+
+##copyfiles#
+Copiando archivos del mod
+##copytlang#
+Copiando los archivos de interfaz en inglés
+##copyslang#
+Copiando los archivos de sonido en inglés
+##copytools#
+Copiando scripts
+##copyglwrapper#
+Intentando descargar GL Wrapper
+##completed#
+Instalación completada
+##linesdelimiter#
+-------
+##ifyouhaveproblems#
+Si tienes algún problema durante la instalación (si recibes mensajes extraños de Windows despues de la instalación, no importa), puedes instalar el mod facilmente de forma manual siguiendo las instrucciones en Readme\Eng\How to install.txt
+
+##copyfilesok#
+Los archivos del mod se han copiado correctamente.
+##copytlangok#
+Los archivos de interfaz en Inglés se han copiado correctamente.
+##copyslangok#
+Los archivos de sonido en Inglés se han copiado correctamente.
+##copytoolsok#
+Los Scripts se han copiado correctamente.
+##copyglwrapperok#
+GL Wrapper se ha descargado e instalado correctamente.
+
+##copyfileserr#
+No se pudieron copiar los archivos del mod: 
+##copytlangerr#
+No se pudieron copiar los archivos de la interfaz en inglés:: 
+##copyslangerr#
+No se pudieron copiar los archivos de sonido en inglés: 
+##copytoolserr#
+No se pudieron copiar los scripts: 
+##copyglwrappererr#
+No se pudo descargar o instalar GL Wrapper:
+##noglwrapperlinks#
+No se pudo encontrar enlaces de descarga para GL Wrapper
+
+#DmgLimitCheckBox
+Eliminar el límite de daño de las unidades
+##limitremoveok#
+El límite de daño de las unidades se eliminó con éxito
+##limitremoveerror#
+No se pudo eliminar el límite de daño: probablemente tengas una versión de Steam o bien, Discipl2.exe no existe
+
+#comment_shatterdamagemax
+Armadura máxima destrozada por un golpe.
+#comment_shatteredarmormax
+Destrozo máximo de armadura.
+#comment_unitmaxdamage
+Daño máximo de la unidad.
+#comment_unitmaxarmor
+Armadura máxima de la unidad.
+#comment_stackmaxscoutrange
+Radio de exploración máximo.
+#comment_criticalhitdamage
+Daño adicional por golpe crítico
+#comment_displayerrors
+Mostrar texto de errores
+
+#GAILabel
+Configuración de dificultad
+#VanillaGAIRadioButton
+IA sin modificar (muy fácil)
+#NormalGAIRadioButton
+IA mod normal (recomendado por el autor)
+#ExpPlusGAIRadioButton
+Exp+ mod AI (más experiencia para AI y neutrales)
+
+##setdifficultymsgsuccessfullvanilla#
+Dificultad configurada correctamente: original
+##setdifficultymsgsuccessfullnormal#
+Dificultad configurada correctamente: normal
+##setdifficultymsgsuccessfullexpplus#
+Dificultad configurada correctamente: exp+
+##setdifficultymsgunexpectedgai#
+Archivo de configuración de dificultad inesperado seleccionado
+##setdifficultymsgerror#
+Se produjo un error al configurar la dificultad:
+
+#mustbegreaterorequalerror
+Debe ser mayor o igual
+#mustbelowerorequalerror
+Debe ser menor o igual
+#mustbeintegererror
+Debe ser integro
+
+#carryOverItemsMaxLabel
+Número de artículos permitidos para transferir
+entre escenarios de campaña
+#unitMaxDamageLabel
+Daño máximo de la unidad
+#criticalHitDamageLabel
+Daño porcentual de golpe crítico
+#criticalHitChanceLabel
+Porcentaje de probabilidad de golpe crítico
+#SFXProjectCheckBox
+Instalar música de SFX Project de Zeriosis
+#MissUseSingleRollRadioButton
+Utilice una sola tirada para atacar y fallar
+(la probabilidad corresponde a los números en las estadísticas)
+#MissUseDoubleRollRadioButton
+Usa doble tirada para atacar y fallar.
+(Como en el juego original.
+La probabilidad de acierto real por encima del 50% de precisión está inflada.
+se subestima la probabilidad de acierto real por debajo del 50% de precisión)
+
+#SettingsTabPage1
+Settings#1
+#SettingsTabPage2
+Settings#2
+#SettingsTabPage3
+Settings#3
+#SettingsTabPage4
+Settings#4
+
+#SteamErrorLabel
+Parece que está seleccionada la carpeta con la versión de Steam. No lo hagas de esta manera.
+#SelectFolderErrorLabel
+Necesitas seleccionar una carpeta existente
+#NonlatinErrorLabel
+Utilice caracteres latinos y numeros en la ruta
+Algunos usuarios tienen problemas debido a caracteres no latinos.
+
+#AIAccuracyBonusCheckBox
+Deshabilitar la dependencia de la precisión de la IA en función de la dificultad
+
+#LangEspRadioButton
+Esp
+#EspTextRadioButton
+Spanish
+#ShowModeInfoLabel
+Modo de visualización de características de la unidad
+#ShowModeInfoLinkLabel
+Enlace a la Wiki con descripción.
+#defaultStatsShowModeLabel
+Modo predeterminado
+#alternativeStatsShowModeLabel
+Modo alternativo
+#statsShowModeSwitchKeyLabel
+Botón de cambio de modo
+#SpreadModeLinkLabel
+Enlace a la Wiki con descripción de los parámetros de propagación.
+#damageSpreadModeLabel
+Modo de propagación de daño directo
+#damageSpreadMultiLabel
+Multiplicador de propagación de daño directo
+#LuckEffectModeLabel
+Efecto suerte en el modo de propagación
+#damageSpreadApplyPowerLabel
+Efecto de la precisión base sobre la dispersión
+#healSpreadModeLabel
+Modo de propagación de curación
+#healSpreadMultiLabel
+Multiplicador de propagación en curación
+#healLuckChanceLabel
+Probabilidad por suerte de curación
+#healUnluckMultiLabel
+Multiplicador de curación por mala suerte
+
+##notlangerror_esp#
+No se han podido encontrar los archivos de interfaz en español
+##noslangerror_esp#
+No se han podido encontrar los archivos de interfaz en español
+##copytlang_esp#
+Copiar archivos de sonido en español.
+##copyslang_esp#
+Copiar archivos de sonido en español.
+##copytlangok_esp#
+Los archivos de la interfaz en español se han copiado correctamente.
+##copyslangok_esp#
+Los archivos de sonido en español se han copiado correctamente.
+##copytlangerr_esp#
+No se pudieron copiar los archivos de la interfaz en español:
+##copyslangerr_esp#
+No se pudieron copiar los archivos de sonido en español:
