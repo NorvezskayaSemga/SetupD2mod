@@ -25,12 +25,12 @@ Atrás
 #CancButton
 Cancelar
 #SelectButton
-Selecciona una carpeta
+Examinar
 #InfoLabel
-Seleccione una carpeta vacía para instalar un juego ya parcheado
+Seleccione una carpeta vacía para instalar el juego ya parcheado
 o
 selecciona una carpeta con Disciples 2 Rise of the Elves 3.01 de GOG, Russobit-M o Akella.
-Luego haz click en siguiente "Siguiente"
+Luego haz click en "Siguiente"
 #RuTextRadioButton
 Ruso
 #EnTextRadioButton
@@ -68,7 +68,7 @@ descargalo desde
 #WrapperLinkLabel
 pagina del blog de Verok's
 #HintLabel51
-Puedes cambiar el límite de daño de las unidades y otras configuraciones.
+Puedes cambiar el daño de las unidades y otras config.
 #HintLabel52
 en el archivo Scripts\settings.lua cuando quieras
 #FinishButton
@@ -204,8 +204,7 @@ Utilice una sola tirada para atacar y fallar
 #MissUseDoubleRollRadioButton
 Usa doble tirada para atacar y fallar.
 (Como en el juego original.
-La probabilidad de acierto real por encima del 50% de precisión está inflada.
-se subestima la probabilidad de acierto real por debajo del 50% de precisión)
+La probabilidad de acierto a partir del 50% de precisión está inflada)
 
 #SettingsTabPage1
 Settings#1
@@ -225,14 +224,14 @@ Utilice caracteres latinos y numeros en la ruta
 Algunos usuarios tienen problemas debido a caracteres no latinos.
 
 #AIAccuracyBonusCheckBox
-Deshabilitar la dependencia de la precisión de la IA en función de la dificultad
+Deshabilitar la precisión de la IA en función de la dificultad
 
 #LangEspRadioButton
 Esp
 #EspTextRadioButton
 Spanish
 #ShowModeInfoLabel
-Modo de visualización de características de la unidad
+Modo de visualización de info de la unidad
 #ShowModeInfoLinkLabel
 Enlace a la Wiki con descripción.
 #defaultStatsShowModeLabel
@@ -242,15 +241,15 @@ Modo alternativo
 #statsShowModeSwitchKeyLabel
 Botón de cambio de modo
 #SpreadModeLinkLabel
-Enlace a la Wiki con descripción de los parámetros de propagación.
+Enlace a la Wiki con descripción config. de propagación.
 #damageSpreadModeLabel
-Modo de propagación de daño directo
+Modo propagación de daño directo
 #damageSpreadMultiLabel
-Multiplicador de propagación de daño directo
+Multiplicacion dispersion de daño directo
 #LuckEffectModeLabel
-Efecto suerte en el modo de propagación
+Suerte en el modo de propagación
 #damageSpreadApplyPowerLabel
-Efecto de la precisión base sobre la dispersión
+Precisión base sobre la dispersión
 #healSpreadModeLabel
 Modo de propagación de curación
 #healSpreadMultiLabel
