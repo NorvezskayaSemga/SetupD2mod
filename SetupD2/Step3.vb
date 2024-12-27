@@ -505,7 +505,7 @@ Class RewriteSettings
 
         Public Shared Sub Add(ByRef overwrite As Dictionary(Of String, OverwriteInfo), key As String, val As String, cont As String)
             Dim info As New OverwriteInfo(val, cont.Replace(" ", ""), key)
-            overwrite.Add(key.ToUpper, info)
+            overwrite.Add(cont.ToUpper & "#" & key.ToUpper, info)
         End Sub
 
         Public Shared Function HandleString(s As String) As Boolean
@@ -594,16 +594,19 @@ Class RewriteSettings
             OverwriteInfo.Add(overwrite, "defaultStatsShowMode", "'unitEncyclopedia_" & modSettings("defaultStatsShowModeComboBox.Text") & "'", "mnsSettings")
             OverwriteInfo.Add(overwrite, "alternativeStatsShowMode", "'unitEncyclopedia_" & modSettings("alternativeStatsShowModeComboBox.Text") & "'", "mnsSettings")
             OverwriteInfo.Add(overwrite, "statsShowModeSwitchKey", "KeyboardKey." & modSettings("statsShowModeSwitchKeyComboBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "LuckEffectMode", "'LuckEffectMode." & modSettings("LuckEffectModeComboBox.Text") & "'", "mnsSettings")
+
             OverwriteInfo.Add(overwrite, "damageSpreadMode", "SpreadMode." & modSettings("damageSpreadModeComboBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "damageSpreadApplyPower", modSettings("damageSpreadApplyPowerComboBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "damageSpreadUpperMulti", modSettings("damageSpreadMultiTextBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "damageSpreadLowerMulti", modSettings("damageSpreadMultiTextBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "healSpreadMode", modSettings("healSpreadModeComboBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "healSpreadUpperMulti", modSettings("healSpreadMultiTextBox.Text"), "mnsSettings")
-            OverwriteInfo.Add(overwrite, "healSpreadLowerMulti", modSettings("healSpreadMultiTextBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "damageSpreadMulti", modSettings("damageSpreadMultiTextBox.Text"), "mnsSettings")
+
+            OverwriteInfo.Add(overwrite, "healSpreadMode", "SpreadMode." & modSettings("healSpreadModeComboBox.Text"), "mnsSettings")
+            OverwriteInfo.Add(overwrite, "healSpreadMulti", modSettings("healSpreadMultiTextBox.Text"), "mnsSettings")
             OverwriteInfo.Add(overwrite, "healLuckChance", modSettings("healLuckChanceTextBox.Text"), "mnsSettings")
             OverwriteInfo.Add(overwrite, "healUnluckMulti", modSettings("healUnluckMultiTextBox.Text"), "mnsSettings")
+            
+            OverwriteInfo.Add(overwrite, "easy", modSettings("Easy_HumanBattleExpMultiplierTextBox.Text"), "mnsSettings,playerBattleExpGainMultiplier")
+            OverwriteInfo.Add(overwrite, "average", modSettings("Normal_HumanBattleExpMultiplierTextBox.Text"), "mnsSettings,playerBattleExpGainMultiplier")
+            OverwriteInfo.Add(overwrite, "hard", modSettings("Hard_HumanBattleExpMultiplierTextBox.Text"), "mnsSettings,playerBattleExpGainMultiplier")
+            OverwriteInfo.Add(overwrite, "veryHard", modSettings("VeryHard_HumanBattleExpMultiplierTextBox.Text"), "mnsSettings,playerBattleExpGainMultiplier")
 
             Dim currentContainer(-1) As String
 
@@ -617,10 +620,11 @@ Class RewriteSettings
                         If v.StartsWith("{") Then
                             Call OverwriteInfo.ResizeContainer(currentContainer, k, True)
                         End If
-                        If overwrite.ContainsKey(k) Then
-                            If overwrite.Item(k).containerUpper = String.Join(",", currentContainer).ToUpper Then
-                                s(i) = splited(0) & delimiter & " " & overwrite.Item(k).value & ","
-                                overwrite.Item(k).added = True
+                        Dim overwriteKey As String = (String.Join(",", currentContainer) & "#" & k).ToUpper
+                        If overwrite.ContainsKey(overwriteKey) Then
+                            If overwrite.Item(overwriteKey).containerUpper = String.Join(",", currentContainer).ToUpper Then
+                                s(i) = splited(0) & delimiter & " " & overwrite.Item(overwriteKey).value & ","
+                                overwrite.Item(overwriteKey).added = True
                             End If
                         End If
                     End If

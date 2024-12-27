@@ -19,9 +19,12 @@
         GLWrapperCheckBox.Checked = EnableGLWrapper
         GLWrapperCheckBox.Enabled = EnableGLWrapper
 
-        'EnTextRadioButton.Enabled = False
-        'EnTextRadioButton.Checked = False
-        'RuTextRadioButton.Checked = True
+        EnTextRadioButton.Enabled = False
+        EspTextRadioButton.Enabled = False
+
+        EnTextRadioButton.Checked = False
+        EspTextRadioButton.Checked = False
+        RuTextRadioButton.Checked = True
     End Sub
     Private Sub goNext() Handles InstallButton.Click
         If Not checkSettings() Then Exit Sub
@@ -107,7 +110,4 @@
         e.Graphics.DrawString(SettingsTabControl.TabPages(e.Index).Text, Me.Font, SystemBrushes.HighlightText, paddedBounds)
     End Sub
 
-    Private Sub OpenWebPage(sender As System.Object, e As System.Windows.Forms.MouseEventArgs) Handles ShowModeInfoLinkLabel.MouseClick, SpreadModeLinkLabel.MouseClick
-
-    End Sub
 End Class

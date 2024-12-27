@@ -24,6 +24,8 @@
 
         If TypeOf current Is Main Then
             CType(current, Main).Text = My.Resources.title & DistributiveHandler.GetVersion()
+            CType(current, Main).ModWikiLinkLabel.Links.Clear()
+            CType(current, Main).ModWikiLinkLabel.Links.Add(New LinkLabel.Link With {.LinkData = My.Resources.wikipedialink})
         ElseIf TypeOf current Is SettingsForm Then
             'CType(current, Step2).RuTextRadioButton.Checked = CType(current, Step2).LangRuRadioButton.Checked
             'CType(current, Step2).RuSoundRadioButton.Checked = CType(current, Step2).LangRuRadioButton.Checked

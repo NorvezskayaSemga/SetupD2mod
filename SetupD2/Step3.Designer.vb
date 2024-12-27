@@ -26,6 +26,7 @@ Partial Class InstallForm
         Me.InstallationProgressBar = New System.Windows.Forms.ProgressBar()
         Me.ProgressLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
+        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.HintPanel = New System.Windows.Forms.Panel()
@@ -47,7 +48,6 @@ Partial Class InstallForm
         Me.MapsLabel = New System.Windows.Forms.Label()
         Me.LogLabel = New System.Windows.Forms.Label()
         Me.ModMapsLabel = New System.Windows.Forms.TextBox()
-        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
         Me.HintPanel.SuspendLayout()
@@ -93,6 +93,17 @@ Partial Class InstallForm
         Me.LangPanel.Name = "LangPanel"
         Me.LangPanel.Size = New System.Drawing.Size(55, 63)
         Me.LangPanel.TabIndex = 5
+        '
+        'LangEspRadioButton
+        '
+        Me.LangEspRadioButton.AutoSize = True
+        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
+        Me.LangEspRadioButton.Name = "LangEspRadioButton"
+        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangEspRadioButton.TabIndex = 4
+        Me.LangEspRadioButton.TabStop = True
+        Me.LangEspRadioButton.Text = "Esp"
+        Me.LangEspRadioButton.UseVisualStyleBackColor = True
         '
         'LangRuRadioButton
         '
@@ -320,17 +331,6 @@ Partial Class InstallForm
         Me.ModMapsLabel.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.ModMapsLabel.Size = New System.Drawing.Size(232, 202)
         Me.ModMapsLabel.TabIndex = 16
-        '
-        'LangEspRadioButton
-        '
-        Me.LangEspRadioButton.AutoSize = True
-        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
-        Me.LangEspRadioButton.Name = "LangEspRadioButton"
-        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
-        Me.LangEspRadioButton.TabIndex = 4
-        Me.LangEspRadioButton.TabStop = True
-        Me.LangEspRadioButton.Text = "Esp"
-        Me.LangEspRadioButton.UseVisualStyleBackColor = True
         '
         'InstallForm
         '

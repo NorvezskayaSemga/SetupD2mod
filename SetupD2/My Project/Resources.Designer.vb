@@ -396,7 +396,34 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to ##cancmsg#
+        '''¿Quieres cancelar la instalación?
+        '''##yes#
+        '''Si
+        '''##no#
+        '''No
+        '''#InstallModeLabel
+        '''Elige el modo de instalación
+        '''#TextLangLabel
+        '''Selecciona el idioma de texto de la interfaz
+        '''#SoundLangLabel
+        '''Selecciona el idioma de las voces en el mapa global
+        '''#InstallRadioButton
+        '''Instalar el juego completo y parcheado
+        '''#PatchRadioButton
+        '''Parchear el juego (GOG, Russobit-M or Akella)
+        '''#LangRuRadioButton
+        '''Рус
+        '''#LangEnRadioButton
+        '''Eng
+        '''#NextButton
+        '''Siguiente
+        '''#BackButton
+        '''Atrás
+        '''#CancButton
+        '''Cancelar
+        '''#SelectButton
+        '''Ex [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property EspLang() As String
             Get
@@ -697,7 +724,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to https://dis2modding.fandom.com/ru/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC%D1%8B_%D1%80%D0%B0%D0%B7%D0%B1%D1%80%D0%BE%D1%81%D0%B0_%D1%83%D1%80%D0%BE%D0%BD%D0%B0_%D0%B2_%D0%BC%D0%BE%D0%B4%D0%B5_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8.
+        '''  Looks up a localized string similar to https://dis2modding.fandom.com/ru/wiki/%D0%A0%D0%B5%D0%B6%D0%B8%D0%BC%D1%8B_%D1%80%D0%B0%D0%B7%D0%B1%D1%80%D0%BE%D1%81%D0%B0_%D0%B2_%D0%BC%D0%BE%D0%B4%D0%B5_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8.
         '''</summary>
         Friend ReadOnly Property spreadLink() As String
             Get
@@ -774,6 +801,15 @@ Namespace My.Resources
         Friend ReadOnly Property versionPath2() As String
             Get
                 Return ResourceManager.GetString("versionPath2", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to https://dis2modding.fandom.com/ru/wiki/%D0%9C%D0%BE%D0%B4_%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B6%D1%81%D0%BA%D0%BE%D0%B9_%D0%A1%D1%91%D0%BC%D0%B3%D0%B8.
+        '''</summary>
+        Friend ReadOnly Property wikipedialink() As String
+            Get
+                Return ResourceManager.GetString("wikipedialink", resourceCulture)
             End Get
         End Property
     End Module

@@ -86,6 +86,9 @@ Progreso de la instalación
 #MapsLabel
 Mapas del mod
 
+#ModWikiLinkLabel
+Vikipedia con el modo mecánico de descripción
+
 ##nofileserror#
 No se pueden encontrar los archivos del mod. Probablemente no hayas descomprimido el archivo del mod.
 ##notlangerror#
@@ -258,6 +261,18 @@ Multiplicador de propagación en curación
 Probabilidad por suerte de curación
 #healUnluckMultiLabel
 Multiplicador de curación por mala suerte
+
+#HumanBattleExpMultiplierLabel
+Multiplicador de la experiencia obtenida 
+por las unidades del jugador en batalla
+#Easy_HumanBattleExpMultiplierLabel
+Dificultad fácil
+#Normal_HumanBattleExpMultiplierLabel
+Dificultad normal
+#Hard_HumanBattleExpMultiplierLabel
+Dificultad difícil
+#VeryHard_HumanBattleExpMultiplierLabel
+Dificultad muy difícil
 
 ##notlangerror_esp#
 No se han podido encontrar los archivos de interfaz en español

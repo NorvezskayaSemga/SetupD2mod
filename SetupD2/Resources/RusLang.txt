@@ -86,6 +86,9 @@ Eng
 #MapsLabel
 Карты мода
 
+#ModWikiLinkLabel
+Википедия с описанием механик мода
+
 ##nofileserror#
 Не могу найти файлы мода. Вероятно, вы не распаковали архив с модом
 ##notlangerror_eng#
@@ -259,6 +262,19 @@ Esp
 Шанс удачного лечения
 #healUnluckMultiLabel
 Множитель лечения при неудачи
+
+#HumanBattleExpMultiplierLabel
+Множитель опыта, получаемого 
+отрядами игрока в бою
+#Easy_HumanBattleExpMultiplierLabel
+На легкой сложности
+#Normal_HumanBattleExpMultiplierLabel
+На средней сложности
+#Hard_HumanBattleExpMultiplierLabel
+На тяжелой сложности
+#VeryHard_HumanBattleExpMultiplierLabel
+На очень тяжелой сложности
+
 
 ##notlangerror_esp#
 Не могу найти файлы испаноязычного интерфейса

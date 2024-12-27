@@ -35,12 +35,15 @@ Partial Class Main
         Me.SteamErrorLabel = New System.Windows.Forms.Label()
         Me.SelectFolderErrorLabel = New System.Windows.Forms.Label()
         Me.LangPanel = New System.Windows.Forms.Panel()
+        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangEnRadioButton = New System.Windows.Forms.RadioButton()
         Me.LangRuRadioButton = New System.Windows.Forms.RadioButton()
-        Me.LangEspRadioButton = New System.Windows.Forms.RadioButton()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ModWikiLinkLabel = New System.Windows.Forms.LinkLabel()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'NextButton
@@ -48,7 +51,7 @@ Partial Class Main
         Me.NextButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NextButton.Enabled = False
         Me.NextButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.NextButton.Location = New System.Drawing.Point(351, 389)
+        Me.NextButton.Location = New System.Drawing.Point(365, 389)
         Me.NextButton.Name = "NextButton"
         Me.NextButton.Size = New System.Drawing.Size(100, 28)
         Me.NextButton.TabIndex = 0
@@ -60,7 +63,7 @@ Partial Class Main
         Me.BackButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BackButton.Enabled = False
         Me.BackButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.BackButton.Location = New System.Drawing.Point(245, 389)
+        Me.BackButton.Location = New System.Drawing.Point(259, 389)
         Me.BackButton.Name = "BackButton"
         Me.BackButton.Size = New System.Drawing.Size(100, 28)
         Me.BackButton.TabIndex = 11
@@ -71,7 +74,7 @@ Partial Class Main
         '
         Me.CancButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.CancButton.Location = New System.Drawing.Point(517, 389)
+        Me.CancButton.Location = New System.Drawing.Point(531, 389)
         Me.CancButton.Name = "CancButton"
         Me.CancButton.Size = New System.Drawing.Size(82, 28)
         Me.CancButton.TabIndex = 2
@@ -119,6 +122,7 @@ Partial Class Main
         '
         'Panel
         '
+        Me.Panel.Controls.Add(Me.Panel1)
         Me.Panel.Controls.Add(Me.NonlatinErrorLabel)
         Me.Panel.Controls.Add(Me.SteamErrorLabel)
         Me.Panel.Controls.Add(Me.SelectFolderErrorLabel)
@@ -128,7 +132,7 @@ Partial Class Main
         Me.Panel.Controls.Add(Me.SelectTextBox)
         Me.Panel.Location = New System.Drawing.Point(242, 0)
         Me.Panel.Name = "Panel"
-        Me.Panel.Size = New System.Drawing.Size(357, 383)
+        Me.Panel.Size = New System.Drawing.Size(380, 383)
         Me.Panel.TabIndex = 4
         '
         'NonlatinErrorLabel
@@ -172,10 +176,21 @@ Partial Class Main
         Me.LangPanel.Controls.Add(Me.LangEspRadioButton)
         Me.LangPanel.Controls.Add(Me.LangEnRadioButton)
         Me.LangPanel.Controls.Add(Me.LangRuRadioButton)
-        Me.LangPanel.Location = New System.Drawing.Point(302, 0)
+        Me.LangPanel.Location = New System.Drawing.Point(322, 0)
         Me.LangPanel.Name = "LangPanel"
         Me.LangPanel.Size = New System.Drawing.Size(55, 63)
         Me.LangPanel.TabIndex = 10
+        '
+        'LangEspRadioButton
+        '
+        Me.LangEspRadioButton.AutoSize = True
+        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
+        Me.LangEspRadioButton.Name = "LangEspRadioButton"
+        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
+        Me.LangEspRadioButton.TabIndex = 2
+        Me.LangEspRadioButton.TabStop = True
+        Me.LangEspRadioButton.Text = "Esp"
+        Me.LangEspRadioButton.UseVisualStyleBackColor = True
         '
         'LangEnRadioButton
         '
@@ -199,22 +214,30 @@ Partial Class Main
         Me.LangRuRadioButton.Text = "Рус"
         Me.LangRuRadioButton.UseVisualStyleBackColor = True
         '
-        'LangEspRadioButton
+        'Panel1
         '
-        Me.LangEspRadioButton.AutoSize = True
-        Me.LangEspRadioButton.Location = New System.Drawing.Point(9, 41)
-        Me.LangEspRadioButton.Name = "LangEspRadioButton"
-        Me.LangEspRadioButton.Size = New System.Drawing.Size(43, 17)
-        Me.LangEspRadioButton.TabIndex = 2
-        Me.LangEspRadioButton.TabStop = True
-        Me.LangEspRadioButton.Text = "Esp"
-        Me.LangEspRadioButton.UseVisualStyleBackColor = True
+        Me.Panel1.Controls.Add(Me.ModWikiLinkLabel)
+        Me.Panel1.Location = New System.Drawing.Point(3, 66)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(374, 32)
+        Me.Panel1.TabIndex = 15
+        '
+        'ModWikiLinkLabel
+        '
+        Me.ModWikiLinkLabel.AutoSize = True
+        Me.ModWikiLinkLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.ModWikiLinkLabel.Location = New System.Drawing.Point(4, 0)
+        Me.ModWikiLinkLabel.Name = "ModWikiLinkLabel"
+        Me.ModWikiLinkLabel.Size = New System.Drawing.Size(85, 16)
+        Me.ModWikiLinkLabel.TabIndex = 15
+        Me.ModWikiLinkLabel.TabStop = True
+        Me.ModWikiLinkLabel.Text = "ModWikiLink"
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 422)
+        Me.ClientSize = New System.Drawing.Size(625, 422)
         Me.Controls.Add(Me.Panel)
         Me.Controls.Add(Me.PictureBox)
         Me.Controls.Add(Me.NextButton)
@@ -228,6 +251,8 @@ Partial Class Main
         Me.Panel.PerformLayout()
         Me.LangPanel.ResumeLayout(False)
         Me.LangPanel.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -246,5 +271,7 @@ Partial Class Main
     Friend WithEvents SelectFolderErrorLabel As System.Windows.Forms.Label
     Friend WithEvents NonlatinErrorLabel As System.Windows.Forms.Label
     Friend WithEvents LangEspRadioButton As System.Windows.Forms.RadioButton
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents ModWikiLinkLabel As System.Windows.Forms.LinkLabel
 
 End Class

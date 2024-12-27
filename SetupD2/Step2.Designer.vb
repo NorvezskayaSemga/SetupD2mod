@@ -80,10 +80,6 @@ Partial Class SettingsForm
         Me.defaultStatsShowModeComboBox = New System.Windows.Forms.ComboBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.SpreadModeLinkLabel = New System.Windows.Forms.LinkLabel()
-        Me.damageSpreadApplyPowerLabel = New System.Windows.Forms.Label()
-        Me.damageSpreadApplyPowerComboBox = New System.Windows.Forms.ComboBox()
-        Me.LuckEffectModeLabel = New System.Windows.Forms.Label()
-        Me.LuckEffectModeComboBox = New System.Windows.Forms.ComboBox()
         Me.damageSpreadMultiLabel = New System.Windows.Forms.Label()
         Me.damageSpreadMultiTextBox = New System.Windows.Forms.TextBox()
         Me.healUnluckMultiLabel = New System.Windows.Forms.Label()
@@ -96,6 +92,17 @@ Partial Class SettingsForm
         Me.damageSpreadModeComboBox = New System.Windows.Forms.ComboBox()
         Me.healSpreadMultiLabel = New System.Windows.Forms.Label()
         Me.healSpreadMultiTextBox = New System.Windows.Forms.TextBox()
+        Me.SettingsTabPage4 = New System.Windows.Forms.TabPage()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.VeryHard_HumanBattleExpMultiplierLabel = New System.Windows.Forms.Label()
+        Me.VeryHard_HumanBattleExpMultiplierTextBox = New System.Windows.Forms.TextBox()
+        Me.Hard_HumanBattleExpMultiplierLabel = New System.Windows.Forms.Label()
+        Me.Hard_HumanBattleExpMultiplierTextBox = New System.Windows.Forms.TextBox()
+        Me.Normal_HumanBattleExpMultiplierLabel = New System.Windows.Forms.Label()
+        Me.Normal_HumanBattleExpMultiplierTextBox = New System.Windows.Forms.TextBox()
+        Me.Easy_HumanBattleExpMultiplierLabel = New System.Windows.Forms.Label()
+        Me.Easy_HumanBattleExpMultiplierTextBox = New System.Windows.Forms.TextBox()
+        Me.HumanBattleExpMultiplierLabel = New System.Windows.Forms.Label()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel.SuspendLayout()
         Me.LangPanel.SuspendLayout()
@@ -114,6 +121,8 @@ Partial Class SettingsForm
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.SettingsTabPage4.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'CancButton
@@ -228,6 +237,7 @@ Partial Class SettingsForm
         Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage1)
         Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage2)
         Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage3)
+        Me.SettingsTabControl.Controls.Add(Me.SettingsTabPage4)
         Me.SettingsTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.SettingsTabControl.Location = New System.Drawing.Point(0, 0)
         Me.SettingsTabControl.Name = "SettingsTabControl"
@@ -536,7 +546,7 @@ Partial Class SettingsForm
         'unitMaxDamageLabel
         '
         Me.unitMaxDamageLabel.AutoSize = True
-        Me.unitMaxDamageLabel.Location = New System.Drawing.Point(45, 7)
+        Me.unitMaxDamageLabel.Location = New System.Drawing.Point(46, 7)
         Me.unitMaxDamageLabel.Name = "unitMaxDamageLabel"
         Me.unitMaxDamageLabel.Size = New System.Drawing.Size(112, 13)
         Me.unitMaxDamageLabel.TabIndex = 3
@@ -544,7 +554,7 @@ Partial Class SettingsForm
         '
         'unitMaxDamageTextBox
         '
-        Me.unitMaxDamageTextBox.Location = New System.Drawing.Point(3, 4)
+        Me.unitMaxDamageTextBox.Location = New System.Drawing.Point(4, 4)
         Me.unitMaxDamageTextBox.Name = "unitMaxDamageTextBox"
         Me.unitMaxDamageTextBox.Size = New System.Drawing.Size(36, 20)
         Me.unitMaxDamageTextBox.TabIndex = 2
@@ -565,6 +575,7 @@ Partial Class SettingsForm
         Me.SFXProjectCheckBox.AutoSize = True
         Me.SFXProjectCheckBox.Checked = True
         Me.SFXProjectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.SFXProjectCheckBox.Enabled = False
         Me.SFXProjectCheckBox.Location = New System.Drawing.Point(4, 50)
         Me.SFXProjectCheckBox.Name = "SFXProjectCheckBox"
         Me.SFXProjectCheckBox.Size = New System.Drawing.Size(218, 17)
@@ -715,10 +726,6 @@ Partial Class SettingsForm
         'Panel5
         '
         Me.Panel5.Controls.Add(Me.SpreadModeLinkLabel)
-        Me.Panel5.Controls.Add(Me.damageSpreadApplyPowerLabel)
-        Me.Panel5.Controls.Add(Me.damageSpreadApplyPowerComboBox)
-        Me.Panel5.Controls.Add(Me.LuckEffectModeLabel)
-        Me.Panel5.Controls.Add(Me.LuckEffectModeComboBox)
         Me.Panel5.Controls.Add(Me.damageSpreadMultiLabel)
         Me.Panel5.Controls.Add(Me.damageSpreadMultiTextBox)
         Me.Panel5.Controls.Add(Me.healUnluckMultiLabel)
@@ -731,9 +738,9 @@ Partial Class SettingsForm
         Me.Panel5.Controls.Add(Me.damageSpreadModeComboBox)
         Me.Panel5.Controls.Add(Me.healSpreadMultiLabel)
         Me.Panel5.Controls.Add(Me.healSpreadMultiTextBox)
-        Me.Panel5.Location = New System.Drawing.Point(3, 123)
+        Me.Panel5.Location = New System.Drawing.Point(3, 137)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(350, 242)
+        Me.Panel5.Size = New System.Drawing.Size(350, 211)
         Me.Panel5.TabIndex = 12
         '
         'SpreadModeLinkLabel
@@ -746,46 +753,6 @@ Partial Class SettingsForm
         Me.SpreadModeLinkLabel.TabIndex = 26
         Me.SpreadModeLinkLabel.TabStop = True
         Me.SpreadModeLinkLabel.Text = "SpreadModeLinkLabel"
-        '
-        'damageSpreadApplyPowerLabel
-        '
-        Me.damageSpreadApplyPowerLabel.AutoSize = True
-        Me.damageSpreadApplyPowerLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.damageSpreadApplyPowerLabel.Location = New System.Drawing.Point(3, 105)
-        Me.damageSpreadApplyPowerLabel.Name = "damageSpreadApplyPowerLabel"
-        Me.damageSpreadApplyPowerLabel.Size = New System.Drawing.Size(188, 15)
-        Me.damageSpreadApplyPowerLabel.TabIndex = 24
-        Me.damageSpreadApplyPowerLabel.Text = "damageSpreadApplyPowerLabel"
-        '
-        'damageSpreadApplyPowerComboBox
-        '
-        Me.damageSpreadApplyPowerComboBox.FormattingEnabled = True
-        Me.damageSpreadApplyPowerComboBox.Items.AddRange(New Object() {"true", "false"})
-        Me.damageSpreadApplyPowerComboBox.Location = New System.Drawing.Point(213, 104)
-        Me.damageSpreadApplyPowerComboBox.Name = "damageSpreadApplyPowerComboBox"
-        Me.damageSpreadApplyPowerComboBox.Size = New System.Drawing.Size(124, 21)
-        Me.damageSpreadApplyPowerComboBox.TabIndex = 25
-        Me.damageSpreadApplyPowerComboBox.Text = "true"
-        '
-        'LuckEffectModeLabel
-        '
-        Me.LuckEffectModeLabel.AutoSize = True
-        Me.LuckEffectModeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.LuckEffectModeLabel.Location = New System.Drawing.Point(3, 78)
-        Me.LuckEffectModeLabel.Name = "LuckEffectModeLabel"
-        Me.LuckEffectModeLabel.Size = New System.Drawing.Size(126, 15)
-        Me.LuckEffectModeLabel.TabIndex = 19
-        Me.LuckEffectModeLabel.Text = "LuckEffectModeLabel"
-        '
-        'LuckEffectModeComboBox
-        '
-        Me.LuckEffectModeComboBox.FormattingEnabled = True
-        Me.LuckEffectModeComboBox.Items.AddRange(New Object() {"HigherEffectChance", "MinEffectIncrease"})
-        Me.LuckEffectModeComboBox.Location = New System.Drawing.Point(213, 77)
-        Me.LuckEffectModeComboBox.Name = "LuckEffectModeComboBox"
-        Me.LuckEffectModeComboBox.Size = New System.Drawing.Size(124, 21)
-        Me.LuckEffectModeComboBox.TabIndex = 10
-        Me.LuckEffectModeComboBox.Text = "HigherEffectChance"
         '
         'damageSpreadMultiLabel
         '
@@ -802,12 +769,12 @@ Partial Class SettingsForm
         Me.damageSpreadMultiTextBox.Name = "damageSpreadMultiTextBox"
         Me.damageSpreadMultiTextBox.Size = New System.Drawing.Size(124, 20)
         Me.damageSpreadMultiTextBox.TabIndex = 9
-        Me.damageSpreadMultiTextBox.Text = "1.0"
+        Me.damageSpreadMultiTextBox.Text = "100"
         '
         'healUnluckMultiLabel
         '
         Me.healUnluckMultiLabel.AutoSize = True
-        Me.healUnluckMultiLabel.Location = New System.Drawing.Point(3, 213)
+        Me.healUnluckMultiLabel.Location = New System.Drawing.Point(3, 175)
         Me.healUnluckMultiLabel.Name = "healUnluckMultiLabel"
         Me.healUnluckMultiLabel.Size = New System.Drawing.Size(109, 13)
         Me.healUnluckMultiLabel.TabIndex = 15
@@ -815,7 +782,7 @@ Partial Class SettingsForm
         '
         'healUnluckMultiTextBox
         '
-        Me.healUnluckMultiTextBox.Location = New System.Drawing.Point(213, 210)
+        Me.healUnluckMultiTextBox.Location = New System.Drawing.Point(213, 172)
         Me.healUnluckMultiTextBox.Name = "healUnluckMultiTextBox"
         Me.healUnluckMultiTextBox.Size = New System.Drawing.Size(124, 20)
         Me.healUnluckMultiTextBox.TabIndex = 23
@@ -824,7 +791,7 @@ Partial Class SettingsForm
         'healLuckChanceLabel
         '
         Me.healLuckChanceLabel.AutoSize = True
-        Me.healLuckChanceLabel.Location = New System.Drawing.Point(3, 187)
+        Me.healLuckChanceLabel.Location = New System.Drawing.Point(3, 149)
         Me.healLuckChanceLabel.Name = "healLuckChanceLabel"
         Me.healLuckChanceLabel.Size = New System.Drawing.Size(114, 13)
         Me.healLuckChanceLabel.TabIndex = 13
@@ -832,7 +799,7 @@ Partial Class SettingsForm
         '
         'healLuckChanceTextBox
         '
-        Me.healLuckChanceTextBox.Location = New System.Drawing.Point(213, 184)
+        Me.healLuckChanceTextBox.Location = New System.Drawing.Point(213, 146)
         Me.healLuckChanceTextBox.Name = "healLuckChanceTextBox"
         Me.healLuckChanceTextBox.Size = New System.Drawing.Size(124, 20)
         Me.healLuckChanceTextBox.TabIndex = 22
@@ -842,7 +809,7 @@ Partial Class SettingsForm
         '
         Me.healSpreadModeLabel.AutoSize = True
         Me.healSpreadModeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.healSpreadModeLabel.Location = New System.Drawing.Point(3, 132)
+        Me.healSpreadModeLabel.Location = New System.Drawing.Point(3, 94)
         Me.healSpreadModeLabel.Name = "healSpreadModeLabel"
         Me.healSpreadModeLabel.Size = New System.Drawing.Size(134, 15)
         Me.healSpreadModeLabel.TabIndex = 11
@@ -861,8 +828,8 @@ Partial Class SettingsForm
         'healSpreadModeComboBox
         '
         Me.healSpreadModeComboBox.FormattingEnabled = True
-        Me.healSpreadModeComboBox.Items.AddRange(New Object() {"NoSpread", "Smooth", "MinMax"})
-        Me.healSpreadModeComboBox.Location = New System.Drawing.Point(213, 131)
+        Me.healSpreadModeComboBox.Items.AddRange(New Object() {"NoSpread", "Smooth", "MinMax", "MinMidMax"})
+        Me.healSpreadModeComboBox.Location = New System.Drawing.Point(213, 93)
         Me.healSpreadModeComboBox.Name = "healSpreadModeComboBox"
         Me.healSpreadModeComboBox.Size = New System.Drawing.Size(124, 21)
         Me.healSpreadModeComboBox.TabIndex = 20
@@ -871,7 +838,7 @@ Partial Class SettingsForm
         'damageSpreadModeComboBox
         '
         Me.damageSpreadModeComboBox.FormattingEnabled = True
-        Me.damageSpreadModeComboBox.Items.AddRange(New Object() {"NoSpread", "Smooth", "MinMax"})
+        Me.damageSpreadModeComboBox.Items.AddRange(New Object() {"NoSpread", "Smooth", "MinMax", "MinMidMax"})
         Me.damageSpreadModeComboBox.Location = New System.Drawing.Point(213, 24)
         Me.damageSpreadModeComboBox.Name = "damageSpreadModeComboBox"
         Me.damageSpreadModeComboBox.Size = New System.Drawing.Size(124, 21)
@@ -881,7 +848,7 @@ Partial Class SettingsForm
         'healSpreadMultiLabel
         '
         Me.healSpreadMultiLabel.AutoSize = True
-        Me.healSpreadMultiLabel.Location = New System.Drawing.Point(3, 161)
+        Me.healSpreadMultiLabel.Location = New System.Drawing.Point(3, 123)
         Me.healSpreadMultiLabel.Name = "healSpreadMultiLabel"
         Me.healSpreadMultiLabel.Size = New System.Drawing.Size(109, 13)
         Me.healSpreadMultiLabel.TabIndex = 7
@@ -889,11 +856,115 @@ Partial Class SettingsForm
         '
         'healSpreadMultiTextBox
         '
-        Me.healSpreadMultiTextBox.Location = New System.Drawing.Point(213, 158)
+        Me.healSpreadMultiTextBox.Location = New System.Drawing.Point(213, 120)
         Me.healSpreadMultiTextBox.Name = "healSpreadMultiTextBox"
         Me.healSpreadMultiTextBox.Size = New System.Drawing.Size(124, 20)
         Me.healSpreadMultiTextBox.TabIndex = 21
-        Me.healSpreadMultiTextBox.Text = "0.2"
+        Me.healSpreadMultiTextBox.Text = "20"
+        '
+        'SettingsTabPage4
+        '
+        Me.SettingsTabPage4.Controls.Add(Me.Panel6)
+        Me.SettingsTabPage4.Location = New System.Drawing.Point(4, 22)
+        Me.SettingsTabPage4.Name = "SettingsTabPage4"
+        Me.SettingsTabPage4.Size = New System.Drawing.Size(364, 376)
+        Me.SettingsTabPage4.TabIndex = 3
+        Me.SettingsTabPage4.Text = "SettingsPage#4"
+        Me.SettingsTabPage4.UseVisualStyleBackColor = True
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.VeryHard_HumanBattleExpMultiplierLabel)
+        Me.Panel6.Controls.Add(Me.VeryHard_HumanBattleExpMultiplierTextBox)
+        Me.Panel6.Controls.Add(Me.Hard_HumanBattleExpMultiplierLabel)
+        Me.Panel6.Controls.Add(Me.Hard_HumanBattleExpMultiplierTextBox)
+        Me.Panel6.Controls.Add(Me.Normal_HumanBattleExpMultiplierLabel)
+        Me.Panel6.Controls.Add(Me.Normal_HumanBattleExpMultiplierTextBox)
+        Me.Panel6.Controls.Add(Me.Easy_HumanBattleExpMultiplierLabel)
+        Me.Panel6.Controls.Add(Me.Easy_HumanBattleExpMultiplierTextBox)
+        Me.Panel6.Controls.Add(Me.HumanBattleExpMultiplierLabel)
+        Me.Panel6.Location = New System.Drawing.Point(3, 3)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(350, 154)
+        Me.Panel6.TabIndex = 14
+        '
+        'VeryHard_HumanBattleExpMultiplierLabel
+        '
+        Me.VeryHard_HumanBattleExpMultiplierLabel.AutoSize = True
+        Me.VeryHard_HumanBattleExpMultiplierLabel.Location = New System.Drawing.Point(46, 121)
+        Me.VeryHard_HumanBattleExpMultiplierLabel.Name = "VeryHard_HumanBattleExpMultiplierLabel"
+        Me.VeryHard_HumanBattleExpMultiplierLabel.Size = New System.Drawing.Size(177, 13)
+        Me.VeryHard_HumanBattleExpMultiplierLabel.TabIndex = 11
+        Me.VeryHard_HumanBattleExpMultiplierLabel.Text = "VeryHard_HumanBattleExpMultiplier"
+        '
+        'VeryHard_HumanBattleExpMultiplierTextBox
+        '
+        Me.VeryHard_HumanBattleExpMultiplierTextBox.Location = New System.Drawing.Point(4, 118)
+        Me.VeryHard_HumanBattleExpMultiplierTextBox.Name = "VeryHard_HumanBattleExpMultiplierTextBox"
+        Me.VeryHard_HumanBattleExpMultiplierTextBox.Size = New System.Drawing.Size(36, 20)
+        Me.VeryHard_HumanBattleExpMultiplierTextBox.TabIndex = 4
+        Me.VeryHard_HumanBattleExpMultiplierTextBox.Text = "1.0"
+        '
+        'Hard_HumanBattleExpMultiplierLabel
+        '
+        Me.Hard_HumanBattleExpMultiplierLabel.AutoSize = True
+        Me.Hard_HumanBattleExpMultiplierLabel.Location = New System.Drawing.Point(46, 95)
+        Me.Hard_HumanBattleExpMultiplierLabel.Name = "Hard_HumanBattleExpMultiplierLabel"
+        Me.Hard_HumanBattleExpMultiplierLabel.Size = New System.Drawing.Size(156, 13)
+        Me.Hard_HumanBattleExpMultiplierLabel.TabIndex = 13
+        Me.Hard_HumanBattleExpMultiplierLabel.Text = "Hard_HumanBattleExpMultiplier"
+        '
+        'Hard_HumanBattleExpMultiplierTextBox
+        '
+        Me.Hard_HumanBattleExpMultiplierTextBox.Location = New System.Drawing.Point(4, 92)
+        Me.Hard_HumanBattleExpMultiplierTextBox.Name = "Hard_HumanBattleExpMultiplierTextBox"
+        Me.Hard_HumanBattleExpMultiplierTextBox.Size = New System.Drawing.Size(36, 20)
+        Me.Hard_HumanBattleExpMultiplierTextBox.TabIndex = 3
+        Me.Hard_HumanBattleExpMultiplierTextBox.Text = "1.0"
+        '
+        'Normal_HumanBattleExpMultiplierLabel
+        '
+        Me.Normal_HumanBattleExpMultiplierLabel.AutoSize = True
+        Me.Normal_HumanBattleExpMultiplierLabel.Location = New System.Drawing.Point(46, 69)
+        Me.Normal_HumanBattleExpMultiplierLabel.Name = "Normal_HumanBattleExpMultiplierLabel"
+        Me.Normal_HumanBattleExpMultiplierLabel.Size = New System.Drawing.Size(166, 13)
+        Me.Normal_HumanBattleExpMultiplierLabel.TabIndex = 7
+        Me.Normal_HumanBattleExpMultiplierLabel.Text = "Normal_HumanBattleExpMultiplier"
+        '
+        'Normal_HumanBattleExpMultiplierTextBox
+        '
+        Me.Normal_HumanBattleExpMultiplierTextBox.Location = New System.Drawing.Point(4, 66)
+        Me.Normal_HumanBattleExpMultiplierTextBox.Name = "Normal_HumanBattleExpMultiplierTextBox"
+        Me.Normal_HumanBattleExpMultiplierTextBox.Size = New System.Drawing.Size(36, 20)
+        Me.Normal_HumanBattleExpMultiplierTextBox.TabIndex = 2
+        Me.Normal_HumanBattleExpMultiplierTextBox.Text = "1.0"
+        '
+        'Easy_HumanBattleExpMultiplierLabel
+        '
+        Me.Easy_HumanBattleExpMultiplierLabel.AutoSize = True
+        Me.Easy_HumanBattleExpMultiplierLabel.Location = New System.Drawing.Point(46, 43)
+        Me.Easy_HumanBattleExpMultiplierLabel.Name = "Easy_HumanBattleExpMultiplierLabel"
+        Me.Easy_HumanBattleExpMultiplierLabel.Size = New System.Drawing.Size(156, 13)
+        Me.Easy_HumanBattleExpMultiplierLabel.TabIndex = 9
+        Me.Easy_HumanBattleExpMultiplierLabel.Text = "Easy_HumanBattleExpMultiplier"
+        '
+        'Easy_HumanBattleExpMultiplierTextBox
+        '
+        Me.Easy_HumanBattleExpMultiplierTextBox.Location = New System.Drawing.Point(4, 40)
+        Me.Easy_HumanBattleExpMultiplierTextBox.Name = "Easy_HumanBattleExpMultiplierTextBox"
+        Me.Easy_HumanBattleExpMultiplierTextBox.Size = New System.Drawing.Size(36, 20)
+        Me.Easy_HumanBattleExpMultiplierTextBox.TabIndex = 1
+        Me.Easy_HumanBattleExpMultiplierTextBox.Text = "1.0"
+        '
+        'HumanBattleExpMultiplierLabel
+        '
+        Me.HumanBattleExpMultiplierLabel.AutoSize = True
+        Me.HumanBattleExpMultiplierLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.HumanBattleExpMultiplierLabel.Location = New System.Drawing.Point(3, 3)
+        Me.HumanBattleExpMultiplierLabel.Name = "HumanBattleExpMultiplierLabel"
+        Me.HumanBattleExpMultiplierLabel.Size = New System.Drawing.Size(151, 15)
+        Me.HumanBattleExpMultiplierLabel.TabIndex = 5
+        Me.HumanBattleExpMultiplierLabel.Text = "HumanBattleExpMultiplier"
         '
         'SettingsForm
         '
@@ -936,6 +1007,9 @@ Partial Class SettingsForm
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.SettingsTabPage4.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -998,10 +1072,6 @@ Partial Class SettingsForm
     Friend WithEvents statsShowModeSwitchKeyLabel As System.Windows.Forms.Label
     Friend WithEvents statsShowModeSwitchKeyComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents SpreadModeLinkLabel As System.Windows.Forms.LinkLabel
-    Friend WithEvents damageSpreadApplyPowerLabel As System.Windows.Forms.Label
-    Friend WithEvents damageSpreadApplyPowerComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents LuckEffectModeLabel As System.Windows.Forms.Label
-    Friend WithEvents LuckEffectModeComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents damageSpreadMultiLabel As System.Windows.Forms.Label
     Friend WithEvents damageSpreadMultiTextBox As System.Windows.Forms.TextBox
     Friend WithEvents healUnluckMultiLabel As System.Windows.Forms.Label
@@ -1014,4 +1084,15 @@ Partial Class SettingsForm
     Friend WithEvents damageSpreadModeComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents healSpreadMultiLabel As System.Windows.Forms.Label
     Friend WithEvents healSpreadMultiTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents SettingsTabPage4 As System.Windows.Forms.TabPage
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents VeryHard_HumanBattleExpMultiplierLabel As System.Windows.Forms.Label
+    Friend WithEvents VeryHard_HumanBattleExpMultiplierTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Hard_HumanBattleExpMultiplierLabel As System.Windows.Forms.Label
+    Friend WithEvents Hard_HumanBattleExpMultiplierTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Normal_HumanBattleExpMultiplierLabel As System.Windows.Forms.Label
+    Friend WithEvents Normal_HumanBattleExpMultiplierTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Easy_HumanBattleExpMultiplierLabel As System.Windows.Forms.Label
+    Friend WithEvents Easy_HumanBattleExpMultiplierTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents HumanBattleExpMultiplierLabel As System.Windows.Forms.Label
 End Class

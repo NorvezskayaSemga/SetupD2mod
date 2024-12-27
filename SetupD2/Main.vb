@@ -27,6 +27,10 @@
         Call comm.Cancel(Me)
     End Sub
 
+    Private Sub OpenWebPage(sender As Object, e As System.EventArgs) Handles ModWikiLinkLabel.MouseClick
+        Dim L As LinkLabel.Link = CType(sender, LinkLabel).Links.Item(0)
+        System.Diagnostics.Process.Start(L.LinkData.ToString)
+    End Sub
     Private Sub ChangeLang(sender As Object, e As System.EventArgs) Handles LangRuRadioButton.CheckedChanged, LangEnRadioButton.CheckedChanged, LangEspRadioButton.CheckedChanged
         Call comm.SetLang(Me, CType(sender, RadioButton))
     End Sub
@@ -80,4 +84,7 @@
         Return True
     End Function
 
+    Private Sub cancel(sender As System.Object, e As System.EventArgs) Handles CancButton.Click
+
+    End Sub
 End Class
