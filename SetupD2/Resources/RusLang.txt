@@ -261,7 +261,7 @@ Esp
 #healLuckChanceLabel
 Шанс удачного лечения
 #healUnluckMultiLabel
-Множитель лечения при неудачи
+Множитель лечения при неудаче
 
 #HumanBattleExpMultiplierLabel
 Множитель опыта, получаемого 
