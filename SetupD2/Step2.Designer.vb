@@ -573,9 +573,6 @@ Partial Class SettingsForm
         'SFXProjectCheckBox
         '
         Me.SFXProjectCheckBox.AutoSize = True
-        Me.SFXProjectCheckBox.Checked = True
-        Me.SFXProjectCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.SFXProjectCheckBox.Enabled = False
         Me.SFXProjectCheckBox.Location = New System.Drawing.Point(4, 50)
         Me.SFXProjectCheckBox.Name = "SFXProjectCheckBox"
         Me.SFXProjectCheckBox.Size = New System.Drawing.Size(218, 17)
