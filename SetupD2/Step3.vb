@@ -549,19 +549,37 @@ Class RewriteSettings
                 OverwriteInfo.Add(overwrite, "Locale", "1049", "")
             End If
 
+            OverwriteInfo.Add(overwrite, "BonusPoolBlocks", "32768", "")
+
             Dim s() As String = IO.File.ReadAllLines(f)
             Dim delimiter As String = "="
             Dim k, v As String
             For i As Integer = 0 To UBound(s) Step 1
                 If s(i).Length > 0 AndAlso s(i).Contains(delimiter) Then
                     Dim splited() As String = s(i).Split(CChar(delimiter))
-                    k = splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
+                    k = "#" & splited(0).Trim(CChar(" "), CChar(vbTab)).ToUpper
                     If overwrite.ContainsKey(k) Then
                         s(i) = splited(0) & delimiter & overwrite.Item(k).value
                         overwrite.Item(k).added = True
                     End If
                 End If
             Next i
+
+            For i As Integer = 0 To UBound(s) Step 1
+                If s(i).Trim(CChar(" "), CChar(vbTab)).ToLower = "[Disciple]".ToLower Then
+                    v = "BonusPoolBlocks"
+                    k = "#" & v.Trim(CChar(" "), CChar(vbTab)).ToUpper
+                    If Not overwrite.Item(k).added Then
+                        s(i) &= vbNewLine & vbNewLine
+                        s(i) &= "; fix game crash when AI have a huge number of stacks under control and runs out of memory to plan his actions"
+                        s(i) &= vbNewLine
+                        s(i) &= v & delimiter & overwrite.Item(k).value
+                        overwrite.Item(k).added = True
+                    End If
+                End If
+            Next i
+
+
             IO.File.WriteAllLines(f, s)
 
             f = destinationDirectory & "Scripts\settings.lua"
